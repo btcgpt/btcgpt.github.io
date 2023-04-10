@@ -1,0 +1,199 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #ffffff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 50px;
+}
+
+header {
+  /* background-color: #333; */
+  color: #fff;
+  padding: 0px;
+  text-align: center;
+  opacity: 1.0;
+  margin-top: 50px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+p {
+  text-align: justify;
+}
+
+nav {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+}
+
+nav a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  color: #fff;
+  opacity: 1.0;
+}
+
+.container h2 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.datetime {
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+.datetimeUp {
+  font-size: 0.8rem;
+  color: #00ff00;
+}
+
+.datetimeDown {
+  font-size: 0.8rem;
+  color: #ff0000;
+}
+
+.price {
+  font-size: 1.8rem;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.priceUp {
+  font-size: 1.8rem;
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.priceDown {
+  font-size: 1.8rem;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.percent {
+  font-size: 1.0rem;
+  color: #ffffff;
+}
+
+.percentUp {
+  font-size: 1.0rem;
+  color: #00ff00;
+}
+
+.percentDown {
+  font-size: 1.0rem;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.notice {
+  font-size: 0.7rem;
+  color: #ffff00;
+}
+
+.sm_text {
+  font-size: 0.7rem;
+  color: #ffffff;
+}
+
+.text {
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.card {
+  /* background-color: #000000; */
+  background-color: rgb(0, 0, 0, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 20px;
+  opacity: 1.0;
+}
+
+.card p {
+  margin: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.card h4 {
+  margin: 0;
+  margin-top: -1.5em;
+  margin-bottom: 1em;
+}
+
+.btn {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+/* #myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+} */
+
+#video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* body {
+  background-image: url("../images/bg2.jpg");
+} */
+
+table {
+  border-collapse: collapse;
+}
+th, td {
+  border: 0px solid black;
+  padding: 5px;
+  text-align: center;
+}
+th {
+  font-size: 12px;
+}
+td {
+  font-size: 12px;
+}

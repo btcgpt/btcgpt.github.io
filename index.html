@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BTCGPT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
+    <link rel="icon" type="image/png" href="./images/captainbtc.jpg">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img src="./images/btc.png" alt="Bitcoin" style="width: 60px; height: 60px; margin-right: 0px; border-radius: 50%;">
+            <h1>BTCGPT</h1>
+            <h1>🚀🌕</h1>
+            <p style="text-align: center;" class="text">BTCGPT predicts the future price of Bitcoin.</p>
+            <p style="text-align: center;" class="notice">This site does not recommend any investment and all risks arising from the use of information on this site are the responsibility of the investor.</p>
+        </div>
+    </header>
+
+    <video autoplay loop muted playsinline id="video-background">
+        <source src="./videos/up.mp4" type="video/mp4">
+    </video>
+
+    <div id="id_container" class="container">
+        <div class="card">
+            <p>Daily Forecast</p>
+            <div id="id_day">
+                <p>
+                    <span class="priceUp">$31,000</span>
+                    <span class="percentUp">+1.0%</span>
+                </p>
+                <h4 class="bottom"><span class="datetimeUp">2023-04-10 00:00 UTC, tomorrow</span></h4>
+                <p>
+                    <span class="price">$31,000</span>
+                </p>
+                <h4 class="bottom"><span class="datetime">2023-04-09 00:00 UTC, last prediction time</span></h4>
+            </div>
+        </div>
+
+        <div class="card">
+            <canvas class="chart" id="id_daychart1" height="150"></canvas>
+        </div>
+
+        <div class="card">
+            <canvas class="chart" id="id_daychart2" height="100"></canvas>
+        </div>
+
+
+        <div class="card">
+            <p>Weekly Forecast</p>
+            <div id="id_week">
+                <p>
+                    <span class="priceUp">$31,000</span>
+                    <span class="percentUp">+1.0%</span>
+                </p>
+                <h4 class="bottom"><span class="datetimeUp">2023-04-10 00:00 UTC, tomorrow</span></h4>
+                <p>
+                    <span class="price">$31,000</span>
+                </p>
+                <h4 class="bottom"><span class="datetime">2023-04-09 00:00 UTC, last prediction time</span></h4>
+            </div>
+        </div>
+
+        <div class="card">
+            <canvas class="chart" id="id_weekchart1" height="150"></canvas>
+        </div>
+
+        <div class="card">
+            <canvas class="chart" id="id_weekchart2" height="100"></canvas>
+        </div>
+
+        <div class="card">
+            <p class="sm_text">What is Average Directional Accuracy?</p>
+            <p>
+                <span class="sm_text">
+                    Directional accuracy(DA) is a metric that measures how closely the predicted price and the actual
+                    price of an asset move in the same direction. For example, if the predicted price for the next day
+                    is higher and the actual price also increases, the DA result would be True (1). However, if the
+                    actual price moves in the opposite direction, the result would be False (0).
+                    The N-day average directional accuracy (ADA) is calculated by summing up the DA results over N days
+                    and dividing the total by N. For example, if the DA results for the last 5 days are [1, 0, 1, 1, 1],
+                    the 5-day ADA would be (1+0+1+1+1)/5 = 0.8.
+                    The chart displays the moving ADA over a 5-day period.
+                </span>
+            </p>
+        </div>
+
+        <div class="card">
+            <p class="sm_text">What is BTCGPT?</p>
+            <p>
+                <span class="sm_text">
+                    BTCGPT is a deep learning model that predicts the future price of Bitcoin based on past Bitcoin
+                    prices, as well as other relevant data such as trading volumes, market capitalization, and news
+                    sentiment analysis. These models are typically trained using historical data and fine-tuned with
+                    more recent data to improve their accuracy.
+                    It is important to note that while these models may provide valuable insights, they are not
+                    foolproof and cannot predict the future with complete certainty. Market conditions, economic
+                    factors, and other unpredictable variables can impact the price of Bitcoin and other assets.
+                    Therefore, it is recommended that investors use BTCGPT's predictions as just one tool to inform
+                    their investment decisions and always conduct their own research before making any investment
+                    decisions.
+                </span>
+                <span class="notice">
+                    This site does not recommend any investment and all risks arising from the use of information on
+                    this site
+                    are the responsibility of the investor.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <footer class="sm_text" style="text-align: center;">
+        <div style="text-align: center;"><img src="./images/captainbtc.jpg" alt="CaptainBTC" style="width: 60px; height: 60px; margin-right: 0px; border-radius: 50%;"></div>
+        &copy; 2023 BTCGPT.INFO
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // number to price format
+        // erase cents
+        function formatPrice(price) {
+            return price.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            }).replace(/\.(\d\d)/, '');
+        }
+
+        function load() {
+        // Fetch the JSON data from the file
+        fetch("./output.json")
+            .then(response => response.json())
+            .then(data => {
+
+                // set daily forecast
+                c_price = "priceUp"
+                c_percent = "percentUp"
+                c_datetime = "datetimeUp"
+                if (data.daily.gap_percentage < 0) {
+                    c_price = "priceDown"
+                    c_percent = "percentDown"
+                    c_datetime = "datetimeDown"
+                } else if (data.daily.gap_percentage == 0) {
+                    c_price = "price"
+                    c_percent = "percent"
+                    c_datetime = "datetime"
+                } else {
+                    c_price = "priceUp"
+                    c_percent = "percentUp"
+                    c_datetime = "datetimeUp"
+                }
+                temp = `
+                <p>
+                    <span class="${c_price}">${formatPrice(data.daily.pred_2[0]['y'])}</span>
+                    <span class="${c_percent}">${data.daily.gap_percentage}%</span>
+                </p>
+                <h4 class="bottom"><span class="${c_datetime}">${data.daily.pred_2[0]['x']} 00:00 UTC, tomorrow</span></h4>
+                <p>
+                    <span class="price">${formatPrice(data.daily.actual.slice(-1)[0]['y'])}</span>
+                </p>
+                <h4 class="bottom"><span class="datetime">${data.daily.last_prediction_time} UTC, last prediction time</span></h4>
+                `
+                document.getElementById("id_day").innerHTML = temp;
+
+
+                // set weekly forecast
+                c_price = "priceUp"
+                c_percent = "percentUp"
+                c_datetime = "datetimeUp"
+                if (data.weekly.gap_percentage < 0) {
+                    c_price = "priceDown"
+                    c_percent = "percentDown"
+                    c_datetime = "datetimeDown"
+                } else if (data.weekly.gap_percentage == 0) {
+                    c_price = "price"
+                    c_percent = "percent"
+                    c_datetime = "datetime"
+                } else {
+                    c_price = "priceUp"
+                    c_percent = "percentUp"
+                    c_datetime = "datetimeUp"
+                }
+                temp = `
+                <p>
+                    <span class="${c_price}">${formatPrice(data.weekly.pred_2[0]['y'])}</span>
+                    <span class="${c_percent}">${data.weekly.gap_percentage}%</span>
+                </p>
+                <h4 class="bottom"><span class="${c_datetime}">${data.weekly.pred_2[0]['x']} 00:00 UTC, tomorrow</span></h4>
+                <p>
+                    <span class="price">${formatPrice(data.weekly.actual.slice(-1)[0]['y'])}</span>
+                </p>
+                <h4 class="bottom"><span class="datetime">${data.weekly.last_prediction_time} UTC, last prediction time</span></h4>
+                `
+                document.getElementById("id_week").innerHTML = temp;
+
+
+                Chart.defaults.color = "white";
+
+                const ctx1 = document.getElementById('id_daychart1').getContext('2d');
+                const chart1 = new Chart(ctx1, {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            label: 'Actual',
+                            data: data.daily.actual,
+                            //fill: true,
+                            borderWidth: 1,
+                            pointRadius: 2,
+                            backgroundColor: 'rgba(128, 128, 128, 0.5)',
+                            borderColor: 'rgba(128, 128, 128, 1)'
+                        },
+                        {
+                            label: 'Pred.Past',
+                            data: data.daily.pred_1,
+                            fill: true,
+                            borderWidth: 1,
+                            pointStyle: false,
+                            pointRadius: 1,
+                            // hidden: true, // Set the dataset to be hidden initially
+                            backgroundColor: 'rgba(255, 159, 64, 0.5)',
+                            borderColor: 'rgba(255, 159, 64, 1)'
+
+                        },
+                        {
+                            label: 'Pred.Future',
+                            data: data.daily.pred_2,
+                            fill: true,
+                            borderWidth: 1,
+                            pointRadius: 2,
+                            backgroundColor: 'rgba(255, 159, 64, 0.8)',
+                            borderColor: 'rgba(255, 159, 64, 1)'
+                            // backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                            // borderColor: 'rgba(255, 206, 86, 1)'                            
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },                                
+                                ticks: {
+                                    font: {
+                                        size: 8
+                                    }
+                                },
+                                display: false
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 8
+                                    }
+                                }
+                            },
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Daily Forecast',
+                                font: {
+                                    size: 16, // Set the title font size here
+                                    weight: 'normal' // Set the title font weight to normal
+                                }
+                            },
+                            legend: {
+                                display: true,
+                                position: 'bottom',
+                                labels: {
+                                    font: {
+                                        size: 9 // Set the legend label font size here
+                                    }
+                                }                            
+                            },
+                        }
+                    }
+                });
+
+                const ctx2 = document.getElementById('id_daychart2').getContext('2d');
+                const chart2 = new Chart(ctx2, {
+                    type: 'bar',
+                    data: {
+                        datasets: [
+                            // {
+                            // label: 'MA:5D',
+                            // data: data.direction_acc,
+                            // borderWidth: 1,
+                            // pointStyle: false,
+                            // fill: true
+                            // },
+                            {
+                                label: 'accuracy',
+                                data: data.daily.direction_acc,
+                                fill: true,
+                                borderWidth: 1,
+                                pointRadius: 1,
+                                pointStyle: false,
+                                backgroundColor: 'rgba(128, 128, 128, 0.9)',
+                                borderColor: 'rgba(128, 128, 128, 1)',
+                            }
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: {
+                                        color: 'white',
+                                        size: 8
+                                    }
+                                },
+                                display: false
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 8
+                                    }
+                                },
+                                max: 1.0,
+                                min: 0
+                            },
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Daily Average Directional Accuracy',
+                                font: {
+                                    size: 16, // Set the title font size here
+                                    weight: 'normal' // Set the title font weight to normal
+                                }
+                            },
+                            legend: {
+                                display: true,
+                                position: 'bottom',
+                                labels: {
+                                    font: {
+                                        size: 9 // Set the legend label font size here
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+
+                const ctx3 = document.getElementById('id_weekchart1').getContext('2d');
+                const chart3 = new Chart(ctx3, {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            label: 'Actual',
+                            data: data.weekly.actual,
+                            //fill: true,
+                            borderWidth: 1,
+                            pointRadius: 2,
+                            backgroundColor: 'rgba(128, 128, 128, 0.5)',
+                            borderColor: 'rgba(128, 128, 128, 1)'                            
+                        },
+                        {
+                            label: 'Pred.Past',
+                            data: data.weekly.pred_1,
+                            fill: true,
+                            borderWidth: 1,
+                            pointStyle: false,
+                            pointRadius: 1,
+                            //hidden: true, // Set the dataset to be hidden initially
+                            backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                            borderColor: 'rgba(255, 99, 132, 1)'
+                        },
+                        {
+                            label: 'Pred.Future',
+                            data: data.weekly.pred_2,
+                            fill: true,
+                            borderWidth: 1,
+                            pointRadius: 2,
+                            backgroundColor: 'rgba(255, 99, 132, 0.9)',
+                            borderColor: 'rgba(255, 99, 132, 1)'
+                         
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 8
+                                    }
+                                },
+                                display: false
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 8
+                                    }
+                                }
+                            },
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Weekly Forecast',
+                                font: {
+                                    size: 16, // Set the title font size here
+                                    weight: 'normal' // Set the title font weight to normal
+                                }
+                            },
+                            legend: {
+                                display: true,
+                                position: 'bottom',
+                                labels: {
+                                    font: {
+                                        size: 9 // Set the legend label font size here
+                                    }
+                                }
+                            },
+                        }
+                    }
+                });
+
+                const ctx4 = document.getElementById('id_weekchart2').getContext('2d');
+                const chart4 = new Chart(ctx4, {
+                    type: 'bar',
+                    data: {
+                        datasets: [
+                            {
+                                label: 'accuracy',
+                                data: data.weekly.direction_acc,
+                                fill: true,
+                                borderWidth: 1,
+                                pointRadius: 1,
+                                backgroundColor: 'rgba(128, 128, 128, 0.9)',
+                                borderColor: 'rgba(128, 128, 128, 1)',
+                            }
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: {
+                                        color: 'white',
+                                        size: 8
+                                    }
+                                },
+                                display: false
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 8
+                                    }
+                                },
+                                max: 1.0,
+                                min: 0
+                            },
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Weekly Average Directional Accuracy',
+                                font: {
+                                    size: 16, // Set the title font size here
+                                    weight: 'normal' // Set the title font weight to normal
+                                }
+                            },
+                            legend: {
+                                display: true,
+                                position: 'bottom',
+                                labels: {
+                                    font: {
+                                        size: 9 // Set the legend label font size here
+                                    }
+                                }                                
+                            }
+                        }
+                    }
+                })
+
+                const container = document.getElementById('id_container');
+                const resizeObserver = new ResizeObserver(() => {
+                    chart1.resize();
+                    chart2.resize();
+                    chart3.resize();
+                    chart4.resize();
+                });
+                resizeObserver.observe(container);
+
+            })
+        }
+
+        load();
+        setInterval(load, 5*60*1000); // 300000 milliseconds = 5 minutes
+
+    </script>
+
+</body>
+
+</html>
