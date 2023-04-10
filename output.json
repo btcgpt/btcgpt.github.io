@@ -359,7 +359,7 @@
             },
             {
                 "x": "2023-04-10",
-                "y": 29104
+                "y": 29161
             }
         ],
         "pred_1": [
@@ -1189,8 +1189,8 @@
             }
         ],
         "r2_score": 0.84,
-        "gap_percentage": -4.79,
-        "last_prediction_time": "2023-04-10 17:56"
+        "gap_percentage": -4.98,
+        "last_prediction_time": "2023-04-10 18:01"
     },
     "weekly": {
         "actual": [
@@ -1552,7 +1552,7 @@
             },
             {
                 "x": "2023-04-10",
-                "y": 29104
+                "y": 29161
             }
         ],
         "pred_1": [
@@ -2382,7 +2382,7 @@
             }
         ],
         "r2_score": 0.77,
-        "gap_percentage": -18.54,
-        "last_prediction_time": "2023-04-10 17:56"
+        "gap_percentage": -18.7,
+        "last_prediction_time": "2023-04-10 18:01"
     }
 }
