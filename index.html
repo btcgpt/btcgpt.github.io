@@ -243,8 +243,8 @@
                                 data: data.daily.pred_1,
                                 fill: true,
                                 borderWidth: 1,
-                                pointStyle: false,
-                                pointRadius: 1,
+                                //pointStyle: false,
+                                pointRadius: 2,
                                 // hidden: true, // Set the dataset to be hidden initially
                                 backgroundColor: 'rgba(255, 159, 64, 0.5)',
                                 borderColor: 'rgba(255, 159, 64, 1)'
@@ -257,9 +257,7 @@
                                 borderWidth: 1,
                                 pointRadius: 2,
                                 backgroundColor: 'rgba(255, 159, 64, 0.8)',
-                                borderColor: 'rgba(255, 159, 64, 1)'
-                                // backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                                // borderColor: 'rgba(255, 206, 86, 1)'                            
+                                borderColor: 'rgba(255, 159, 64, 1)'                         
                             }]
                         },
                         options: {
@@ -314,13 +312,6 @@
                         type: 'bar',
                         data: {
                             datasets: [
-                                // {
-                                // label: 'MA:5D',
-                                // data: data.direction_acc,
-                                // borderWidth: 1,
-                                // pointStyle: false,
-                                // fill: true
-                                // },
                                 {
                                     label: 'accuracy',
                                     data: data.daily.direction_acc,
@@ -401,8 +392,8 @@
                                 data: data.weekly.pred_1,
                                 fill: true,
                                 borderWidth: 1,
-                                pointStyle: false,
-                                pointRadius: 1,
+                                //pointStyle: false,
+                                pointRadius: 2,
                                 //hidden: true, // Set the dataset to be hidden initially
                                 backgroundColor: 'rgba(255, 99, 132, 0.7)',
                                 borderColor: 'rgba(255, 99, 132, 1)'
