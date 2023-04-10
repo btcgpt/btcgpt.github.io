@@ -131,7 +131,15 @@
             }).replace(/\.(\d\d)/, '');
         }
 
+
+        charts = []
+
         function load() {
+
+            charts.forEach(chart => {
+                            chart.destroy();
+                        });
+            charts = []
 
             // Fetch the JSON data from the file
             fetch("./output.json", { cache: 'no-cache' })
@@ -284,6 +292,7 @@
                             }
                         }
                     });
+                    charts.push(chart1)
 
                     ctx2 = document.getElementById('id_daychart2').getContext('2d');
                     chart2 = new Chart(ctx2, {
@@ -357,6 +366,7 @@
                             }
                         }
                     })
+                    charts.push(chart2)
 
                     ctx3 = document.getElementById('id_weekchart1').getContext('2d');
                     chart3 = new Chart(ctx3, {
@@ -438,6 +448,7 @@
                             }
                         }
                     });
+                    charts.push(chart3)
 
                     ctx4 = document.getElementById('id_weekchart2').getContext('2d');
                     chart4 = new Chart(ctx4, {
@@ -503,13 +514,13 @@
                             }
                         }
                     })
+                    charts.push(chart4)
 
                     container = document.getElementById('id_container');
                     resizeObserver = new ResizeObserver(() => {
-                        chart1.resize();
-                        chart2.resize();
-                        chart3.resize();
-                        chart4.resize();
+                        charts.forEach(chart => {
+                            chart.resize();
+                        });
                     });
                     resizeObserver.observe(container);
 
