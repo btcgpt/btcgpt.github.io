@@ -201,8 +201,8 @@
 
                     Chart.defaults.color = "white";
 
-                    const ctx1 = document.getElementById('id_daychart1').getContext('2d');
-                    const chart1 = new Chart(ctx1, {
+                    ctx1 = document.getElementById('id_daychart1').getContext('2d');
+                    chart1 = new Chart(ctx1, {
                         type: 'line',
                         data: {
                             datasets: [{
@@ -284,8 +284,8 @@
                         }
                     });
 
-                    const ctx2 = document.getElementById('id_daychart2').getContext('2d');
-                    const chart2 = new Chart(ctx2, {
+                    ctx2 = document.getElementById('id_daychart2').getContext('2d');
+                    chart2 = new Chart(ctx2, {
                         type: 'bar',
                         data: {
                             datasets: [
@@ -357,8 +357,8 @@
                         }
                     })
 
-                    const ctx3 = document.getElementById('id_weekchart1').getContext('2d');
-                    const chart3 = new Chart(ctx3, {
+                    ctx3 = document.getElementById('id_weekchart1').getContext('2d');
+                    chart3 = new Chart(ctx3, {
                         type: 'line',
                         data: {
                             datasets: [{
@@ -438,8 +438,8 @@
                         }
                     });
 
-                    const ctx4 = document.getElementById('id_weekchart2').getContext('2d');
-                    const chart4 = new Chart(ctx4, {
+                    ctx4 = document.getElementById('id_weekchart2').getContext('2d');
+                    chart4 = new Chart(ctx4, {
                         type: 'bar',
                         data: {
                             datasets: [
@@ -503,8 +503,8 @@
                         }
                     })
 
-                    const container = document.getElementById('id_container');
-                    const resizeObserver = new ResizeObserver(() => {
+                    container = document.getElementById('id_container');
+                    resizeObserver = new ResizeObserver(() => {
                         chart1.resize();
                         chart2.resize();
                         chart3.resize();
