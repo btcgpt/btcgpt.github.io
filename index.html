@@ -24,7 +24,7 @@
     <video autoplay loop muted playsinline id="video-background">
         <source src="./videos/up.mp4" type="video/mp4">
     </video>
-    
+
     <div id="id_container" class="container">
         <div class="card">
             <p>Daily Forecast</p>
@@ -132,387 +132,387 @@
         }
 
         function load() {
-        // Fetch the JSON data from the file
-        fetch("./output.json")
-            .then(response => response.json())
-            .then(data => {
+            // Fetch the JSON data from the file
+            fetch("./output.json")
+                .then(response => response.json())
+                .then(data => {
 
-                // set daily forecast
-                c_price = "priceUp"
-                c_percent = "percentUp"
-                c_datetime = "datetimeUp"
-                if (data.daily.gap_percentage < 0) {
-                    c_price = "priceDown"
-                    c_percent = "percentDown"
-                    c_datetime = "datetimeDown"
-                } else if (data.daily.gap_percentage == 0) {
-                    c_price = "price"
-                    c_percent = "percent"
-                    c_datetime = "datetime"
-                } else {
+                    // set daily forecast
                     c_price = "priceUp"
                     c_percent = "percentUp"
                     c_datetime = "datetimeUp"
-                }
-                temp = `
-                <p>
-                    <span class="${c_price}">${formatPrice(data.daily.pred_2[0]['y'])}</span>
-                    <span class="${c_percent}">${data.daily.gap_percentage}%</span>
-                </p>
-                <h4 class="bottom"><span class="${c_datetime}">${data.daily.pred_2[0]['x']} 00:00 UTC, tomorrow</span></h4>
-                <p>
-                    <span class="price">${formatPrice(data.daily.actual.slice(-1)[0]['y'])}</span>
-                </p>
-                <h4 class="bottom"><span class="datetime">${data.daily.last_prediction_time} UTC, last prediction time</span></h4>
-                `
-                document.getElementById("id_day").innerHTML = temp;
-
-
-                // set weekly forecast
-                c_price = "priceUp"
-                c_percent = "percentUp"
-                c_datetime = "datetimeUp"
-                if (data.weekly.gap_percentage < 0) {
-                    c_price = "priceDown"
-                    c_percent = "percentDown"
-                    c_datetime = "datetimeDown"
-                } else if (data.weekly.gap_percentage == 0) {
-                    c_price = "price"
-                    c_percent = "percent"
-                    c_datetime = "datetime"
-                } else {
-                    c_price = "priceUp"
-                    c_percent = "percentUp"
-                    c_datetime = "datetimeUp"
-                }
-                temp = `
-                <p>
-                    <span class="${c_price}">${formatPrice(data.weekly.pred_2[0]['y'])}</span>
-                    <span class="${c_percent}">${data.weekly.gap_percentage}%</span>
-                </p>
-                <h4 class="bottom"><span class="${c_datetime}">${data.weekly.pred_2[0]['x']} 00:00 UTC, tomorrow</span></h4>
-                <p>
-                    <span class="price">${formatPrice(data.weekly.actual.slice(-1)[0]['y'])}</span>
-                </p>
-                <h4 class="bottom"><span class="datetime">${data.weekly.last_prediction_time} UTC, last prediction time</span></h4>
-                `
-                document.getElementById("id_week").innerHTML = temp;
-
-
-                Chart.defaults.color = "white";
-
-                const ctx1 = document.getElementById('id_daychart1').getContext('2d');
-                const chart1 = new Chart(ctx1, {
-                    type: 'line',
-                    data: {
-                        datasets: [{
-                            label: 'Actual',
-                            data: data.daily.actual,
-                            //fill: true,
-                            borderWidth: 1,
-                            pointRadius: 2,
-                            backgroundColor: 'rgba(128, 128, 128, 0.5)',
-                            borderColor: 'rgba(128, 128, 128, 1)'
-                        },
-                        {
-                            label: 'Pred.Past',
-                            data: data.daily.pred_1,
-                            fill: true,
-                            borderWidth: 1,
-                            pointStyle: false,
-                            pointRadius: 1,
-                            // hidden: true, // Set the dataset to be hidden initially
-                            backgroundColor: 'rgba(255, 159, 64, 0.5)',
-                            borderColor: 'rgba(255, 159, 64, 1)'
-
-                        },
-                        {
-                            label: 'Pred.Future',
-                            data: data.daily.pred_2,
-                            fill: true,
-                            borderWidth: 1,
-                            pointRadius: 2,
-                            backgroundColor: 'rgba(255, 159, 64, 0.8)',
-                            borderColor: 'rgba(255, 159, 64, 1)'
-                            // backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                            // borderColor: 'rgba(255, 206, 86, 1)'                            
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            x: {
-                                grid: {
-                                    display: false
-                                },                                
-                                ticks: {
-                                    font: {
-                                        size: 8
-                                    }
-                                },
-                                display: false
-                            },
-                            y: {
-                                grid: {
-                                    display: false
-                                },
-                                ticks: {
-                                    font: {
-                                        size: 8
-                                    }
-                                }
-                            },
-                        },
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Daily Forecast',
-                                font: {
-                                    size: 16, // Set the title font size here
-                                    weight: 'normal' // Set the title font weight to normal
-                                }
-                            },
-                            legend: {
-                                display: true,
-                                position: 'bottom',
-                                labels: {
-                                    font: {
-                                        size: 9 // Set the legend label font size here
-                                    }
-                                }                            
-                            },
-                        }
+                    if (data.daily.gap_percentage < 0) {
+                        c_price = "priceDown"
+                        c_percent = "percentDown"
+                        c_datetime = "datetimeDown"
+                    } else if (data.daily.gap_percentage == 0) {
+                        c_price = "price"
+                        c_percent = "percent"
+                        c_datetime = "datetime"
+                    } else {
+                        c_price = "priceUp"
+                        c_percent = "percentUp"
+                        c_datetime = "datetimeUp"
                     }
-                });
+                    temp = `
+                    <p>
+                        <span class="${c_price}">${formatPrice(data.daily.pred_2[0]['y'])}</span>
+                        <span class="${c_percent}">${data.daily.gap_percentage}%</span>
+                    </p>
+                    <h4 class="bottom"><span class="${c_datetime}">${data.daily.pred_2[0]['x']} 00:00 UTC, tomorrow</span></h4>
+                    <p>
+                        <span class="price">${formatPrice(data.daily.actual.slice(-1)[0]['y'])}</span>
+                    </p>
+                    <h4 class="bottom"><span class="datetime">${data.daily.last_prediction_time} UTC, last prediction time</span></h4>
+                    `
+                    document.getElementById("id_day").innerHTML = temp;
 
-                const ctx2 = document.getElementById('id_daychart2').getContext('2d');
-                const chart2 = new Chart(ctx2, {
-                    type: 'bar',
-                    data: {
-                        datasets: [
-                            // {
-                            // label: 'MA:5D',
-                            // data: data.direction_acc,
-                            // borderWidth: 1,
-                            // pointStyle: false,
-                            // fill: true
-                            // },
+
+                    // set weekly forecast
+                    c_price = "priceUp"
+                    c_percent = "percentUp"
+                    c_datetime = "datetimeUp"
+                    if (data.weekly.gap_percentage < 0) {
+                        c_price = "priceDown"
+                        c_percent = "percentDown"
+                        c_datetime = "datetimeDown"
+                    } else if (data.weekly.gap_percentage == 0) {
+                        c_price = "price"
+                        c_percent = "percent"
+                        c_datetime = "datetime"
+                    } else {
+                        c_price = "priceUp"
+                        c_percent = "percentUp"
+                        c_datetime = "datetimeUp"
+                    }
+                    temp = `
+                    <p>
+                        <span class="${c_price}">${formatPrice(data.weekly.pred_2[0]['y'])}</span>
+                        <span class="${c_percent}">${data.weekly.gap_percentage}%</span>
+                    </p>
+                    <h4 class="bottom"><span class="${c_datetime}">${data.weekly.pred_2[0]['x']} 00:00 UTC, tomorrow</span></h4>
+                    <p>
+                        <span class="price">${formatPrice(data.weekly.actual.slice(-1)[0]['y'])}</span>
+                    </p>
+                    <h4 class="bottom"><span class="datetime">${data.weekly.last_prediction_time} UTC, last prediction time</span></h4>
+                    `
+                    document.getElementById("id_week").innerHTML = temp;
+
+
+                    Chart.defaults.color = "white";
+
+                    const ctx1 = document.getElementById('id_daychart1').getContext('2d');
+                    const chart1 = new Chart(ctx1, {
+                        type: 'line',
+                        data: {
+                            datasets: [{
+                                label: 'Actual',
+                                data: data.daily.actual,
+                                //fill: true,
+                                borderWidth: 1,
+                                pointRadius: 2,
+                                backgroundColor: 'rgba(128, 128, 128, 0.5)',
+                                borderColor: 'rgba(128, 128, 128, 1)'
+                            },
                             {
-                                label: 'accuracy',
-                                data: data.daily.direction_acc,
+                                label: 'Pred.Past',
+                                data: data.daily.pred_1,
                                 fill: true,
                                 borderWidth: 1,
-                                pointRadius: 1,
                                 pointStyle: false,
-                                backgroundColor: 'rgba(128, 128, 128, 0.9)',
-                                borderColor: 'rgba(128, 128, 128, 1)',
-                            }
-                        ]
-                    },
-                    options: {
-                        scales: {
-                            x: {
-                                grid: {
-                                    display: false
-                                },
-                                ticks: {
-                                    font: {
-                                        color: 'white',
-                                        size: 8
-                                    }
-                                },
-                                display: false
-                            },
-                            y: {
-                                grid: {
-                                    display: false
-                                },
-                                ticks: {
-                                    font: {
-                                        size: 8
-                                    }
-                                },
-                                max: 1.0,
-                                min: 0
-                            },
-                        },
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Daily Average Directional Accuracy',
-                                font: {
-                                    size: 16, // Set the title font size here
-                                    weight: 'normal' // Set the title font weight to normal
-                                }
-                            },
-                            legend: {
-                                display: true,
-                                position: 'bottom',
-                                labels: {
-                                    font: {
-                                        size: 9 // Set the legend label font size here
-                                    }
-                                }
-                            }
-                        }
-                    }
-                })
+                                pointRadius: 1,
+                                // hidden: true, // Set the dataset to be hidden initially
+                                backgroundColor: 'rgba(255, 159, 64, 0.5)',
+                                borderColor: 'rgba(255, 159, 64, 1)'
 
-                const ctx3 = document.getElementById('id_weekchart1').getContext('2d');
-                const chart3 = new Chart(ctx3, {
-                    type: 'line',
-                    data: {
-                        datasets: [{
-                            label: 'Actual',
-                            data: data.weekly.actual,
-                            //fill: true,
-                            borderWidth: 1,
-                            pointRadius: 2,
-                            backgroundColor: 'rgba(128, 128, 128, 0.5)',
-                            borderColor: 'rgba(128, 128, 128, 1)'                            
-                        },
-                        {
-                            label: 'Pred.Past',
-                            data: data.weekly.pred_1,
-                            fill: true,
-                            borderWidth: 1,
-                            pointStyle: false,
-                            pointRadius: 1,
-                            //hidden: true, // Set the dataset to be hidden initially
-                            backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                            borderColor: 'rgba(255, 99, 132, 1)'
-                        },
-                        {
-                            label: 'Pred.Future',
-                            data: data.weekly.pred_2,
-                            fill: true,
-                            borderWidth: 1,
-                            pointRadius: 2,
-                            backgroundColor: 'rgba(255, 99, 132, 0.9)',
-                            borderColor: 'rgba(255, 99, 132, 1)'
-                         
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            x: {
-                                grid: {
-                                    display: false
-                                },
-                                ticks: {
-                                    font: {
-                                        size: 8
-                                    }
-                                },
-                                display: false
                             },
-                            y: {
-                                grid: {
-                                    display: false
-                                },
-                                ticks: {
-                                    font: {
-                                        size: 8
-                                    }
-                                }
-                            },
-                        },
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Weekly Forecast',
-                                font: {
-                                    size: 16, // Set the title font size here
-                                    weight: 'normal' // Set the title font weight to normal
-                                }
-                            },
-                            legend: {
-                                display: true,
-                                position: 'bottom',
-                                labels: {
-                                    font: {
-                                        size: 9 // Set the legend label font size here
-                                    }
-                                }
-                            },
-                        }
-                    }
-                });
-
-                const ctx4 = document.getElementById('id_weekchart2').getContext('2d');
-                const chart4 = new Chart(ctx4, {
-                    type: 'bar',
-                    data: {
-                        datasets: [
                             {
-                                label: 'accuracy',
-                                data: data.weekly.direction_acc,
+                                label: 'Pred.Future',
+                                data: data.daily.pred_2,
                                 fill: true,
                                 borderWidth: 1,
-                                pointRadius: 1,
-                                backgroundColor: 'rgba(128, 128, 128, 0.9)',
-                                borderColor: 'rgba(128, 128, 128, 1)',
-                            }
-                        ]
-                    },
-                    options: {
-                        scales: {
-                            x: {
-                                grid: {
-                                    display: false
-                                },
-                                ticks: {
-                                    font: {
-                                        color: 'white',
-                                        size: 8
-                                    }
-                                },
-                                display: false
-                            },
-                            y: {
-                                grid: {
-                                    display: false
-                                },
-                                ticks: {
-                                    font: {
-                                        size: 8
-                                    }
-                                },
-                                max: 1.0,
-                                min: 0
-                            },
+                                pointRadius: 2,
+                                backgroundColor: 'rgba(255, 159, 64, 0.8)',
+                                borderColor: 'rgba(255, 159, 64, 1)'
+                                // backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                                // borderColor: 'rgba(255, 206, 86, 1)'                            
+                            }]
                         },
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Weekly Average Directional Accuracy',
-                                font: {
-                                    size: 16, // Set the title font size here
-                                    weight: 'normal' // Set the title font weight to normal
-                                }
-                            },
-                            legend: {
-                                display: true,
-                                position: 'bottom',
-                                labels: {
-                                    font: {
-                                        size: 9 // Set the legend label font size here
+                        options: {
+                            scales: {
+                                x: {
+                                    grid: {
+                                        display: false
+                                    },                                
+                                    ticks: {
+                                        font: {
+                                            size: 8
+                                        }
+                                    },
+                                    display: false
+                                },
+                                y: {
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        font: {
+                                            size: 8
+                                        }
                                     }
-                                }                                
+                                },
+                            },
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Daily Forecast',
+                                    font: {
+                                        size: 16, // Set the title font size here
+                                        weight: 'normal' // Set the title font weight to normal
+                                    }
+                                },
+                                legend: {
+                                    display: true,
+                                    position: 'bottom',
+                                    labels: {
+                                        font: {
+                                            size: 9 // Set the legend label font size here
+                                        }
+                                    }                            
+                                },
                             }
                         }
-                    }
+                    });
+
+                    const ctx2 = document.getElementById('id_daychart2').getContext('2d');
+                    const chart2 = new Chart(ctx2, {
+                        type: 'bar',
+                        data: {
+                            datasets: [
+                                // {
+                                // label: 'MA:5D',
+                                // data: data.direction_acc,
+                                // borderWidth: 1,
+                                // pointStyle: false,
+                                // fill: true
+                                // },
+                                {
+                                    label: 'accuracy',
+                                    data: data.daily.direction_acc,
+                                    fill: true,
+                                    borderWidth: 1,
+                                    pointRadius: 1,
+                                    pointStyle: false,
+                                    backgroundColor: 'rgba(128, 128, 128, 0.9)',
+                                    borderColor: 'rgba(128, 128, 128, 1)',
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                x: {
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        font: {
+                                            color: 'white',
+                                            size: 8
+                                        }
+                                    },
+                                    display: false
+                                },
+                                y: {
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        font: {
+                                            size: 8
+                                        }
+                                    },
+                                    max: 1.0,
+                                    min: 0
+                                },
+                            },
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Daily Average Directional Accuracy',
+                                    font: {
+                                        size: 16, // Set the title font size here
+                                        weight: 'normal' // Set the title font weight to normal
+                                    }
+                                },
+                                legend: {
+                                    display: true,
+                                    position: 'bottom',
+                                    labels: {
+                                        font: {
+                                            size: 9 // Set the legend label font size here
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    })
+
+                    const ctx3 = document.getElementById('id_weekchart1').getContext('2d');
+                    const chart3 = new Chart(ctx3, {
+                        type: 'line',
+                        data: {
+                            datasets: [{
+                                label: 'Actual',
+                                data: data.weekly.actual,
+                                //fill: true,
+                                borderWidth: 1,
+                                pointRadius: 2,
+                                backgroundColor: 'rgba(128, 128, 128, 0.5)',
+                                borderColor: 'rgba(128, 128, 128, 1)'                            
+                            },
+                            {
+                                label: 'Pred.Past',
+                                data: data.weekly.pred_1,
+                                fill: true,
+                                borderWidth: 1,
+                                pointStyle: false,
+                                pointRadius: 1,
+                                //hidden: true, // Set the dataset to be hidden initially
+                                backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                                borderColor: 'rgba(255, 99, 132, 1)'
+                            },
+                            {
+                                label: 'Pred.Future',
+                                data: data.weekly.pred_2,
+                                fill: true,
+                                borderWidth: 1,
+                                pointRadius: 2,
+                                backgroundColor: 'rgba(255, 99, 132, 0.9)',
+                                borderColor: 'rgba(255, 99, 132, 1)'
+                            
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: {
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        font: {
+                                            size: 8
+                                        }
+                                    },
+                                    display: false
+                                },
+                                y: {
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        font: {
+                                            size: 8
+                                        }
+                                    }
+                                },
+                            },
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Weekly Forecast',
+                                    font: {
+                                        size: 16, // Set the title font size here
+                                        weight: 'normal' // Set the title font weight to normal
+                                    }
+                                },
+                                legend: {
+                                    display: true,
+                                    position: 'bottom',
+                                    labels: {
+                                        font: {
+                                            size: 9 // Set the legend label font size here
+                                        }
+                                    }
+                                },
+                            }
+                        }
+                    });
+
+                    const ctx4 = document.getElementById('id_weekchart2').getContext('2d');
+                    const chart4 = new Chart(ctx4, {
+                        type: 'bar',
+                        data: {
+                            datasets: [
+                                {
+                                    label: 'accuracy',
+                                    data: data.weekly.direction_acc,
+                                    fill: true,
+                                    borderWidth: 1,
+                                    pointRadius: 1,
+                                    backgroundColor: 'rgba(128, 128, 128, 0.9)',
+                                    borderColor: 'rgba(128, 128, 128, 1)',
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                x: {
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        font: {
+                                            color: 'white',
+                                            size: 8
+                                        }
+                                    },
+                                    display: false
+                                },
+                                y: {
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        font: {
+                                            size: 8
+                                        }
+                                    },
+                                    max: 1.0,
+                                    min: 0
+                                },
+                            },
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Weekly Average Directional Accuracy',
+                                    font: {
+                                        size: 16, // Set the title font size here
+                                        weight: 'normal' // Set the title font weight to normal
+                                    }
+                                },
+                                legend: {
+                                    display: true,
+                                    position: 'bottom',
+                                    labels: {
+                                        font: {
+                                            size: 9 // Set the legend label font size here
+                                        }
+                                    }                                
+                                }
+                            }
+                        }
+                    })
+
+                    const container = document.getElementById('id_container');
+                    const resizeObserver = new ResizeObserver(() => {
+                        chart1.resize();
+                        chart2.resize();
+                        chart3.resize();
+                        chart4.resize();
+                    });
+                    resizeObserver.observe(container);
+
                 })
-
-                const container = document.getElementById('id_container');
-                const resizeObserver = new ResizeObserver(() => {
-                    chart1.resize();
-                    chart2.resize();
-                    chart3.resize();
-                    chart4.resize();
-                });
-                resizeObserver.observe(container);
-
-            })
         }
 
         load();
