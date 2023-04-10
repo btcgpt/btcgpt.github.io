@@ -141,17 +141,10 @@
             }).replace(/\.(\d\d)/, '');
         }
 
-
         last_data = null
-
         charts = []
 
         function load() {
-
-            charts.forEach(chart => {
-                            chart.destroy();
-                        });
-            charts = []
 
             // Fetch the JSON data from the file
             fetch("./output.json", { cache: 'no-cache' })
@@ -163,6 +156,10 @@
                         return
                     }
                     last_data = temp
+                    charts.forEach(chart => {
+                            chart.destroy();
+                        });
+                    charts = []
 
                     // set daily forecast
                     c_price = "priceUp"
