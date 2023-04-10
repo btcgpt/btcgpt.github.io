@@ -132,6 +132,8 @@
         }
 
 
+        last_data = null
+
         charts = []
 
         function load() {
@@ -145,6 +147,12 @@
             fetch("./output.json", { cache: 'no-cache' })
                 .then(response => response.json())
                 .then(data => {
+
+                    temp = JSON.stringify(data);
+                    if (temp == last_data) {
+                        return
+                    }
+                    last_data = temp
 
                     // set daily forecast
                     c_price = "priceUp"
