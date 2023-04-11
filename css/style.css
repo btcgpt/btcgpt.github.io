@@ -162,15 +162,6 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* #myVideo {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -1;
-} */
-
 #video-background {
   position: fixed;
   top: 0;
@@ -182,9 +173,9 @@ nav a:hover {
   object-position: center;
 }
 
-/* body {
-  background-image: url("../images/bg2.jpg");
-} */
+body {
+  background-image: url("../videos/up.jpg");
+}
 
 table {
   border-collapse: collapse;
