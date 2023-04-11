@@ -157,21 +157,10 @@
         <div style="text-align: center;"><img src="./images/captainbtc.jpg" alt="CaptainBTC" style="width: 60px; height: 60px; margin-right: 0px; border-radius: 50%;"></div>
         &copy; 2023 BTCGPT.INFO
     </footer>
-
-    <!-- <script>
-        var video = document.getElementsByTagName('video')[0];
-        video.addEventListener('timeupdate', function() {
-          if (this.currentTime < 30 || this.currentTime > 60) {
-            this.currentTime = 30;
-          }
-        });
-    </script> -->
   
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        // number to price format
-        // erase cents
         function formatPrice(price) {
             return price.toLocaleString('en-US', {
                 style: 'currency',
@@ -183,7 +172,6 @@
         charts = []
 
         function load() {
-
             // Fetch the JSON data from the file
             fetch("./output.json", { cache: 'no-cache' })
                 .then(response => response.json())
@@ -249,6 +237,7 @@
                         c_percent = "percentUp"
                         c_datetime = "datetimeUp"
                     }
+                    
                     temp = `
                     <p>
                         <span class="${c_price}">${formatPrice(data.weekly.pred_2[0]['y'])}</span>
