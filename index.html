@@ -37,7 +37,9 @@
     </header>
 
     <video autoplay loop muted playsinline id="video-background" poster="./videos/up.jpg">
-        <source src="./videos/up.mp4" type="video/mp4">
+        <source src="https://player.vimeo.com/external/178164569.sd.mp4?s=810553e8836459bcff328ca20642881d1bfe7805&amp;profile_id=164&amp;oauth2_token_id=57447761" type="video/mp4">
+        <!-- <source src="https://player.vimeo.com/external/178167299.sd.mp4?s=7b8659225e3202c779718a4a0d5a88df9801037e&amp;profile_id=164&amp;oauth2_token_id=57447761" type="video/mp4">     -->
+        <!-- <source src="./videos/up.mp4" type="video/mp4"> -->
     </video>
 
     <div id="id_container" class="container">
@@ -144,7 +146,15 @@
         &copy; 2023 BTCGPT.INFO
     </footer>
 
-
+    <!-- <script>
+        var video = document.getElementsByTagName('video')[0];
+        video.addEventListener('timeupdate', function() {
+          if (this.currentTime < 30 || this.currentTime > 60) {
+            this.currentTime = 30;
+          }
+        });
+    </script> -->
+  
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
