@@ -97,16 +97,19 @@ nav a:hover {
 .percent {
   font-size: 1.0rem;
   color: #ffffff;
+  font-weight: bold;
 }
 
 .percentUp {
   font-size: 1.0rem;
   color: #00ff00;
+  font-weight: bold;
 }
 
 .percentDown {
   font-size: 1.0rem;
   color: #ff0000;
+  font-weight: bold;
 }
 
 .notice {
@@ -124,6 +127,10 @@ nav a:hover {
   color: #ffffff;
 }
 
+.yellow_text {
+  font-size: 1.0rem;
+  color: #ffff00;
+}
 
 .card {
   /* background-color: #000000; */
