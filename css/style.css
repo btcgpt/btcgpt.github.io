@@ -61,16 +61,19 @@ nav a:hover {
 .datetime {
   font-size: 0.8rem;
   color: #ffffff;
+  font-weight: normal;
 }
 
 .datetimeUp {
   font-size: 0.8rem;
   color: #00ff00;
+  font-weight: normal;
 }
 
 .datetimeDown {
   font-size: 0.8rem;
   color: #ff0000;
+  font-weight: normal;
 }
 
 .price {
@@ -120,6 +123,7 @@ nav a:hover {
   font-size: 0.9rem;
   color: #ffffff;
 }
+
 
 .card {
   /* background-color: #000000; */
