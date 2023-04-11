@@ -37,49 +37,55 @@
 
     <div id="id_container" class="container">
         <div class="card">
-            <p>Daily Forecast</p>
+            <p>Tomorrow's Bitcoin Price</p>
             <div id="id_day">
-                <p>
+                <!-- <p>
                     <span class="priceUp">$1,000,000</span>
-                    <span class="percentUp">+100.0%</span>
+                    <span class="percentUp">+100.0% tomorrow</span>
                 </p>
-                <h4 class="bottom"><span class="datetimeUp">2010-01-01 00:00 UTC, tomorrow</span></h4>
+                <h4 class="bottom"><span class="datetimeUp">2010-01-01 00:00 UTC</span></h4>
                 <p>
                     <span class="price">$1,000,000</span>
+                    <span class="percent">&nbsp;now</span>
                 </p>
-                <h4 class="bottom"><span class="datetime">2010-01-01 00:00 UTC, last prediction time</span></h4>
+                <h4 class="bottom"><span class="datetime">2010-01-01 00:00 UTC, last prediction time</span></h4> -->
             </div>
         </div>
 
         <div class="card">
+            <p>Daily Bitcoin Price Forecast</p>
             <canvas class="chart" id="id_daychart1" height="150"></canvas>
         </div>
 
         <div class="card">
+            <p>Daily Average Directional Accuracy</p>
             <canvas class="chart" id="id_daychart2" height="100"></canvas>
         </div>
 
 
         <div class="card">
-            <p>Weekly Forecast</p>
+            <p>Next Week's Bitcoin Price</p>
             <div id="id_week">
-                <p>
+                <!-- <p>
                     <span class="priceUp">$1,000,000</span>
-                    <span class="percentUp">+100.0%</span>
+                    <span class="percentUp">+100.0% tomorrow</span>
                 </p>
-                <h4 class="bottom"><span class="datetimeUp">2010-01-01 00:00 UTC, tomorrow</span></h4>
+                <h4 class="bottom"><span class="datetimeUp">2010-01-01 00:00 UTC</span></h4>
                 <p>
                     <span class="price">$1,000,000</span>
+                    <span class="percent">&nbsp;now</span>
                 </p>
-                <h4 class="bottom"><span class="datetime">2010-01-01 00:00 UTC, last prediction time</span></h4>
+                <h4 class="bottom"><span class="datetime">2010-01-01 00:00 UTC, last prediction time</span></h4> -->
             </div>
         </div>
 
         <div class="card">
+            <p>Weekly Bitcoin Price Forecast</p>
             <canvas class="chart" id="id_weekchart1" height="150"></canvas>
         </div>
 
         <div class="card">
+            <p>Weekly Average Directional Accuracy</p>
             <canvas class="chart" id="id_weekchart2" height="100"></canvas>
         </div>
 
@@ -178,14 +184,16 @@
                         c_percent = "percentUp"
                         c_datetime = "datetimeUp"
                     }
+
                     temp = `
                     <p>
                         <span class="${c_price}">${formatPrice(data.daily.pred_2[0]['y'])}</span>
-                        <span class="${c_percent}">${data.daily.gap_percentage}%</span>
+                        <span class="${c_percent}">&nbsp;${data.daily.gap_percentage}% tomorrow</span>
                     </p>
-                    <h4 class="bottom"><span class="${c_datetime}">${data.daily.pred_2[0]['x']} 00:00 UTC, tomorrow</span></h4>
+                    <h4 class="bottom"><span class="${c_datetime}">${data.daily.pred_2[0]['x']} 00:00 UTC</span></h4>
                     <p>
                         <span class="price">${formatPrice(data.daily.actual.slice(-1)[0]['y'])}</span>
+                        <span class="percent">&nbsp;now</span>
                     </p>
                     <h4 class="bottom"><span class="datetime">${data.daily.last_prediction_time} UTC, last prediction time</span></h4>
                     `
@@ -212,11 +220,12 @@
                     temp = `
                     <p>
                         <span class="${c_price}">${formatPrice(data.weekly.pred_2[0]['y'])}</span>
-                        <span class="${c_percent}">${data.weekly.gap_percentage}%</span>
+                        <span class="${c_percent}">&nbsp;${data.weekly.gap_percentage}% next week</span>
                     </p>
-                    <h4 class="bottom"><span class="${c_datetime}">${data.weekly.pred_2[0]['x']} 00:00 UTC, tomorrow</span></h4>
+                    <h4 class="bottom"><span class="${c_datetime}">${data.weekly.pred_2[0]['x']} 00:00 UTC</span></h4>
                     <p>
                         <span class="price">${formatPrice(data.weekly.actual.slice(-1)[0]['y'])}</span>
+                        <span class="percent">&nbsp;now</span>
                     </p>
                     <h4 class="bottom"><span class="datetime">${data.weekly.last_prediction_time} UTC, last prediction time</span></h4>
                     `
@@ -289,7 +298,7 @@
                             },
                             plugins: {
                                 title: {
-                                    display: true,
+                                    display: false,
                                     text: 'Daily Forecast',
                                     font: {
                                         size: 16, // Set the title font size here
@@ -356,7 +365,7 @@
                             },
                             plugins: {
                                 title: {
-                                    display: true,
+                                    display: false,
                                     text: 'Daily Average Directional Accuracy',
                                     font: {
                                         size: 16, // Set the title font size here
@@ -437,7 +446,7 @@
                             },
                             plugins: {
                                 title: {
-                                    display: true,
+                                    display: false,
                                     text: 'Weekly Forecast',
                                     font: {
                                         size: 16, // Set the title font size here
@@ -503,7 +512,7 @@
                             },
                             plugins: {
                                 title: {
-                                    display: true,
+                                    display: false,
                                     text: 'Weekly Average Directional Accuracy',
                                     font: {
                                         size: 16, // Set the title font size here
