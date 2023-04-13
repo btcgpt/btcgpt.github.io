@@ -99,22 +99,6 @@
         </div>
 
         <div class="card">
-            <p class="sm_text">What is Average Directional Accuracy?</p>
-            <p>
-                <span class="sm_text">
-                    Directional accuracy(DA) is a metric that measures how closely the predicted price and the actual
-                    price of an asset move in the same direction. For example, if the predicted price for the next day
-                    is higher and the actual price also increases, the DA result would be True (1). However, if the
-                    actual price moves in the opposite direction, the result would be False (0).
-                    The N-day average directional accuracy (ADA) is calculated by summing up the DA results over N days
-                    and dividing the total by N. For example, if the DA results for the last 5 days are [1, 0, 1, 1, 1],
-                    the 5-day ADA would be (1+0+1+1+1)/5 = 0.8.
-                    The chart displays the moving ADA over a 5-day period.
-                </span>
-            </p>
-        </div>
-
-        <div class="card">
             <p class="sm_text">What is BTCGPT?</p>
             <p>
                 <span class="sm_text">
@@ -149,7 +133,23 @@
                     If you look at the directional accuracy at the bottom of the chart, you can see that there is also a difference in the prediction accuracy between the two models. Typically, the daily model shows higher accuracy than the weekly model.
                 </span>
             </p>
-        </div>        
+        </div>
+
+        <div class="card">
+            <p class="sm_text">What is Average Directional Accuracy?</p>
+            <p>
+                <span class="sm_text">
+                    Directional accuracy(DA) is a metric that measures how closely the predicted price and the actual
+                    price of an asset move in the same direction. For example, if the predicted price for the next day
+                    is higher and the actual price also increases, the DA result would be True (1). However, if the
+                    actual price moves in the opposite direction, the result would be False (0).
+                    The N-day average directional accuracy (ADA) is calculated by summing up the DA results over N days
+                    and dividing the total by N. For example, if the DA results for the last 5 days are [1, 0, 1, 1, 1],
+                    the 5-day ADA would be (1+0+1+1+1)/5 = 0.8.
+                    The chart displays the moving ADA over a 5-day period.
+                </span>
+            </p>
+        </div>
 
         <div class="card">
             <p class="sm_text">Contact.</p>
