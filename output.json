@@ -747,7 +747,7 @@
             },
             {
                 "x": "2023-04-19",
-                "y": 36937
+                "y": 36936
             },
             {
                 "x": "2023-04-20",
@@ -1110,7 +1110,7 @@
         ],
         "r2_score": 0.89,
         "gap_percentage": 6.17,
-        "last_prediction_time": "2023-04-13 09:36"
+        "last_prediction_time": "2023-04-13 09:41"
     },
     "weekly": {
         "actual": [
@@ -2303,6 +2303,6 @@
         ],
         "r2_score": 0.8,
         "gap_percentage": -6.71,
-        "last_prediction_time": "2023-04-13 09:36"
+        "last_prediction_time": "2023-04-13 09:41"
     }
 }
