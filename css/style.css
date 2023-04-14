@@ -122,6 +122,11 @@ nav a:hover {
   color: #00ff00;
 }
 
+.notice_orange {
+  font-size: 0.8rem;
+  color: #ffaa00;
+}
+
 .sm_text {
   font-size: 0.8rem;
   color: #ffffff;
