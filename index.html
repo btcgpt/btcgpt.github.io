@@ -224,9 +224,9 @@
                 .then(data => {
 
                     temp = JSON.stringify(data);
-                    if (temp == last_data) {
-                        return
-                    }
+                    // if (temp == last_data) {
+                    //     return
+                    // }
                     last_data = temp
                     charts.forEach(chart => {
                             chart.destroy();
