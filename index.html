@@ -59,12 +59,6 @@
                 </p>
                 <h4 class="bottom"><span class="datetime">2010-01-01 00:00 UTC, last prediction time</span></h4> -->
             </div>
-
-            <div>
-                <p id="timezone"></p>
-                <p id="utc-time"></p>
-                <p id="local-time"></p>        
-            </div>    
         </div>
 
         <div class="card">
@@ -205,14 +199,14 @@
             }).replace(/\.(\d\d)/, '');
         }
 
-        function getLocalTime(date) {
-            dateUTC = new Date(date + 'Z');
-            offset = dateUTC.getTimezoneOffset()
-            yourDate = new Date(dateUTC.getTime() - (offset*60*1000))
-            dateString = yourDate.toISOString().replace(/T/, ' ').substr(0, 16);
-            //console.log(dateString)
-            return dateString                    
-        }
+        // function getLocalTime(date) {
+        //     dateUTC = new Date(date + 'Z');
+        //     offset = dateUTC.getTimezoneOffset()
+        //     yourDate = new Date(dateUTC.getTime() - (offset*60*1000))
+        //     dateString = yourDate.toISOString().replace(/T/, ' ').substr(0, 16);
+        //     //console.log(dateString)
+        //     return dateString                    
+        // }
 
         last_data = null
         charts = []
@@ -224,9 +218,9 @@
                 .then(data => {
 
                     temp = JSON.stringify(data);
-                    // if (temp == last_data) {
-                    //     return
-                    // }
+                    if (temp == last_data) {
+                        return
+                    }
                     last_data = temp
                     charts.forEach(chart => {
                             chart.destroy();
@@ -251,26 +245,36 @@
                         c_datetime = "datetimeUp"
                     }
 
-                    // dateUTC = new Date(data.last_prediction_time + 'Z');
-                    // offset = dateUTC.getTimezoneOffset()
-                    // yourDate = new Date(dateUTC.getTime() - (offset*60*1000))
-                    // dateString = yourDate.toISOString().replace(/T/, ' ').substr(0, 16);
-                    // //console.log(dateString)
-
                     temp = `
                     <p>
                         <span class="${c_price}">${formatPrice(data.day.pred_price)}</span>
                         <span class="${c_percent}">&nbsp;${data.day.pred_percent}% tomorrow</span>
                     </p>
-                    <h4 class="bottom"><span class="${c_datetime}">${getLocalTime(data.day.pred_future[0]['x'])}</span></h4>
+                    <h4 class="bottom"><span class="${c_datetime}">${data.day.pred_future[0]['x']} 00:00 UTC</span></h4>
 
                     <p>
                         <span class="price">${formatPrice(data.day.now)}</span>
                         <span class="percent">&nbsp;now</span>
                     </p>
-                    <h4 class="bottom"><span class="datetime">${getLocalTime(data.last_prediction_time)}, last prediction time</span></h4>
+                    <h4 class="bottom"><span class="datetime">${data.last_prediction_time} UTC, last prediction time</span></h4>
                     `
                     document.getElementById("id_day").innerHTML = temp;
+
+                    // temp = `
+                    // <p>
+                    //     <span class="${c_price}">${formatPrice(data.day.pred_price)}</span>
+                    //     <span class="${c_percent}">&nbsp;${data.day.pred_percent}% tomorrow</span>
+                    // </p>
+                    // <h4 class="bottom"><span class="${c_datetime}">${getLocalTime(data.day.pred_future[0]['x'])}</span></h4>
+
+                    // <p>
+                    //     <span class="price">${formatPrice(data.day.now)}</span>
+                    //     <span class="percent">&nbsp;now</span>
+                    // </p>
+                    // <h4 class="bottom"><span class="datetime">${getLocalTime(data.last_prediction_time)}, last prediction time</span></h4>
+                    // `
+                    // document.getElementById("id_day").innerHTML = temp;
+
 
 
                     // set weekly forecast
@@ -296,12 +300,12 @@
                         <span class="${c_price}">${formatPrice(data.week.pred_price)}</span>
                         <span class="${c_percent}">&nbsp;${data.week.pred_percent}% next week</span>
                     </p>
-                    <h4 class="bottom"><span class="${c_datetime}">${getLocalTime(data.week.pred_future[0]['x'])}</span></h4>
+                    <h4 class="bottom"><span class="${c_datetime}">${data.week.pred_future[0]['x']} 00:00 UTC</span></h4>
                     <p>
                         <span class="price">${formatPrice(data.week.now)}</span>
                         <span class="percent">&nbsp;now</span>
                     </p>
-                    <h4 class="bottom"><span class="datetime">${getLocalTime(data.last_prediction_time)}, last prediction time</span></h4>
+                    <h4 class="bottom"><span class="datetime">${data.last_prediction_time}, last prediction time</span></h4>
                     `
                     document.getElementById("id_week").innerHTML = temp;
 
