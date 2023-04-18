@@ -33,9 +33,9 @@
             <h1>BTCGPT</h1>
             <h1>🚀🌕</h1>
             <p style="text-align: center;" class="text">BTCGPT predicts the price of Bitcoin.</p>
-            <p style="text-align: center;" class="notice">It's just for fun, so don't take it too seriously or rely on it for investing decisions.</p>            
+            <p style="text-align: center;" class="notice">It's just for fun, so don't take it too seriously.</p>            
             <p style="text-align: center;" class="notice">This site does not recommend any investment and all risks arising from the use of information on this site are the responsibility of the investor.</p>
-            <p style="text-align: center;" class="notice_green">updated: accuracy improved, bug fix (2023-04-17)</p>
+            <p style="text-align: center;" class="notice_green">✅ updated: add analysis metrics. (2023-04-19)</p>
         </div>
     </header>
 
@@ -149,6 +149,12 @@
                 </span>
             </p>
         </div> -->
+        <div class="card">
+            <p class="sm_text">Updates.</p>
+            <p><span class="sm_text">✅ accuracy improved, bug fix. (2023-04-17)</span>
+            <p><span class="sm_text">✅ add analysis metrics and more. (2023-04-19)</span>
+            </p>    
+        </div>
 
         <div class="card">
             <p class="sm_text">Contact.</p>
@@ -215,6 +221,9 @@
         last_data = null
         charts = []
 
+        utc_day = null
+        utc_week = null
+
         function load() {
             // Fetch the JSON data from the file
             fetch("./output.json", { cache: 'no-cache' })
@@ -226,10 +235,15 @@
                         return
                     }
                     last_data = temp
+
                     charts.forEach(chart => {
                             chart.destroy();
                         });
                     charts = []
+
+                    //set date
+                    utc_day = data.day.pred_future[0]['x']
+                    utc_week = data.week.pred_future[0]['x']
 
                     // set daily forecast
                     c_price = "priceUp"
@@ -249,36 +263,63 @@
                         c_datetime = "datetimeUp"
                     }
 
-                    temp = `
-                    <p>
-                        <span class="${c_price}">${formatPrice(data.day.pred_price)}</span>
-                        <span class="${c_percent}">&nbsp;${data.day.pred_percent}% tomorrow</span>
-                    </p>
-                    <h4 class="bottom"><span class="${c_datetime}">${data.day.pred_future[0]['x']} 00:00 UTC</span></h4>
+                    if (data.day.now_future_price_diff > 0) {
+                        c_now_future = "text_up"
+                    } else if (data.day.now_future_price_diff < 0) {
+                        c_now_future = "text_down"
+                    } else {
+                        c_now_future = "text_equal"
+                    }
 
-                    <p>
-                        <span class="price">${formatPrice(data.day.now)}</span>
-                        <span class="percent">&nbsp;now</span>
+                    if (data.day['re-pred_price'] > 0) {
+                        c_re_predict = "text_up"
+                    } else if (data.day['re-pred_price'] < 0) {
+                        c_re_predict = "text_down"
+                    } else {
+                        c_re_predict = "text_equal"
+                    }
+
+                    if (data.day.now_future_direction == "up") {
+                        now_future = "🚀 up"
+                    } else if (data.day.now_future_direction == "down") {
+                        now_future = "😱 down"
+                    }
+
+                    if (data.day.past_future_direction == "up") {
+                        past_future = "🚀 up"
+                    } else if (data.day.past_future_direction == "down") {
+                        past_future = "😱 down"
+                    }
+
+                    but_future = ""
+                    if (data.day.now_future_direction != data.day.past_future_direction) {
+                        if(data.day.past_future_direction == "down" && data.day.tomorrow_now_price_diff > 0) {
+                            but_future = ", but 😱"
+                        } else if(data.day.past_future_direction == "up" && data.day.tomorrow_now_price_diff > 0) {
+                            but_future = ", but 🚀"
+                        }
+                    }
+
+                    temp = `
+                    <p class="price">
+                        <span class="${c_price}">${formatPrice(data.day.pred_price)}</span>
+                        <span class="${c_percent}">${data.day.pred_percent}% tomorrow${but_future}</span>
                     </p>
-                    <h4 class="bottom"><span class="datetime">${data.last_prediction_time} UTC, last prediction time</span></h4>
+                    <h4 class=""><span class="${c_datetime}">${data.day.pred_future[0]['x']} 00:00 UTC,</span>&nbsp;<span id="id_day_time" class="${c_datetime}"></span></h4>
+
+                    <p class="price">
+                        <span class="price">${formatPrice(data.day.now)}</span>
+                        <span class="percent">now</span>
+                    </p>
+                    <h4 class=""><span class="datetime">${data.last_prediction_time} UTC</h4>
+                    
+                    <p class="pt1">&nbsp</p>
+                    <p class="desc"><span class="${c_now_future}">now - tomorrow: ${data.day.now_future_percent_diff}%, ${formatPrice(data.day.now_future_price_diff)}</span></p>
+                    <p class="desc"><span class="${c_re_predict}">re-predicted tomorrow price: ${data.day['re-pred_percent']}%, ${formatPrice(data.day['re-pred_price'])}</span></p>
+                    <p class="desc"><span>now_future direction: ${now_future}</span></p>
+                    <p class="desc"><span>past_future direction: ${past_future}</span></p>
                     `
                     document.getElementById("id_day").innerHTML = temp;
-
-                    // temp = `
-                    // <p>
-                    //     <span class="${c_price}">${formatPrice(data.day.pred_price)}</span>
-                    //     <span class="${c_percent}">&nbsp;${data.day.pred_percent}% tomorrow</span>
-                    // </p>
-                    // <h4 class="bottom"><span class="${c_datetime}">${getLocalTime(data.day.pred_future[0]['x'])}</span></h4>
-
-                    // <p>
-                    //     <span class="price">${formatPrice(data.day.now)}</span>
-                    //     <span class="percent">&nbsp;now</span>
-                    // </p>
-                    // <h4 class="bottom"><span class="datetime">${getLocalTime(data.last_prediction_time)}, last prediction time</span></h4>
-                    // `
-                    // document.getElementById("id_day").innerHTML = temp;
-
 
 
                     // set weekly forecast
@@ -299,17 +340,61 @@
                         c_datetime = "datetimeUp"
                     }
 
+                    if (data.week.now_future_price_diff > 0) {
+                        c_now_future = "text_up"
+                    } else if (data.week.now_future_price_diff < 0) {
+                        c_now_future = "text_down"
+                    } else {
+                        c_now_future = "text_equal"
+                    }
+
+                    if (data.week['re-pred_price'] > 0) {
+                        c_re_predict = "text_up"
+                    } else if (data.week['re-pred_price'] < 0) {
+                        c_re_predict = "text_down"
+                    } else {
+                        c_re_predict = "text_equal"
+                    }
+
+                    if (data.week.now_future_direction == "up") {
+                        now_future = "🚀 up"
+                    } else if (data.week.now_future_direction == "down") {
+                        now_future = "😱 down"
+                    }
+
+                    if (data.week.past_future_direction == "up") {
+                        past_future = "🚀 up"
+                    } else if (data.week.past_future_direction == "down") {
+                        past_future = "😱 down"
+                    }
+
+                    but_future = ""
+                    if (data.week.now_future_direction != data.week.past_future_direction) {
+                        if(data.week.past_future_direction == "down" && data.week.tomorrow_now_price_diff > 0) {
+                            but_future = ", but 😱"
+                        } else if(data.week.past_future_direction == "up" && data.week.tomorrow_now_price_diff > 0) {
+                            but_future = ", but 🚀"
+                        }
+                    }                    
+
                     temp = `
-                    <p>
+                    <p class="price">
                         <span class="${c_price}">${formatPrice(data.week.pred_price)}</span>
-                        <span class="${c_percent}">&nbsp;${data.week.pred_percent}% next week</span>
+                        <span class="${c_percent}">${data.week.pred_percent}% next week${but_future}</span>
                     </p>
-                    <h4 class="bottom"><span class="${c_datetime}">${data.week.pred_future[0]['x']} 00:00 UTC</span></h4>
-                    <p>
+                    <h4 class=""><span class="${c_datetime}">${data.week.pred_future[0]['x']} 00:00 UTC,</span>&nbsp;<span id="id_week_time" class="${c_datetime}"></span></h4>
+
+                    <p class="price">
                         <span class="price">${formatPrice(data.week.now)}</span>
-                        <span class="percent">&nbsp;now</span>
+                        <span class="percent">now</span>
                     </p>
-                    <h4 class="bottom"><span class="datetime">${data.last_prediction_time}, last prediction time</span></h4>
+                    <h4 class=""><span class="datetime">${data.last_prediction_time} UTC</h4>
+                    
+                    <p class="pt1">&nbsp</p>
+                    <p class="desc"><span class="${c_now_future}">now - next_week: ${data.week.now_future_percent_diff}%, ${formatPrice(data.week.now_future_price_diff)}</span></p>
+                    <p class="desc"><span class="${c_re_predict}">re-predicted next_week price: ${data.week['re-pred_percent']}%, ${formatPrice(data.week['re-pred_price'])}</span></p>
+                    <p class="desc"><span>now_future direction: ${now_future}</span></p>
+                    <p class="desc"><span>past_future direction: ${past_future}</span></p>              
                     `
                     document.getElementById("id_week").innerHTML = temp;
 
@@ -330,7 +415,7 @@
                                 borderColor: 'rgba(0, 255, 0, 1)'
                             },
                             {
-                                label: 'Pred.Past',
+                                label: 'Pred:Past',
                                 data: data.day.pred_past,
                                 fill: true,
                                 borderWidth: 1,
@@ -343,7 +428,18 @@
                                 // borderColor: 'rgba(255, 205, 86, 1)'
                             },
                             {
-                                label: 'Pred.Future',
+                                label: 'Now',
+                                data: data.day.now_s,
+                                //fill: true,
+                                borderWidth: 1,
+                                pointRadius: 2,
+                                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                                borderColor: 'rgba(255, 255, 255, 1)'
+                                // backgroundColor: 'rgba(255, 205, 86, 0.3)',
+                                // borderColor: 'rgba(255, 205, 86, 1)'
+                            },                            
+                            {
+                                label: 'Pred:Future',
                                 data: data.day.pred_future,
                                 fill: true,
                                 borderWidth: 1,
@@ -392,8 +488,9 @@
                                     position: 'bottom',
                                     labels: {
                                         font: {
-                                            size: 9 // Set the legend label font size here
-                                        }
+                                            size: 10 // Set the legend label font size here
+                                        },
+                                        boxWidth: 10 // Set the box size for the legend labels
                                     }                            
                                 },
                             }
@@ -482,7 +579,7 @@
                                 borderColor: 'rgba(0, 255, 0, 1)'                            
                             },
                             {
-                                label: 'Pred.Past',
+                                label: 'Pred:Past',
                                 data: data.week.pred_past,
                                 fill: true,
                                 borderWidth: 1,
@@ -493,7 +590,18 @@
                                 borderColor: 'rgba(255, 99, 132, 1)'
                             },
                             {
-                                label: 'Pred.Future',
+                                label: 'Now',
+                                data: data.week.now_s,
+                                //fill: true,
+                                borderWidth: 1,
+                                pointRadius: 2,
+                                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                                borderColor: 'rgba(255, 255, 255, 1)'
+                                // backgroundColor: 'rgba(255, 205, 86, 0.3)',
+                                // borderColor: 'rgba(255, 205, 86, 1)'
+                            },                            
+                            {
+                                label: 'Pred:Future',
                                 data: data.week.pred_future,
                                 fill: true,
                                 borderWidth: 1,
@@ -540,8 +648,9 @@
                                     position: 'bottom',
                                     labels: {
                                         font: {
-                                            size: 9 // Set the legend label font size here
-                                        }
+                                            size: 10 // Set the legend label font size here
+                                        },
+                                        boxWidth: 10 // Set the box size for the legend labels
                                     }
                                 },
                             }
@@ -628,6 +737,28 @@
 
         load();
         setInterval(load, 1*60*1000); // 1 minutes
+
+
+        function getDateString(date) {
+            targetTime = new Date(date);
+            currentTime = new Date();
+            timeDiff = targetTime.getTime() - currentTime.getTime();
+            hours = Math.floor(timeDiff / (1000 * 60 * 60)).toString().padStart(2, '0');
+            minutes = Math.floor((timeDiff / (1000 * 60)) % 60).toString().padStart(2, '0');
+            seconds = Math.floor((timeDiff / 1000) % 60).toString().padStart(2, '0');
+            time = `-${hours}:${minutes}:${seconds}`;
+            return time
+        }
+
+        function updateTime() {        
+            if (utc_day != null) {
+                document.getElementById('id_day_time').innerHTML = getDateString(utc_day);
+            }
+            if (utc_week != null) {
+                document.getElementById('id_week_time').innerHTML = getDateString(utc_week);
+            }
+        }
+        setInterval(updateTime, 1000); // 1 second
 
     </script>
 
