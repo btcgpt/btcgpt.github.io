@@ -271,9 +271,9 @@
                         c_now_future = "text_equal"
                     }
 
-                    if (data.day['re-pred_price'] > 0) {
+                    if (data.day['re-re-pred_percent'] > 0) {
                         c_re_predict = "text_up"
-                    } else if (data.day['re-pred_price'] < 0) {
+                    } else if (data.day['re-pred_percent'] < 0) {
                         c_re_predict = "text_down"
                     } else {
                         c_re_predict = "text_equal"
@@ -348,9 +348,9 @@
                         c_now_future = "text_equal"
                     }
 
-                    if (data.week['re-pred_price'] > 0) {
+                    if (data.week['re-pred_percent'] > 0) {
                         c_re_predict = "text_up"
-                    } else if (data.week['re-pred_price'] < 0) {
+                    } else if (data.week['re-pred_percent'] < 0) {
                         c_re_predict = "text_down"
                     } else {
                         c_re_predict = "text_equal"
