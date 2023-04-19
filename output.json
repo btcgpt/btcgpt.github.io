@@ -1,5 +1,5 @@
 {
-    "last_prediction_time": "2023-04-19 07:49",
+    "last_prediction_time": "2023-04-19 07:54",
     "day": {
         "actual": [
             {
@@ -770,7 +770,7 @@
         "pred_price": 29707,
         "pred_percent": -2.16,
         "now": 30085,
-        "now_future_price_diff": 377,
+        "now_future_price_diff": 378,
         "now_future_percent_diff": 1.26,
         "re-pred_price": 29521,
         "re-pred_percent": -1.88,
