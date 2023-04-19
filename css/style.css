@@ -113,17 +113,16 @@ nav a:hover {
 }
 
 .text_equal {
-  color: #ffffffbb;
+  color: #ffffffff;
 }
 
 .text_up {
-  color: #00ff00bb;
+  color: #00ff00ff;
 }
 
 .text_down {
-  color: #ff0000bb;
+  color: #ff0000ff;
 }
-
 
 .notice {
   font-size: 0.8rem;
@@ -191,16 +190,25 @@ nav a:hover {
 
 .card p.pt1 {
   margin: 0em;
-  margin-top: -0.2em;
+  margin-top: -0.3em;
 }
 
 .card p.desc {
   margin: 0em;
-  margin-top: -0.2em;
+  margin-top: 0em;
   font-weight: normal;
   font-size: 0.8rem;
-  color: #ffffffbb;
+  color: #ffffffcc;
 }
+
+.card p.info {
+  margin: 0em;
+  margin-top: 0.2em;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: #ffffffcc;
+}
+
 
 .btn {
   background-color: #333;

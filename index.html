@@ -13,7 +13,7 @@
     <meta name="naver-site-verification" content="089e77bc8defc2d01087f8b2da5f8b7d4ec68efe"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
-    <link rel="stylesheet" href="./css/style.css?v=1.4">
+    <link rel="stylesheet" href="./css/style.css?v=1.5">
     <link rel="icon" type="image/png" href="./images/btc.svg">
 </head>
 
@@ -32,10 +32,11 @@
             <svg width="64" height="64"><image href="./images/btc.svg" style="opacity: 0.8;"/></svg>
             <h1>BTCGPT</h1>
             <h1>🚀🌕</h1>
-            <p style="text-align: center;" class="text">BTCGPT predicts the price of Bitcoin.</p>
-            <p style="text-align: center;" class="notice">It's just for fun, so don't take it too seriously.</p>            
-            <p style="text-align: center;" class="notice">This site does not recommend any investment and all risks arising from the use of information on this site are the responsibility of the investor.</p>
-            <p style="text-align: center;" class="notice_green">✅ updated: add analysis metrics. (2023-04-19)</p>
+            <div id="id_text">
+                <p style="text-align: center;" class="text">BTCGPT predicts the price of Bitcoin.</p>
+                <p style="text-align: center;" class="notice">It's just for fun, so don't take it too seriously.</p>            
+                <p style="text-align: center;" class="notice">This site does not recommend any investment and all risks arising from the use of information on this site are the responsibility of the investor.</p>    
+            </div>
         </div>
     </header>
 
@@ -46,7 +47,7 @@
 
     <div id="id_container" class="container">
         <div class="card">
-            <p>Tomorrow's Bitcoin Price</p>
+            <p>Daily Bitcoin Price</p>
             <div id="id_day">
                 <!-- <p>
                     <span class="priceUp">$1,000,000</span>
@@ -72,7 +73,7 @@
         </div> -->
 
         <div class="card">
-            <p>Next Week's Bitcoin Price</p>
+            <p>Weekly Bitcoin Price</p>
             <div id="id_week">
                 <!-- <p>
                     <span class="priceUp">$1,000,000</span>
@@ -112,15 +113,10 @@
                     their investment decisions and always conduct their own research before making any investment
                     decisions.
                 </span>
-                <span class="notice">
-                    This site does not recommend any investment and all risks arising from the use of information on
-                    this site
-                    are the responsibility of the investor.
-                </span>
             </p>
         </div>
 
-        <div class="card">
+        <!-- <div class="card">
             <p class="sm_text">Why are the daily and weekly price predictions different?</p>
             <p>
                 <span class="sm_text">
@@ -132,7 +128,7 @@
                     If you look at the directional accuracy at the bottom of the chart, you can see that there is also a difference in the prediction accuracy between the two models. Typically, the daily model shows higher accuracy than the weekly model.
                 </span>
             </p>
-        </div>
+        </div> -->
 
         <!-- <div class="card">
             <p class="sm_text">What is Average Directional Accuracy?</p>
@@ -151,8 +147,10 @@
         </div> -->
         <div class="card">
             <p class="sm_text">Updates.</p>
+            <p><span class="sm_text">✅ BTCGPT(beta) launched. (2023-04-11)</span>
             <p><span class="sm_text">✅ accuracy improved, bug fix. (2023-04-17)</span>
-            <p><span class="sm_text">✅ add analysis metrics and more. (2023-04-19)</span>
+            <p><span class="sm_text">✅ added analysis metrics. (2023-04-19)</span>
+            <p><span class="sm_text">✅ updated ux text. (2023-04-20)</span>
             </p>    
         </div>
 
@@ -205,6 +203,14 @@
             }).replace(/\.(\d\d)/, '');
         }
 
+        function formatPercent(number) {
+            return number.toLocaleString('en-US', {
+                style: 'decimal',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
         // function getLocalTime(date) {
         //     dateUTC = new Date(date + 'Z');
         //     offset = dateUTC.getTimezoneOffset()
@@ -225,8 +231,8 @@
         utc_week = null
 
         function load() {
-            // Fetch the JSON data from the file
-            fetch("./output.json", { cache: 'no-cache' })
+            //Fetch the JSON data from the file
+            fetch("https://raw.githubusercontent.com/btcgpt/data/main/output.json", { cache: 'no-cache' })
                 .then(response => response.json())
                 .then(data => {
 
@@ -263,9 +269,9 @@
                         c_datetime = "datetimeUp"
                     }
 
-                    if (data.day.now_future_price_diff > 0) {
+                    if (data.day.future_now_price_diff > 0) {
                         c_now_future = "text_up"
-                    } else if (data.day.now_future_price_diff < 0) {
+                    } else if (data.day.future_now_price_diff < 0) {
                         c_now_future = "text_down"
                     } else {
                         c_now_future = "text_equal"
@@ -303,21 +309,22 @@
                     temp = `
                     <p class="price">
                         <span class="${c_price}">${formatPrice(data.day.pred_price)}</span>
-                        <span class="${c_percent}">${data.day.pred_percent}% tomorrow${but_future}</span>
+                        <span class="${c_percent}">${formatPercent(data.day.pred_percent)}% tomorrow${but_future}</span>
                     </p>
-                    <h4 class=""><span class="${c_datetime}">${data.day.pred_future[0]['x']} 00:00 UTC,</span>&nbsp;<span id="id_day_time" class="${c_datetime}"></span></h4>
+                    <h4 class=""><span class="${c_datetime}">${data.day.pred_future[0]['x']} 00:00 UTC</span>&nbsp;<span id="id_day_time" class="${c_datetime}"></span></h4>
 
                     <p class="price">
                         <span class="price">${formatPrice(data.day.now)}</span>
-                        <span class="percent">now</span>
+                        <span class="percent">${formatPercent(data.day.now_percent)}% now</span>
                     </p>
                     <h4 class=""><span class="datetime">${data.last_prediction_time} UTC</h4>
+
                     
                     <p class="pt1">&nbsp</p>
-                    <p class="desc"><span class="${c_now_future}">now - tomorrow: ${data.day.now_future_percent_diff}%, ${formatPrice(data.day.now_future_price_diff)}</span></p>
-                    <p class="desc"><span class="${c_re_predict}">re-predicted tomorrow price: ${data.day['re-pred_percent']}%, ${formatPrice(data.day['re-pred_price'])}</span></p>
-                    <p class="desc"><span>now_future direction: ${now_future}</span></p>
-                    <p class="desc"><span>past_future direction: ${past_future}</span></p>
+                    <p class="desc"><span class="${c_now_future}">tomorrow - now: ${formatPercent(data.day.future_now_percent_diff)}%</span></p>
+                    <p class="desc"><span class="${c_re_predict}">re-predicted tomorrow: ${formatPrice(data.day['re-pred_price'])} ${formatPercent(data.day['re-pred_percent'])}%</span></p>                    
+                    <p class="desc"><span>actual to tomorrow: ${now_future}</span></p>
+                    <p class="desc"><span>pred:past to tomorrow: ${past_future}</span></p>
                     `
                     document.getElementById("id_day").innerHTML = temp;
 
@@ -340,9 +347,9 @@
                         c_datetime = "datetimeUp"
                     }
 
-                    if (data.week.now_future_price_diff > 0) {
+                    if (data.week.future_now_price_diff > 0) {
                         c_now_future = "text_up"
-                    } else if (data.week.now_future_price_diff < 0) {
+                    } else if (data.week.future_now_price_diff < 0) {
                         c_now_future = "text_down"
                     } else {
                         c_now_future = "text_equal"
@@ -380,21 +387,22 @@
                     temp = `
                     <p class="price">
                         <span class="${c_price}">${formatPrice(data.week.pred_price)}</span>
-                        <span class="${c_percent}">${data.week.pred_percent}% next week${but_future}</span>
+                        <span class="${c_percent}">${formatPercent(data.week.pred_percent)}% next week${but_future}</span>
                     </p>
-                    <h4 class=""><span class="${c_datetime}">${data.week.pred_future[0]['x']} 00:00 UTC,</span>&nbsp;<span id="id_week_time" class="${c_datetime}"></span></h4>
+                    <h4 class=""><span class="${c_datetime}">${data.week.pred_future[0]['x']} 00:00 UTC</span>&nbsp;<span id="id_week_time" class="${c_datetime}"></span></h4>
 
                     <p class="price">
                         <span class="price">${formatPrice(data.week.now)}</span>
-                        <span class="percent">now</span>
+                        <span class="percent">${formatPercent(data.week.now_percent)}% now</span>
                     </p>
                     <h4 class=""><span class="datetime">${data.last_prediction_time} UTC</h4>
+
                     
                     <p class="pt1">&nbsp</p>
-                    <p class="desc"><span class="${c_now_future}">now - next_week: ${data.week.now_future_percent_diff}%, ${formatPrice(data.week.now_future_price_diff)}</span></p>
-                    <p class="desc"><span class="${c_re_predict}">re-predicted next_week price: ${data.week['re-pred_percent']}%, ${formatPrice(data.week['re-pred_price'])}</span></p>
-                    <p class="desc"><span>now_future direction: ${now_future}</span></p>
-                    <p class="desc"><span>past_future direction: ${past_future}</span></p>              
+                    <p class="desc"><span class="${c_now_future}">next week - now: ${formatPercent(data.week.future_now_percent_diff)}%</span></p>
+                    <p class="desc"><span class="${c_re_predict}">re-predicted next week: ${formatPrice(data.week['re-pred_price'])} ${formatPercent(data.week['re-pred_percent'])}%</span></p>                    
+                    <p class="desc"><span>actual to pred:future: ${now_future}</span></p>
+                    <p class="desc"><span>pred:past to pred:future: ${past_future}</span></p>
                     `
                     document.getElementById("id_week").innerHTML = temp;
 
@@ -736,7 +744,7 @@
         }
 
         load();
-        setInterval(load, 1*60*1000); // 1 minutes
+        setInterval(load, 1*30*1000); // 30 seconds
 
 
         function getDateString(date) {
@@ -764,6 +772,40 @@
             }
         }
         setInterval(updateTime, 1000); // 1 second
+
+
+        LANGUAGES = ["cn", "es", "en", "ar", "pt", "bn", "ru", "ja", "ko", "fr", "de", "it", "tr", "hi", "fa", "th", "pl", "ur", "nl"]
+        function detectLanguage() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const langCode = userLang.split('-')[0];
+            if (LANGUAGES.includes(langCode)) {
+                return langCode;
+            }
+            return 'en';
+        }
+
+        function updateContent(language) {
+            fetch('./text/language.json')
+                .then(response => response.json())
+                .then(data => {
+                    const content = data[language];
+                    const textElement = document.querySelector('#id_text');
+                    // 해당 언어에 대한 내용으로 문서 객체를 변경합니다.
+                    textElement.innerHTML = `
+                    <p style="text-align: center;" class="text">${content.text}</p>
+                    <p style="text-align: center;" class="notice">${content.notice1}</p>            
+                    <p style="text-align: center;" class="notice">${content.notice2}</p>`;
+                })
+                .catch(error => {
+                    console.error('Error fetching language data:', error);
+                });
+        }
+
+        window.onload = function () {
+            const language = detectLanguage();
+            updateContent(language);
+        };
+
 
     </script>
 
