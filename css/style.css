@@ -128,6 +128,7 @@ nav a:hover {
   font-size: 0.8rem;
   color: #ffff00;
   margin: 0em;
+  text-shadow: 0 0 1px rgb(0, 0, 0);
 }
 
 .notice_green {
@@ -150,6 +151,33 @@ nav a:hover {
   font-size: 0.9rem;
   color: #ffffff;
 }
+
+p.btcgpt {
+  margin-top: 1.5em;
+  font-size: 1rem;
+  color: #ffffff;
+  animation: blink 3s infinite;
+  text-shadow: 0 0 1px rgb(0, 0, 0);
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes color-change {
+  0% {
+    color: rgb(0, 247, 255);
+  }
+  50% {
+    color: #00ffff;
+  }
+  100% {
+    color: #ffd500;
+  }
+}
+
 
 .card {
   /* background-color: #000000; */

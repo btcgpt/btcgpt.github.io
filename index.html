@@ -13,7 +13,7 @@
     <meta name="naver-site-verification" content="089e77bc8defc2d01087f8b2da5f8b7d4ec68efe"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
-    <link rel="stylesheet" href="./css/style.css?v=1.5">
+    <link rel="stylesheet" href="./css/style.css?v=1.6">
     <link rel="icon" type="image/png" href="./images/btc.svg">
 </head>
 
@@ -33,7 +33,7 @@
             <h1>BTCGPT</h1>
             <h1>🚀🌕</h1>
             <div id="id_text">
-                <p style="text-align: center;" class="text">&nbsp;</p>
+                <p style="text-align: center;" class="btcgpt">&nbsp;</p>
                 <p style="text-align: center;" class="notice">&nbsp;</p>
                 <p style="text-align: center;" class="notice">&nbsp;</p>
                 <!-- <p style="text-align: center;" class="text">BTCGPT predicts the price of Bitcoin.</p>
@@ -50,7 +50,7 @@
 
     <div id="id_container" class="container">
         <div class="card">
-            <p>Daily Bitcoin Price Forecast</p>
+            <p>Daily Forecast</p>
             <div id="id_day">
                 <!-- <p>
                     <span class="priceUp">$1,000,000</span>
@@ -66,7 +66,7 @@
         </div>
 
         <div class="card">
-            <p>Daily Bitcoin Price Forecast</p>
+            <p>Daily Forecast</p>
             <canvas class="chart" id="id_daychart1" height="150"></canvas>
         </div>
 
@@ -76,7 +76,7 @@
         </div> -->
 
         <div class="card">
-            <p>Weekly Bitcoin Price Forecast</p>
+            <p>Weekly Forecast</p>
             <div id="id_week">
                 <!-- <p>
                     <span class="priceUp">$1,000,000</span>
@@ -92,7 +92,7 @@
         </div>
 
         <div class="card">
-            <p>Weekly Bitcoin Price Forecast</p>
+            <p>Weekly Forecast</p>
             <canvas class="chart" id="id_weekchart1" height="150"></canvas>
         </div>
 
@@ -799,7 +799,7 @@
                     const textElement = document.querySelector('#id_text');
                     // 해당 언어에 대한 내용으로 문서 객체를 변경합니다.
                     textElement.innerHTML = `
-                    <p style="text-align: center;" class="text">${content.text}</p>
+                    <p style="text-align: center;" class="btcgpt">${content.text}</p>
                     <p style="text-align: center;" class="notice">${content.notice1}</p>            
                     <p style="text-align: center;" class="notice">${content.notice2}</p>`;
                 })
