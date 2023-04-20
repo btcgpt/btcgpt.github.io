@@ -404,8 +404,8 @@
                     <p class="pt1">&nbsp</p>
                     <p class="desc"><span class="${c_now_future}">next week - now: ${formatPercent(data.week.future_now_percent_diff)}%</span></p>
                     <p class="desc"><span class="${c_re_predict}">re-predicted next week: ${formatPrice(data.week['re-pred_price'])} ${formatPercent(data.week['re-pred_percent'])}%</span></p>                    
-                    <p class="desc"><span>actual to pred:future: ${now_future}</span></p>
-                    <p class="desc"><span>pred:past to pred:future: ${past_future}</span></p>
+                    <p class="desc"><span>actual to next_week: ${now_future}</span></p>
+                    <p class="desc"><span>pred:past to next_week: ${past_future}</span></p>
                     `
                     document.getElementById("id_week").innerHTML = temp;
 
