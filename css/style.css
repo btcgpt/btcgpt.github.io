@@ -230,20 +230,19 @@ p.btcgpt {
 
 .card p.desc {
   margin: 0em;
-  margin-top: 0em;
   font-weight: normal;
-  font-size: 0.8rem;
-  color: #ffffffcc;
+  font-size: 0.9rem;
+  color: #ffffff;
 }
 
 .card p.info {
   margin: 0em;
-  margin-top: 0.2em;
-  font-weight: bold;
+  margin-top: -0.25em;
+  margin-bottom: 0.5em;
+  font-weight: normal;
   font-size: 0.8rem;
-  color: #ffffffcc;
+  color: #ffffff;
 }
-
 
 .btn {
   background-color: #333;

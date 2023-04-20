@@ -13,7 +13,7 @@
     <meta name="naver-site-verification" content="089e77bc8defc2d01087f8b2da5f8b7d4ec68efe"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
-    <link rel="stylesheet" href="./css/style.css?v=1.8">
+    <link rel="stylesheet" href="./css/style.css?v=1.9">
     <link rel="icon" type="image/png" href="./images/btc.svg">
 </head>
 
@@ -36,16 +36,12 @@
                 <p style="text-align: center;" class="btcgpt">&nbsp;</p>
                 <p style="text-align: center;" class="notice">&nbsp;</p>
                 <p style="text-align: center;" class="notice">&nbsp;</p>
-                <!-- <p style="text-align: center;" class="text">BTCGPT predicts the price of Bitcoin.</p>
-                <p style="text-align: center;" class="notice">It's just for fun, so don't take it too seriously.</p>            
-                <p style="text-align: center;" class="notice">This site does not recommend any investment and all risks arising from the use of information on this site are the responsibility of the investor.</p>     -->
             </div>
         </div>
     </header>
 
     <video autoplay loop muted playsinline id="video-background" poster="./videos/up.jpg">
         <source src="./videos/rocket_launch.mp4" type="video/mp4">
-        <!-- <source src="https://player.vimeo.com/external/178167299.sd.mp4?s=7b8659225e3202c779718a4a0d5a88df9801037e&amp;profile_id=164&amp;oauth2_token_id=57447761" type="video/mp4">     -->
     </video>
 
     <div id="id_container" class="container">
@@ -213,19 +209,6 @@
                 maximumFractionDigits: 2
             });
         }
-
-        // function getLocalTime(date) {
-        //     dateUTC = new Date(date + 'Z');
-        //     offset = dateUTC.getTimezoneOffset()
-        //     yourDate = new Date(dateUTC.getTime() - (offset*60*1000))
-        //     dateString = yourDate.toISOString().replace(/T/, ' ').substr(0, 16);
-        //     //console.log(dateString)
-        //     return dateString                    
-        // }
-
-        // iphone
-        // var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        // console.log(timezone);
 
         last_data = null
         charts = []
