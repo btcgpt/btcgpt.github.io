@@ -163,7 +163,7 @@ p.btcgpt {
   margin-top: 1.5em;
   font-size: 1rem;
   color: #ffffff;
-  animation: blink 3s infinite;
+  /* animation: blink 3s infinite; */
   text-shadow: 0 0 1px rgb(0, 0, 0);
 }
 
