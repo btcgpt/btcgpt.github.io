@@ -236,14 +236,18 @@
         function load() {
             //Fetch the JSON data from the file
             fetch("https://raw.githubusercontent.com/btcgpt/data/main/output.json", { cache: 'no-cache' })
+            // fetch("./output.json", { cache: 'no-cache' })
                 .then(response => response.json())
                 .then(data => {
 
                     temp = JSON.stringify(data);
                     if (temp == last_data) {
+                        console.log("no change")
                         return
                     }
                     last_data = temp
+
+                    console.log("data loaded")
 
                     charts.forEach(chart => {
                             chart.destroy();
@@ -302,9 +306,9 @@
 
                     but_future = ""
                     if (data.day.now_future_direction != data.day.past_future_direction) {
-                        if(data.day.past_future_direction == "down" && data.day.tomorrow_now_price_diff > 0) {
+                        if(data.day.past_future_direction == "down" && data.day.future_now_price_diff > 0) {
                             but_future = ", but 😱"
-                        } else if(data.day.past_future_direction == "up" && data.day.tomorrow_now_price_diff > 0) {
+                        } else if(data.day.past_future_direction == "up" && data.day.future_now_price_diff < 0) {
                             but_future = ", but 🚀"
                         }
                     }
@@ -380,9 +384,9 @@
 
                     but_future = ""
                     if (data.week.now_future_direction != data.week.past_future_direction) {
-                        if(data.week.past_future_direction == "down" && data.week.tomorrow_now_price_diff > 0) {
+                        if(data.week.past_future_direction == "down" && data.week.future_now_price_diff > 0) {
                             but_future = ", but 😱"
-                        } else if(data.week.past_future_direction == "up" && data.week.tomorrow_now_price_diff > 0) {
+                        } else if(data.week.past_future_direction == "up" && data.week.future_now_price_diff > 0) {
                             but_future = ", but 🚀"
                         }
                     }                    
@@ -747,7 +751,7 @@
         }
 
         load();
-        setInterval(load, 1*30*1000); // 30 seconds
+        setInterval(load, 1*60*1000); // 30 seconds
 
 
         function getDateString(date) {
