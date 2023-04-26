@@ -86,19 +86,22 @@ nav a:hover {
 }
 
 .price {
-  font-size: 1.6rem;
+  font-size: 2.0rem;
   font-weight: bold;
+  text-shadow: 0 0 1px rgb(0, 0, 0);
 }
 
 .percent {
-  font-size: 1.0rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  text-shadow: 0 0 1px rgb(0, 0, 0);
 }
 
 .datetime {
-  font-family: 'Fira Code', 'Courier New', monospace;
-  font-size: 0.8rem;
+  font-family: 'Courier New', 'Fira Code', monospace;
+  font-size: 0.9rem;
   font-weight: normal;
+  text-shadow: 0 0 1px rgb(0, 0, 0);
 }
 
 .notice {
@@ -174,7 +177,8 @@ p.btcgpt {
 .card p.desc {
   margin: 0em;
   font-weight: normal;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  text-shadow: 0 0 1px rgb(0, 0, 0);
 }
 
 .btn {
