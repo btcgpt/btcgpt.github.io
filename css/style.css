@@ -65,70 +65,40 @@ nav a:hover {
   margin-bottom: 10px;
 }
 
-.datetime {
-  font-size: 0.8rem;
+.eq {
   color: #ffffff;
-  font-weight: normal;
 }
 
-.datetimeUp {
-  font-size: 0.8rem;
+.up {
   color: #00ff00;
-  font-weight: normal;
 }
 
-.datetimeDown {
-  font-size: 0.8rem;
+.down {
   color: #ff0000;
-  font-weight: normal;
+}
+
+.green {
+  color: #00ff00;
+}
+
+.orange {
+  color: #ffaa00;
 }
 
 .price {
-  font-size: 1.8rem;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-.priceUp {
-  font-size: 1.8rem;
-  color: #00ff00;
-  font-weight: bold;
-}
-
-.priceDown {
-  font-size: 1.8rem;
-  color: #ff0000;
+  font-size: 1.6rem;
   font-weight: bold;
 }
 
 .percent {
   font-size: 1.0rem;
-  color: #ffffff;
   font-weight: bold;
 }
 
-.percentUp {
-  font-size: 1.0rem;
-  color: #00ff00;
-  font-weight: bold;
-}
-
-.percentDown {
-  font-size: 1.0rem;
-  color: #ff0000;
-  font-weight: bold;
-}
-
-.text_equal {
-  color: #ffffffff;
-}
-
-.text_up {
-  color: #00ff00ff;
-}
-
-.text_down {
-  color: #ff0000ff;
+.datetime {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.8rem;
+  font-weight: normal;
 }
 
 .notice {
@@ -136,17 +106,6 @@ nav a:hover {
   color: #ffff00;
   margin: 0em;
   text-shadow: 0 0 1px rgb(0, 0, 0);
-}
-
-.notice_green {
-  font-size: 0.8rem;
-  color: #00ff00;
-  margin: 0em;
-}
-
-.notice_orange {
-  font-size: 0.8rem;
-  color: #ffaa00;
 }
 
 .sm_text {
@@ -198,50 +157,24 @@ p.btcgpt {
 
 .card p {
   margin: 0;
-  margin-top: 0em;
-  margin-bottom: 0em;
 }
 
-.card p.price {
+.card p.info {
   margin: 0;
-  margin-top: 0.5em;
+  margin-top: 1.2em;
   margin-bottom: 0em;
 }
-
-/* .card p.desc {
-  text-align: justify;
-  margin: 1em;
-  margin: 0;
-  font-size: 1.0rem;
-  font-weight: bold;
-  color: #ff0000;
-} */
 
 .card h4 {
   margin: 0;
   margin-top: -0.5em;
-  margin-bottom: 0.em;
-}
-
-.card p.pt1 {
-  margin: 0em;
-  margin-top: -0.3em;
+  margin-bottom: 0em;    
 }
 
 .card p.desc {
   margin: 0em;
   font-weight: normal;
-  font-size: 0.9rem;
-  color: #ffffff;
-}
-
-.card p.info {
-  margin: 0em;
-  margin-top: -0.25em;
-  margin-bottom: 0.5em;
-  font-weight: normal;
   font-size: 0.8rem;
-  color: #ffffff;
 }
 
 .btn {
@@ -300,7 +233,7 @@ iframe {
 
 body {
   background-color: black;
-  background-image: url("../videos/up.jpg");
+  /* background-image: url("../videos/up.png"); */
 }
 
 table {

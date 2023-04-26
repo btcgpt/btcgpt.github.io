@@ -10,26 +10,28 @@
     <meta property="og:image:width" content="100">
     <meta property="og:image:height" content="100">
     <meta charset="UTF-8">
-    <meta name="naver-site-verification" content="089e77bc8defc2d01087f8b2da5f8b7d4ec68efe"/>
+    <meta name="naver-site-verification" content="089e77bc8defc2d01087f8b2da5f8b7d4ec68efe" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
-    <link rel="stylesheet" href="./css/style.css?v=1.9">
+    <link rel="stylesheet" href="./css/style.css?v=2.0">
     <link rel="icon" type="image/png" href="./images/btc.svg">
 </head>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QC6EQ2XQ12"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-QC6EQ2XQ12');
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-QC6EQ2XQ12');
 </script>
 
 <body>
     <header>
         <div class="container">
-            <svg width="64" height="64"><image href="./images/btc.svg" style="opacity: 0.8;"/></svg>
+            <svg width="64" height="64">
+                <image href="./images/btc.svg" style="opacity: 0.8;" />
+            </svg>
             <h1 class="btcgpt">BTCGPT</h1>
             <h1>🚀🌕</h1>
             <div id="id_text">
@@ -40,62 +42,84 @@
         </div>
     </header>
 
-    <video autoplay loop muted playsinline id="video-background" poster="./videos/up.jpg">
+    <video autoplay loop muted playsinline id="video-background" poster="./videos/up.png">
         <source src="./videos/rocket_launch.mp4" type="video/mp4">
     </video>
 
     <div id="id_container" class="container">
+
+        <div class="card">
+            <p>Hourly Forecast</p>
+            <div id="id_hour">
+                <p class="info" id="id_hour_next">
+                    <span class="price"></span>
+                    <span class="percent"></span>
+                    <h4 class="bottom"><span class="datetime"></span><span id="id_hour_time_left" class="datetime"></span></h4>
+                </p>
+                <p class="info">
+                    <div id="id_hour_now">
+                    </div>
+                    <h4 class="bottom"><span class="datetime" id="id_hour_datetime"></span></h4>
+                </p>
+                <p class="info">
+                    <p class="desc"><span id="id_hour_gap">&nbsp;</span></p>
+                    <div id="id_hour_desc">
+                        <p class="desc"><span></span></p>
+                        <p class="desc"><span></span></p>
+                    </div>
+                </p>
+            </div>
+            <canvas class="chart" id="id_hourchart" height="150"></canvas>            
+        </div>
+
+
         <div class="card">
             <p>Daily Forecast</p>
             <div id="id_day">
-                <!-- <p>
-                    <span class="priceUp">$1,000,000</span>
-                    <span class="percentUp">+100.0% tomorrow</span>
+                <p class="info" id="id_day_next">
+                    <span class="price"></span>
+                    <span class="percent"></span>
+                    <h4 class="bottom"><span class="datetime"></span></h4>                    
                 </p>
-                <h4 class="bottom"><span class="datetimeUp">2010-01-01 00:00 UTC</span></h4>
-                <p>
-                    <span class="price">$1,000,000</span>
-                    <span class="percent">&nbsp;now</span>
+                <p class="info">
+                    <div id="id_day_now">
+                    </div>
+                    <h4 class="bottom"><span class="datetime" id="id_day_datetime"></span></h4>                    
                 </p>
-                <h4 class="bottom"><span class="datetime">2010-01-01 00:00 UTC, last prediction time</span></h4> -->
+                <p class="info">
+                    <p class="desc"><span id="id_day_gap">&nbsp;</span></p>
+                    <div id="id_day_desc">
+                        <p class="desc"><span></span></p>
+                        <p class="desc"><span></span></p>
+                    </div>
+                </p>
             </div>
+            <canvas class="chart" id="id_daychart" height="150"></canvas>            
         </div>
-
-        <div class="card">
-            <p>Daily Forecast</p>
-            <canvas class="chart" id="id_daychart1" height="150"></canvas>
-        </div>
-
-        <!-- <div class="card">
-            <p>Daily Average Directional Accuracy</p>
-            <canvas class="chart" id="id_daychart2" height="100"></canvas>
-        </div> -->
 
         <div class="card">
             <p>Weekly Forecast</p>
             <div id="id_week">
-                <!-- <p>
-                    <span class="priceUp">$1,000,000</span>
-                    <span class="percentUp">+100.0% tomorrow</span>
+                <p class="info" id="id_week_next">
+                    <span class="price"></span>
+                    <span class="percent"></span>
+                    <h4 class="bottom"><span class="datetime"></span></h4>                    
                 </p>
-                <h4 class="bottom"><span class="datetimeUp">2010-01-01 00:00 UTC</span></h4>
-                <p>
-                    <span class="price">$1,000,000</span>
-                    <span class="percent">&nbsp;now</span>
+                <p class="info" id="id_week_now">
+                    <div id="id_week_now">
+                    </div>
+                    <h4 class="bottom"><span class="datetime" id="id_week_datetime"></span></h4>                                        
                 </p>
-                <h4 class="bottom"><span class="datetime">2010-01-01 00:00 UTC, last prediction time</span></h4> -->
+                <p class="info">
+                    <p class="desc"><span id="id_week_gap">&nbsp;</span></p>
+                    <div id="id_week_desc">
+                        <p class="desc"><span></span></p>
+                        <p class="desc"><span></span></p>
+                    </div>
+                </p>
             </div>
+            <canvas class="chart" id="id_weekchart" height="150"></canvas>            
         </div>
-
-        <div class="card">
-            <p>Weekly Forecast</p>
-            <canvas class="chart" id="id_weekchart1" height="150"></canvas>
-        </div>
-
-        <!-- <div class="card">
-            <p>Weekly Average Directional Accuracy</p>
-            <canvas class="chart" id="id_weekchart2" height="100"></canvas>
-        </div> -->
 
         <div class="card">
             <p class="sm_text">What is BTCGPT?</p>
@@ -115,19 +139,14 @@
             </p>
         </div>
 
-        <!-- <div class="card">
-            <p class="sm_text">Why are the daily and weekly price predictions different?</p>
+        <div class="card">
+            <p class="sm_text">Why are the hourly, daily and weekly price predictions different?</p>
             <p>
                 <span class="sm_text">
-                    BTCGPT uses two models, one for daily predictions and the other for weekly predictions. Ideally, we would like both models to provide the same predictions, but in reality, due to differences in the training data and model architecture, they may produce different results. The daily model uses more recent data and incorporates more short-term market trends, while the weekly model uses a longer time frame and focuses on broader market trends.
+                    Ideally, we would like all models to provide the same predictions, but in reality, due to differences in the training data and model architecture, they may produce different results. The hourly and daily models use more recent data and incorporates more short-term market trends, while the weekly model uses a longer time frame and focuses on broader market trends.
                 </span>
             </p>
-            <p>
-                <span class="sm_text">
-                    If you look at the directional accuracy at the bottom of the chart, you can see that there is also a difference in the prediction accuracy between the two models. Typically, the daily model shows higher accuracy than the weekly model.
-                </span>
-            </p>
-        </div> -->
+        </div>
 
         <!-- <div class="card">
             <p class="sm_text">What is Average Directional Accuracy?</p>
@@ -148,9 +167,11 @@
             <p class="sm_text">Updates.</p>
             <p><span class="sm_text">✅ BTCGPT(beta) launched. (2023-04-11)</span>
             <p><span class="sm_text">✅ accuracy improved, bug fix. (2023-04-17)</span>
-            <p><span class="sm_text">✅ added analysis metrics. (2023-04-19)</span>
-            <p><span class="sm_text">✅ updated ux text. (2023-04-20)</span>
-            </p>    
+            <p><span class="sm_text">✅ added: analysis metrics. (2023-04-19)</span>
+            <p><span class="sm_text">✅ updated: ux text. (2023-04-20)</span>
+            <p><span class="sm_text">✅ updated: prediciton model (2023-04-26)</span>
+            <p><span class="sm_text">✅ added: hourly forecast. (2023-04-26)</span>                                
+            </p>
         </div>
 
         <div class="card">
@@ -182,587 +203,499 @@
                     btcgpt @ gmail.com
                 </span>
             </span>
-                
+
         </div>
 
     </div>
 
     <footer class="sm_text" style="text-align: center;">
-        <div style="text-align: center;"><img src="./images/captainbtc.jpg" alt="CaptainBTC" style="width: 60px; height: 60px; margin-right: 0px; border-radius: 50%;"></div>
+        <div style="text-align: center;"><img src="./images/captainbtc.jpg" alt="CaptainBTC"
+                style="width: 60px; height: 60px; margin-right: 0px; border-radius: 50%;"></div>
         &copy; 2023 BTCGPT.INFO
     </footer>
-  
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        function formatPrice(price) {
-            return price.toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            }).replace(/\.(\d\d)/, '');
+
+        charts = []
+        function create_charts() {
+            Chart.defaults.color = "white";
+
+            ctx = document.getElementById('id_hourchart').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Actual',
+                        // data: data.day.actual,
+                        //fill: true,
+                        borderWidth: 1,
+                        pointRadius: 2,
+                        //tension: 0.5,
+                        backgroundColor: 'rgba(0, 255, 0, 0.8)',
+                        borderColor: 'rgba(0, 255, 0, 1)'
+                    },
+                    {
+                        label: 'Pred:Past',
+                        //data: data.day.pred_past,
+                        fill: true,
+                        borderWidth: 1,
+                        //pointStyle: false,
+                        pointRadius: 2,
+                        // hidden: true, // Set the dataset to be hidden initially
+                        backgroundColor: 'rgba(33, 146, 255, 0.8)',
+                        borderColor: 'rgba(33, 146, 255, 1)'
+                    },
+                    {
+                        label: 'Now',
+                        //data: data.day.now_s,
+                        //fill: true,
+                        borderWidth: 1,
+                        pointRadius: 2,
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                        borderColor: 'rgba(255, 255, 255, 1)'
+                    },
+                    {
+                        label: 'Pred:Future',
+                        //data: data.day.pred_future,
+                        fill: true,
+                        borderWidth: 1,
+                        pointRadius: 2,
+                        backgroundColor: 'rgba(33, 146, 255, 0.3)',
+                        borderColor: 'rgba(33, 146, 255, 1)'
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 8
+                                }
+                            },
+                            display: false
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 8
+                                },
+                                beginAtZero: false,                                
+                            }
+                        },
+                    },
+                    plugins: {
+                        title: {
+                            display: false,
+                            text: 'Daily Forecast',
+                            font: {
+                                size: 16, // Set the title font size here
+                                weight: 'normal' // Set the title font weight to normal
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 10 // Set the legend label font size here
+                                },
+                                boxWidth: 10 // Set the box size for the legend labels
+                            }
+                        },
+                    }
+                }
+            });
+            charts.push(chart)            
+
+            ctx = document.getElementById('id_daychart').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Actual',
+                        // data: data.day.actual,
+                        //fill: true,
+                        borderWidth: 1,
+                        pointRadius: 2,
+                        backgroundColor: 'rgba(0, 255, 0, 0.8)',
+                        borderColor: 'rgba(0, 255, 0, 1)'
+                    },
+                    {
+                        label: 'Pred:Past',
+                        //data: data.day.pred_past,
+                        fill: true,
+                        borderWidth: 1,
+                        //pointStyle: false,
+                        pointRadius: 2,
+                        // hidden: true, // Set the dataset to be hidden initially
+                        backgroundColor: 'rgba(255, 159, 64, 0.8)',
+                        borderColor: 'rgba(255, 159, 64, 1)'
+                    },
+                    {
+                        label: 'Now',
+                        //data: data.day.now_s,
+                        //fill: true,
+                        borderWidth: 1,
+                        pointRadius: 2,
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                        borderColor: 'rgba(255, 255, 255, 1)'
+                    },
+                    {
+                        label: 'Pred:Future',
+                        //data: data.day.pred_future,
+                        fill: true,
+                        borderWidth: 1,
+                        pointRadius: 2,
+                        backgroundColor: 'rgba(255, 159, 64, 0.3)',
+                        borderColor: 'rgba(255, 159, 64, 1)'
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 8
+                                }
+                            },
+                            display: false
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 8
+                                },
+                            }
+                        },
+                    },
+                    plugins: {
+                        title: {
+                            display: false,
+                            text: 'Daily Forecast',
+                            font: {
+                                size: 16, // Set the title font size here
+                                weight: 'normal' // Set the title font weight to normal
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 10 // Set the legend label font size here
+                                },
+                                boxWidth: 10 // Set the box size for the legend labels
+                            }
+                        },
+                    }
+                }
+            });
+            charts.push(chart)
+
+
+            ctx = document.getElementById('id_weekchart').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Actual',
+                        //data: data.week.actual,
+                        //fill: true,
+                        borderWidth: 1,
+                        pointRadius: 2,
+                        backgroundColor: 'rgba(0, 255, 0, 0.9)',
+                        borderColor: 'rgba(0, 255, 0, 1)'
+                    },
+                    {
+                        label: 'Pred:Past',
+                        //data: data.week.pred_past,
+                        fill: true,
+                        borderWidth: 1,
+                        //pointStyle: false,
+                        pointRadius: 2,
+                        //hidden: true, // Set the dataset to be hidden initially
+                        backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                        borderColor: 'rgba(255, 99, 132, 1)'
+                    },
+                    {
+                        label: 'Now',
+                        //data: data.week.now_s,
+                        //fill: true,
+                        borderWidth: 1,
+                        pointRadius: 2,
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                        borderColor: 'rgba(255, 255, 255, 1)'
+                    },
+                    {
+                        label: 'Pred:Future',
+                        //data: data.week.pred_future,
+                        fill: true,
+                        borderWidth: 1,
+                        pointRadius: 2,
+                        backgroundColor: 'rgba(255, 99, 132, 0.3)',
+                        borderColor: 'rgba(255, 99, 132, 1)'
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 8
+                                }
+                            },
+                            display: false
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 8
+                                }
+                            }
+                        },
+                    },
+                    plugins: {
+                        title: {
+                            display: false,
+                            text: 'Weekly Forecast',
+                            font: {
+                                size: 16, // Set the title font size here
+                                weight: 'normal' // Set the title font weight to normal
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 10 // Set the legend label font size here
+                                },
+                                boxWidth: 10 // Set the box size for the legend labels
+                            }
+                        },
+                    }
+                }
+            });
+            charts.push(chart)
+
+            container = document.getElementById('id_container');
+            resizeObserver = new ResizeObserver(() => {
+                charts.forEach(chart => {
+                    chart.resize();
+                });
+            });
+            resizeObserver.observe(container);
+
         }
 
-        function formatPercent(number) {
-            return number.toLocaleString('en-US', {
-                style: 'decimal',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
+        function get_info(data) {
+
+            info = {}
+
+            next_price = data.pred_future.slice(0)[0]['y']
+            last_price = data.actual.slice(-1)[0]['y']
+            next_percent = (next_price - last_price) * 100 / last_price
+            
+            info.next_price = formatPrice(next_price)
+            info.next_percent = formatPercent(next_percent) + data.percent
+
+            if (next_percent < 0) {
+                info.c_next = "down"
+            } else if (next_percent > 0) {
+                info.c_next = "up"
+            } else {
+                info.c_next = "eq"
+            }
+
+            if (next_price > last_price) {
+                info.actual_to_next = "up 🚀"
+            } else if (next_price < last_price) {
+                info.actual_to_next = "down 😱"
+            } else {
+                info.actual_to_next = "same 😐"
+            }
+
+            pred_past_price = data.pred_past.slice(-1)[0]['y']
+            if (next_price > pred_past_price) {
+                info.past_to_next = "up 🚀"
+            } else if (next_price < pred_past_price) {
+                info.past_to_next = "down 😱"
+            } else {
+                info.past_to_next = "same 😐"
+            }
+
+            info.datetime = data.pred_future[0]['x']
+
+            info.id_next = data.id_next
+            info.id_desc = data.id_desc
+            info.id_time_left = data.id_time_left
+
+            return info
         }
 
         last_data = null
-        charts = []
+        last_data_str = null
 
+        utc_hour = null
         utc_day = null
         utc_week = null
 
-        function load() {
-            //Fetch the JSON data from the file
+        function reload() {
+            //fetch the JSON data from the file
             fetch("https://raw.githubusercontent.com/btcgpt/data/main/output.json", { cache: 'no-cache' })
-            // fetch("./output.json", { cache: 'no-cache' })
                 .then(response => response.json())
                 .then(data => {
 
                     temp = JSON.stringify(data);
-                    if (temp == last_data) {
-                        console.log("no change")
+                    if (temp == last_data_str) {
+                        //console.log("no change")
                         return
                     }
-                    last_data = temp
+                    last_data = data
+                    last_data_str = temp
 
-                    console.log("data loaded")
+                    // prepare to display
+                    data.hour.id_next = "id_hour_next"
+                    data.day.id_next = "id_day_next"
+                    data.week.id_next = "id_week_next"
+
+                    data.hour.id_desc = "id_hour_desc"
+                    data.day.id_desc = "id_day_desc"
+                    data.week.id_desc = "id_week_desc"
+
+                    data.hour.id_time_left = "id_hour_time_left"
+                    data.day.id_time_left = "id_day_time_left"
+                    data.week.id_time_left = "id_week_time_left"                    
+
+                    data.hour.percent = "% +1h"
+                    data.day.percent = "% +1d"
+                    data.week.percent = "% +1w"
+
+                    mylist = [data.hour, data.day, data.week]
+                    mylist.forEach(item => {
+
+                        info = get_info(item)
+
+                        temp = `
+                        <p class="info">
+                            <span class="price ${info.c_next}">${formatPrice(info.next_price)}</span>
+                            <span class="percent ${info.c_next}">${formatPercent(info.next_percent)}</span>
+                            <h4 class="bottom">
+                                <span class="datetime ${info.c_next}">${info.datetime}:00 UTC,</span>
+                                <span id="${info.id_time_left}" class="datetime ${info.c_next}"> 00:00:00</span>
+                            </h4>
+                        </p>`
+
+                        document.getElementById(info.id_next).innerHTML = temp;
+
+                        temp = `
+                            <div>
+                                <p class="desc"><span>actual to next: ${info.actual_to_next}</span></p>
+                                <p class="desc"><span>pred:past to next: ${info.past_to_next}</span></p>
+                            </div>
+                            <p>&nbsp</p>
+                        `
+                        document.getElementById(info.id_desc).innerHTML = temp;
+                    })
+
+
+                    charts[0].data.datasets[0].data = data.hour.actual;
+                    charts[0].data.datasets[1].data = data.hour.pred_past;
+                    charts[0].data.datasets[2].data = data.hour.now_s;
+                    charts[0].data.datasets[3].data = data.hour.pred_future;
+                    
+                    charts[1].data.datasets[0].data = data.day.actual;
+                    charts[1].data.datasets[1].data = data.day.pred_past;
+                    charts[1].data.datasets[2].data = data.day.now_s;
+                    charts[1].data.datasets[3].data = data.day.pred_future;
+                    
+                    charts[2].data.datasets[0].data = data.week.actual;
+                    charts[2].data.datasets[1].data = data.week.pred_past;
+                    charts[2].data.datasets[2].data = data.week.now_s;
+                    charts[2].data.datasets[3].data = data.week.pred_future;
 
                     charts.forEach(chart => {
-                            chart.destroy();
-                        });
-                    charts = []
-
-                    //set date
-                    utc_day = data.day.pred_future[0]['x']
-                    utc_week = data.week.pred_future[0]['x']
-
-                    // set daily forecast
-                    c_price = "priceUp"
-                    c_percent = "percentUp"
-                    c_datetime = "datetimeUp"
-                    if (data.day.pred_percent < 0) {
-                        c_price = "priceDown"
-                        c_percent = "percentDown"
-                        c_datetime = "datetimeDown"
-                    } else if (data.pred_percent == 0) {
-                        c_price = "price"
-                        c_percent = "percent"
-                        c_datetime = "datetime"
-                    } else {
-                        c_price = "priceUp"
-                        c_percent = "percentUp"
-                        c_datetime = "datetimeUp"
-                    }
-
-                    if (data.day.future_now_price_diff > 0) {
-                        c_now_future = "text_up"
-                    } else if (data.day.future_now_price_diff < 0) {
-                        c_now_future = "text_down"
-                    } else {
-                        c_now_future = "text_equal"
-                    }
-
-                    if (data.day['re-pred_percent'] > 0) {
-                        c_re_predict = "text_up"
-                    } else if (data.day['re-pred_percent'] < 0) {
-                        c_re_predict = "text_down"
-                    } else {
-                        c_re_predict = "text_equal"
-                    }
-
-                    if (data.day.now_future_direction == "up") {
-                        now_future = "🚀 up"
-                    } else if (data.day.now_future_direction == "down") {
-                        now_future = "😱 down"
-                    }
-
-                    if (data.day.past_future_direction == "up") {
-                        past_future = "🚀 up"
-                    } else if (data.day.past_future_direction == "down") {
-                        past_future = "😱 down"
-                    }
-
-                    but_future = ""
-                    if (data.day.now_future_direction != data.day.past_future_direction) {
-                        if(data.day.past_future_direction == "down" && data.day.future_now_price_diff > 0) {
-                            but_future = ", but 😱"
-                        } else if(data.day.past_future_direction == "up" && data.day.future_now_price_diff < 0) {
-                            but_future = ", but 🚀"
-                        }
-                    }
-
-                    temp = `
-                    <p class="price">
-                        <span class="${c_price}">${formatPrice(data.day.pred_price)}</span>
-                        <span class="${c_percent}">${formatPercent(data.day.pred_percent)}% tomorrow${but_future}</span>
-                    </p>
-                    <h4 class=""><span class="${c_datetime}">${data.day.pred_future[0]['x']} 00:00 UTC</span>&nbsp;<span id="id_day_time" class="${c_datetime}"></span></h4>
-
-                    <p class="price">
-                        <span class="price">${formatPrice(data.day.now)}</span>
-                        <span class="percent">${formatPercent(data.day.now_percent)}% now</span>
-                    </p>
-                    <h4 class=""><span class="datetime">${data.last_prediction_time} UTC</h4>
-
-                    
-                    <p class="pt1">&nbsp</p>
-                    <p class="desc"><span class="${c_now_future}">tomorrow - now: ${formatPercent(data.day.future_now_percent_diff)}%</span></p>
-                    <p class="desc"><span class="${c_re_predict}">re-predicted tomorrow: ${formatPrice(data.day['re-pred_price'])} ${formatPercent(data.day['re-pred_percent'])}%</span></p>                    
-                    <p class="desc"><span>actual to tomorrow: ${now_future}</span></p>
-                    <p class="desc"><span>pred:past to tomorrow: ${past_future}</span></p>
-                    `
-                    document.getElementById("id_day").innerHTML = temp;
-
-
-                    // set weekly forecast
-                    c_price = "priceUp"
-                    c_percent = "percentUp"
-                    c_datetime = "datetimeUp"
-                    if (data.week.pred_percent < 0) {
-                        c_price = "priceDown"
-                        c_percent = "percentDown"
-                        c_datetime = "datetimeDown"
-                    } else if (data.week.pred_percent == 0) {
-                        c_price = "price"
-                        c_percent = "percent"
-                        c_datetime = "datetime"
-                    } else {
-                        c_price = "priceUp"
-                        c_percent = "percentUp"
-                        c_datetime = "datetimeUp"
-                    }
-
-                    if (data.week.future_now_price_diff > 0) {
-                        c_now_future = "text_up"
-                    } else if (data.week.future_now_price_diff < 0) {
-                        c_now_future = "text_down"
-                    } else {
-                        c_now_future = "text_equal"
-                    }
-
-                    if (data.week['re-pred_percent'] > 0) {
-                        c_re_predict = "text_up"
-                    } else if (data.week['re-pred_percent'] < 0) {
-                        c_re_predict = "text_down"
-                    } else {
-                        c_re_predict = "text_equal"
-                    }
-
-                    if (data.week.now_future_direction == "up") {
-                        now_future = "🚀 up"
-                    } else if (data.week.now_future_direction == "down") {
-                        now_future = "😱 down"
-                    }
-
-                    if (data.week.past_future_direction == "up") {
-                        past_future = "🚀 up"
-                    } else if (data.week.past_future_direction == "down") {
-                        past_future = "😱 down"
-                    }
-
-                    but_future = ""
-                    if (data.week.now_future_direction != data.week.past_future_direction) {
-                        if(data.week.past_future_direction == "down" && data.week.future_now_price_diff > 0) {
-                            but_future = ", but 😱"
-                        } else if(data.week.past_future_direction == "up" && data.week.future_now_price_diff > 0) {
-                            but_future = ", but 🚀"
-                        }
-                    }                    
-
-                    temp = `
-                    <p class="price">
-                        <span class="${c_price}">${formatPrice(data.week.pred_price)}</span>
-                        <span class="${c_percent}">${formatPercent(data.week.pred_percent)}% next week${but_future}</span>
-                    </p>
-                    <h4 class=""><span class="${c_datetime}">${data.week.pred_future[0]['x']} 00:00 UTC</span>&nbsp;<span id="id_week_time" class="${c_datetime}"></span></h4>
-
-                    <p class="price">
-                        <span class="price">${formatPrice(data.week.now)}</span>
-                        <span class="percent">${formatPercent(data.week.now_percent)}% now</span>
-                    </p>
-                    <h4 class=""><span class="datetime">${data.last_prediction_time} UTC</h4>
-
-                    
-                    <p class="pt1">&nbsp</p>
-                    <p class="desc"><span class="${c_now_future}">next week - now: ${formatPercent(data.week.future_now_percent_diff)}%</span></p>
-                    <p class="desc"><span class="${c_re_predict}">re-predicted next week: ${formatPrice(data.week['re-pred_price'])} ${formatPercent(data.week['re-pred_percent'])}%</span></p>                    
-                    <p class="desc"><span>actual to next_week: ${now_future}</span></p>
-                    <p class="desc"><span>pred:past to next_week: ${past_future}</span></p>
-                    `
-                    document.getElementById("id_week").innerHTML = temp;
-
-
-                    Chart.defaults.color = "white";
-
-                    ctx1 = document.getElementById('id_daychart1').getContext('2d');
-                    chart1 = new Chart(ctx1, {
-                        type: 'line',
-                        data: {
-                            datasets: [{
-                                label: 'Actual',
-                                data: data.day.actual,
-                                //fill: true,
-                                borderWidth: 1,
-                                pointRadius: 2,
-                                backgroundColor: 'rgba(0, 255, 0, 0.8)',
-                                borderColor: 'rgba(0, 255, 0, 1)'
-                            },
-                            {
-                                label: 'Pred:Past',
-                                data: data.day.pred_past,
-                                fill: true,
-                                borderWidth: 1,
-                                //pointStyle: false,
-                                pointRadius: 2,
-                                // hidden: true, // Set the dataset to be hidden initially
-                                backgroundColor: 'rgba(255, 159, 64, 0.8)',
-                                borderColor: 'rgba(255, 159, 64, 1)'
-                                // backgroundColor: 'rgba(255, 205, 86, 0.8)',
-                                // borderColor: 'rgba(255, 205, 86, 1)'
-                            },
-                            {
-                                label: 'Now',
-                                data: data.day.now_s,
-                                //fill: true,
-                                borderWidth: 1,
-                                pointRadius: 2,
-                                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                                borderColor: 'rgba(255, 255, 255, 1)'
-                                // backgroundColor: 'rgba(255, 205, 86, 0.3)',
-                                // borderColor: 'rgba(255, 205, 86, 1)'
-                            },                            
-                            {
-                                label: 'Pred:Future',
-                                data: data.day.pred_future,
-                                fill: true,
-                                borderWidth: 1,
-                                pointRadius: 2,
-                                backgroundColor: 'rgba(255, 159, 64, 0.3)',
-                                borderColor: 'rgba(255, 159, 64, 1)'
-                                // backgroundColor: 'rgba(255, 205, 86, 0.3)',
-                                // borderColor: 'rgba(255, 205, 86, 1)'
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                x: {
-                                    grid: {
-                                        display: false
-                                    },                                
-                                    ticks: {
-                                        font: {
-                                            size: 8
-                                        }
-                                    },
-                                    display: false
-                                },
-                                y: {
-                                    grid: {
-                                        display: false
-                                    },
-                                    ticks: {
-                                        font: {
-                                            size: 8
-                                        }
-                                    }
-                                },
-                            },
-                            plugins: {
-                                title: {
-                                    display: false,
-                                    text: 'Daily Forecast',
-                                    font: {
-                                        size: 16, // Set the title font size here
-                                        weight: 'normal' // Set the title font weight to normal
-                                    }
-                                },
-                                legend: {
-                                    display: true,
-                                    position: 'bottom',
-                                    labels: {
-                                        font: {
-                                            size: 10 // Set the legend label font size here
-                                        },
-                                        boxWidth: 10 // Set the box size for the legend labels
-                                    }                            
-                                },
-                            }
-                        }
+                        chart.update();
                     });
-                    charts.push(chart1)
 
-                    // ctx2 = document.getElementById('id_daychart2').getContext('2d');
-                    // chart2 = new Chart(ctx2, {
-                    //     type: 'bar',
-                    //     data: {
-                    //         datasets: [
-                    //             {
-                    //                 label: 'accuracy',
-                    //                 data: data.daily.direction_acc,
-                    //                 fill: true,
-                    //                 borderWidth: 1,
-                    //                 pointRadius: 1,
-                    //                 pointStyle: false,
-                    //                 backgroundColor: 'rgba(128, 128, 128, 0.9)',
-                    //                 borderColor: 'rgba(128, 128, 128, 1)',
-                    //             }
-                    //         ]
-                    //     },
-                    //     options: {
-                    //         scales: {
-                    //             x: {
-                    //                 grid: {
-                    //                     display: false
-                    //                 },
-                    //                 ticks: {
-                    //                     font: {
-                    //                         color: 'white',
-                    //                         size: 8
-                    //                     }
-                    //                 },
-                    //                 display: false
-                    //             },
-                    //             y: {
-                    //                 grid: {
-                    //                     display: false
-                    //                 },
-                    //                 ticks: {
-                    //                     font: {
-                    //                         size: 8
-                    //                     }
-                    //                 },
-                    //                 max: 1.0,
-                    //                 min: 0
-                    //             },
-                    //         },
-                    //         plugins: {
-                    //             title: {
-                    //                 display: false,
-                    //                 text: 'Daily Average Directional Accuracy',
-                    //                 font: {
-                    //                     size: 16, // Set the title font size here
-                    //                     weight: 'normal' // Set the title font weight to normal
-                    //                 }
-                    //             },
-                    //             legend: {
-                    //                 display: true,
-                    //                 position: 'bottom',
-                    //                 labels: {
-                    //                     font: {
-                    //                         size: 9 // Set the legend label font size here
-                    //                     }
-                    //                 }
-                    //             }
-                    //         }
-                    //     }
-                    // })
-                    // charts.push(chart2)
-
-                    ctx3 = document.getElementById('id_weekchart1').getContext('2d');
-                    chart3 = new Chart(ctx3, {
-                        type: 'line',
-                        data: {
-                            datasets: [{
-                                label: 'Actual',
-                                data: data.week.actual,
-                                //fill: true,
-                                borderWidth: 1,
-                                pointRadius: 2,
-                                backgroundColor: 'rgba(0, 255, 0, 0.9)',
-                                borderColor: 'rgba(0, 255, 0, 1)'                            
-                            },
-                            {
-                                label: 'Pred:Past',
-                                data: data.week.pred_past,
-                                fill: true,
-                                borderWidth: 1,
-                                //pointStyle: false,
-                                pointRadius: 2,
-                                //hidden: true, // Set the dataset to be hidden initially
-                                backgroundColor: 'rgba(255, 99, 132, 0.8)',
-                                borderColor: 'rgba(255, 99, 132, 1)'
-                            },
-                            {
-                                label: 'Now',
-                                data: data.week.now_s,
-                                //fill: true,
-                                borderWidth: 1,
-                                pointRadius: 2,
-                                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                                borderColor: 'rgba(255, 255, 255, 1)'
-                                // backgroundColor: 'rgba(255, 205, 86, 0.3)',
-                                // borderColor: 'rgba(255, 205, 86, 1)'
-                            },                            
-                            {
-                                label: 'Pred:Future',
-                                data: data.week.pred_future,
-                                fill: true,
-                                borderWidth: 1,
-                                pointRadius: 2,
-                                backgroundColor: 'rgba(255, 99, 132, 0.3)',
-                                borderColor: 'rgba(255, 99, 132, 1)'
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                x: {
-                                    grid: {
-                                        display: false
-                                    },
-                                    ticks: {
-                                        font: {
-                                            size: 8
-                                        }
-                                    },
-                                    display: false
-                                },
-                                y: {
-                                    grid: {
-                                        display: false
-                                    },
-                                    ticks: {
-                                        font: {
-                                            size: 8
-                                        }
-                                    }
-                                },
-                            },
-                            plugins: {
-                                title: {
-                                    display: false,
-                                    text: 'Weekly Forecast',
-                                    font: {
-                                        size: 16, // Set the title font size here
-                                        weight: 'normal' // Set the title font weight to normal
-                                    }
-                                },
-                                legend: {
-                                    display: true,
-                                    position: 'bottom',
-                                    labels: {
-                                        font: {
-                                            size: 10 // Set the legend label font size here
-                                        },
-                                        boxWidth: 10 // Set the box size for the legend labels
-                                    }
-                                },
-                            }
-                        }
-                    });
-                    charts.push(chart3)
-
-                    // ctx4 = document.getElementById('id_weekchart2').getContext('2d');
-                    // chart4 = new Chart(ctx4, {
-                    //     type: 'bar',
-                    //     data: {
-                    //         datasets: [
-                    //             {
-                    //                 label: 'accuracy',
-                    //                 data: data.weekly.direction_acc,
-                    //                 fill: true,
-                    //                 borderWidth: 1,
-                    //                 pointRadius: 1,
-                    //                 backgroundColor: 'rgba(128, 128, 128, 0.9)',
-                    //                 borderColor: 'rgba(128, 128, 128, 1)',
-                    //             }
-                    //         ]
-                    //     },
-                    //     options: {
-                    //         scales: {
-                    //             x: {
-                    //                 grid: {
-                    //                     display: false
-                    //                 },
-                    //                 ticks: {
-                    //                     font: {
-                    //                         color: 'white',
-                    //                         size: 8
-                    //                     }
-                    //                 },
-                    //                 display: false
-                    //             },
-                    //             y: {
-                    //                 grid: {
-                    //                     display: false
-                    //                 },
-                    //                 ticks: {
-                    //                     font: {
-                    //                         size: 8
-                    //                     }
-                    //                 },
-                    //                 max: 1.0,
-                    //                 min: 0
-                    //             },
-                    //         },
-                    //         plugins: {
-                    //             title: {
-                    //                 display: false,
-                    //                 text: 'Weekly Average Directional Accuracy',
-                    //                 font: {
-                    //                     size: 16, // Set the title font size here
-                    //                     weight: 'normal' // Set the title font weight to normal
-                    //                 }
-                    //             },
-                    //             legend: {
-                    //                 display: true,
-                    //                 position: 'bottom',
-                    //                 labels: {
-                    //                     font: {
-                    //                         size: 9 // Set the legend label font size here
-                    //                     }
-                    //                 }                                
-                    //             }
-                    //         }
-                    //     }
-                    // })
-                    // charts.push(chart4)
-
-                    container = document.getElementById('id_container');
-                    resizeObserver = new ResizeObserver(() => {
-                        charts.forEach(chart => {
-                            chart.resize();
-                        });
-                    });
-                    resizeObserver.observe(container);
-
+                    // charts.forEach(chart => {
+                    //     chart.destroy();
+                    // });
+                    // charts = []
                 })
         }
 
-        load();
-        setInterval(load, 1*60*1000); // 30 seconds
+        create_charts();
 
+        reload();
 
-        function getDateString(date) {
+        setInterval(reload, 1 * 10 * 1000);
+
+        function getNowDateString(now) {
+            const year = now.getUTCFullYear();
+            const month = (now.getUTCMonth() + 1).toString().padStart(2, '0');
+            const day = now.getUTCDate().toString().padStart(2, '0');
+            const hours = now.getUTCHours().toString().padStart(2, '0');
+            const minutes = now.getUTCMinutes().toString().padStart(2, '0');
+            const seconds = now.getUTCSeconds().toString().padStart(2, '0');
+            const time_now = `${year}-${month}-${day} ${hours}:${minutes}:${seconds} UTC`;
+
+            return time_now;
+        }
+
+        function getCountdownDateString(date, now) {
             targetTime = new Date(date);
-            currentTime = new Date();
-            timeDiff = targetTime.getTime() - currentTime.getTime();
+            //currentTime = new Date();
+            var utc = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
+            timeDiff = targetTime.getTime() - utc.getTime();
             hours = Math.floor(timeDiff / (1000 * 60 * 60)).toString().padStart(2, '0');
             minutes = Math.floor((timeDiff / (1000 * 60)) % 60).toString().padStart(2, '0');
             seconds = Math.floor((timeDiff / 1000) % 60).toString().padStart(2, '0');
 
-            time = `-${hours}:${minutes}:${seconds}`;
-            if(hours < 0) {
-                time = "00:00:00"
-            }
-
+            time = `${hours}:${minutes}:${seconds}`;
+            // if (hours < 0) {
+            //     time = "00:00:00"
+            // }
             return time
         }
 
-        function updateTime() {        
-            if (utc_day != null) {
-                document.getElementById('id_day_time').innerHTML = getDateString(utc_day);
-            }
-            if (utc_week != null) {
-                document.getElementById('id_week_time').innerHTML = getDateString(utc_week);
+        function updateTime(now) {
+            if (last_data != null) {
+
+                now = new Date();
+                document.getElementById('id_hour_time_left').innerHTML = getCountdownDateString(last_data.hour.pred_future[0]['x'], now);
+                document.getElementById('id_day_time_left').innerHTML = getCountdownDateString(last_data.day.pred_future[0]['x'], now);
+                document.getElementById('id_week_time_left').innerHTML = getCountdownDateString(last_data.week.pred_future[0]['x'], now);
+
+                date_now = getNowDateString(now)
+                document.getElementById('id_hour_datetime').innerHTML = date_now
+                document.getElementById('id_day_datetime').innerHTML = date_now
+                document.getElementById('id_week_datetime').innerHTML = date_now
             }
         }
-        setInterval(updateTime, 1000); // 1 second
 
+        setInterval(updateTime, 1000);
+        
 
         LANGUAGES = ["zh", "es", "en", "ar", "pt", "bn", "ru", "ja", "ko", "fr", "de", "it", "tr", "hi", "fa", "th", "pl", "ur", "nl"]
         function detectLanguage() {
@@ -796,6 +729,90 @@
             updateContent(language);
         };
 
+        function formatPrice(price) {
+            return price.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            }).replace(/\.(\d\d)/, '');
+        }
+
+        function formatPercent(number) {
+            return number.toLocaleString('en-US', {
+                style: 'decimal',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }        
+
+        price_now = null
+        function getPrice() {
+            const url = 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT';
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+
+                    if(last_data != null) {
+
+                        price_now = Math.round(data.price);
+
+                        // hour
+                        price_last = last_data.hour.actual.slice(-1)[0]['y']
+                        percent_now = (price_now - price_last) * 100 / price_last;
+
+                        temp = `
+                             <span class="price">${formatPrice(price_now)}</span>
+                             <span class="percent">${formatPercent(percent_now)}% now</span>
+                        `
+                        document.getElementById('id_hour_now').innerHTML = temp
+
+                        price_next = last_data.hour.pred_future.slice(0)[0]['y']
+                        percent_next = (price_next - price_last) * 100 / price_last;
+                        price_percent_gap = percent_next - percent_now
+                        temp = `gap: ${formatPercent(price_percent_gap)}%`
+                        document.getElementById('id_hour_gap').innerHTML = temp
+
+                        // day
+                        price_last = last_data.day.actual.slice(-1)[0]['y']
+                        percent_now = (price_now - price_last) * 100 / price_last;
+
+                        temp = `
+                             <span class="price">${formatPrice(price_now)}</span>
+                             <span class="percent">${formatPercent(percent_now)}% now</span>
+                        `
+                        document.getElementById('id_day_now').innerHTML = temp
+
+                        price_next = last_data.day.pred_future.slice(0)[0]['y']
+                        percent_next = (price_next - price_last) * 100 / price_last;
+                        price_percent_gap = percent_next - percent_now
+                        temp = `gap: ${formatPercent(price_percent_gap)}%`
+                        document.getElementById('id_day_gap').innerHTML = temp
+
+                        // week
+                        price_last = last_data.week.actual.slice(-1)[0]['y']
+                        percent_now = (price_now - price_last) * 100 / price_last;
+
+                        temp = `
+                             <span class="price">${formatPrice(price_now)}</span>
+                             <span class="percent">${formatPercent(percent_now)}% now</span>
+                        `
+                        document.getElementById('id_week_now').innerHTML = temp
+
+                        price_next = last_data.week.pred_future.slice(0)[0]['y']
+                        percent_next = (price_next - price_last) * 100 / price_last;
+                        price_percent_gap = percent_next - percent_now
+                        temp = `gap: ${formatPercent(price_percent_gap)}%`
+                        document.getElementById('id_week_gap').innerHTML = temp                        
+
+                        for(chart of charts) {
+                            chart.data.datasets[2].data[1]['y'] = price_now
+                            chart.update();
+                        }                        
+                    }
+                })
+                .catch(error => console.error(error));
+        }
+        getPrice();
+        setInterval(getPrice, 3000);
 
     </script>
 
