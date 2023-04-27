@@ -678,10 +678,11 @@
             minutes = Math.floor((timeDiff / (1000 * 60)) % 60).toString().padStart(2, '0');
             seconds = Math.floor((timeDiff / 1000) % 60).toString().padStart(2, '0');
 
-            time = `${hours}:${minutes}:${seconds}`;
-            // if (hours < 0) {
-            //     time = "00:00:00"
-            // }
+            time = `-${hours}:${minutes}:${seconds}`;
+            if (hours < 0) {
+                time = "Wait, I'm predicting.🧘🏻"
+            }
+            
             return time
         }
 
