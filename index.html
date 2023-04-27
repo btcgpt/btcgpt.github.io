@@ -781,7 +781,7 @@
 
                         price_next = last_data.hour.pred_future.slice(0)[0]['y']
                         percent_next = (price_next - price_last) * 100 / price_last;
-                        price_percent_gap = percent_next - percent_now
+                        price_percent_gap = percent_now - percent_next
                         temp = `gap: ${formatPercent(price_percent_gap)}%`
                         document.getElementById('id_hour_gap').innerHTML = temp
 
@@ -797,7 +797,7 @@
 
                         price_next = last_data.day.pred_future.slice(0)[0]['y']
                         percent_next = (price_next - price_last) * 100 / price_last;
-                        price_percent_gap = percent_next - percent_now
+                        price_percent_gap = percent_now - percent_next
                         temp = `gap: ${formatPercent(price_percent_gap)}%`
                         document.getElementById('id_day_gap').innerHTML = temp
 
@@ -813,7 +813,7 @@
 
                         price_next = last_data.week.pred_future.slice(0)[0]['y']
                         percent_next = (price_next - price_last) * 100 / price_last;
-                        price_percent_gap = percent_next - percent_now
+                        price_percent_gap = percent_now - percent_next                        
                         temp = `gap: ${formatPercent(price_percent_gap)}%`
                         document.getElementById('id_week_gap').innerHTML = temp                        
 
