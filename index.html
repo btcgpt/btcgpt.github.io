@@ -62,7 +62,7 @@
                     <h4 class="bottom"><span class="datetime" id="id_hour_datetime"></span></h4>
                 </p>
                 <p class="info">
-                    <p class="desc"><span id="id_hour_gap">&nbsp;</span></p>
+                    <p class="desc" id="id_hour_gap"><span>&nbsp;</span></p>
                     <div id="id_hour_desc">
                         <p class="desc"><span></span></p>
                         <p class="desc"><span></span></p>
@@ -87,7 +87,7 @@
                     <h4 class="bottom"><span class="datetime" id="id_day_datetime"></span></h4>                    
                 </p>
                 <p class="info">
-                    <p class="desc"><span id="id_day_gap">&nbsp;</span></p>
+                    <p class="desc" id="id_day_gap"><span>&nbsp;</span></p>
                     <div id="id_day_desc">
                         <p class="desc"><span></span></p>
                         <p class="desc"><span></span></p>
@@ -111,7 +111,7 @@
                     <h4 class="bottom"><span class="datetime" id="id_week_datetime"></span></h4>                                        
                 </p>
                 <p class="info">
-                    <p class="desc"><span id="id_week_gap">&nbsp;</span></p>
+                    <p class="desc" id="id_week_gap"><span>&nbsp;</span></p>               
                     <div id="id_week_desc">
                         <p class="desc"><span></span></p>
                         <p class="desc"><span></span></p>
@@ -782,7 +782,13 @@
                         price_next = last_data.hour.pred_future.slice(0)[0]['y']
                         percent_next = (price_next - price_last) * 100 / price_last;
                         price_percent_gap = percent_now - percent_next
-                        temp = `gap: ${formatPercent(price_percent_gap)}%`
+                        if(price_percent_gap > 0)
+                            direction = 'up'
+                        else if(price_percent_gap < 0)
+                            direction = 'down'
+                        else
+                            direction = 'same'
+                        temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}%</span>`
                         document.getElementById('id_hour_gap').innerHTML = temp
 
                         // day
@@ -798,7 +804,13 @@
                         price_next = last_data.day.pred_future.slice(0)[0]['y']
                         percent_next = (price_next - price_last) * 100 / price_last;
                         price_percent_gap = percent_now - percent_next
-                        temp = `gap: ${formatPercent(price_percent_gap)}%`
+                        if(price_percent_gap > 0)
+                            direction = 'up'
+                        else if(price_percent_gap < 0)
+                            direction = 'down'
+                        else
+                            direction = 'same'
+                        temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}%</span>`
                         document.getElementById('id_day_gap').innerHTML = temp
 
                         // week
@@ -814,7 +826,14 @@
                         price_next = last_data.week.pred_future.slice(0)[0]['y']
                         percent_next = (price_next - price_last) * 100 / price_last;
                         price_percent_gap = percent_now - percent_next                        
-                        temp = `gap: ${formatPercent(price_percent_gap)}%`
+                        price_percent_gap = percent_now - percent_next
+                        if(price_percent_gap > 0)
+                            direction = 'up'
+                        else if(price_percent_gap < 0)
+                            direction = 'down'
+                        else
+                            direction = 'same'
+                        temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}%</span>`
                         document.getElementById('id_week_gap').innerHTML = temp                        
 
                         for(chart of charts) {
