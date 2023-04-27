@@ -252,7 +252,8 @@
                         //data: data.day.now_s,
                         //fill: true,
                         borderWidth: 1,
-                        pointRadius: 2,
+                        //pointRadius: 2,
+                        pointRadius: [2, 2],
                         backgroundColor: 'rgba(255, 255, 255, 0.9)',
                         borderColor: 'rgba(255, 255, 255, 1)'
                     },
@@ -310,10 +311,15 @@
                                 boxWidth: 10 // Set the box size for the legend labels
                             }
                         },
-                    }
+                    },
+                
+                    // animation: {
+                    //     duration: 2000,
+                    //     easing: "linear"
+                    // }
                 }
             });
-            charts.push(chart)            
+            charts.push(chart)
 
             ctx = document.getElementById('id_daychart').getContext('2d');
             chart = new Chart(ctx, {
@@ -344,7 +350,7 @@
                         //data: data.day.now_s,
                         //fill: true,
                         borderWidth: 1,
-                        pointRadius: 2,
+                        pointRadius: [2, 2],
                         backgroundColor: 'rgba(255, 255, 255, 0.9)',
                         borderColor: 'rgba(255, 255, 255, 1)'
                     },
@@ -436,7 +442,7 @@
                         //data: data.week.now_s,
                         //fill: true,
                         borderWidth: 1,
-                        pointRadius: 2,
+                        pointRadius: [2, 2],
                         backgroundColor: 'rgba(255, 255, 255, 0.9)',
                         borderColor: 'rgba(255, 255, 255, 1)'
                     },
@@ -692,8 +698,16 @@
                 document.getElementById('id_day_datetime').innerHTML = date_now
                 document.getElementById('id_week_datetime').innerHTML = date_now
             }
-        }
 
+            charts.forEach(chart => {
+                if (chart.data.datasets[2].pointRadius[1] == 2) {
+                    chart.data.datasets[2].pointRadius[1] = 3.5
+                } else {
+                    chart.data.datasets[2].pointRadius[1] = 2
+                }
+                chart.update();                
+            });
+        }
         setInterval(updateTime, 1000);
         
 
