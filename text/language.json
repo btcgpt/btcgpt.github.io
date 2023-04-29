@@ -1,37 +1,37 @@
 {
     "zh": {
         "text": "BTCGPT 预测比特币价格。",
-        "notice1": "这只是娱乐，不要太认真。",
+        "notice1": "预测可能会有误，不要太认真。",
         "notice2": "本站不推荐任何投资，使用本站信息所产生的所有风险由投资者自行承担。"
     },
     "es": {
         "text": "BTCGPT predice el precio del bitcoin.",
-        "notice1": "Es solo por diversión, así que no te lo tomes demasiado en serio.",
+        "notice1": "Las predicciones pueden ser erróneas, no lo tomes demasiado en serio.",
         "notice2": "Este sitio no recomienda ninguna inversión y todos los riesgos derivados del uso de la información en este sitio son responsabilidad del inversor."
     },
     "en": {
         "text": "BTCGPT predicts bitcoin price.",
-        "notice1": "It's just for fun, so don't take it too seriously.",
+        "notice1": "Predictions can be wrong, don't take it too seriously.",
         "notice2": "This site does not recommend any investment and all risks arising from the use of information on this site are the responsibility of the investor."
     },
     "ar": {
         "text": "BTCGPT يتنبأ بسعر البيتكوين.",
-        "notice1": "هذا مجرد للمرح، لذلك لا تأخذها على محمل الجد.",
+        "notice1": "التنبؤات يمكن أن تكون خاطئة، لا تأخذها على محمل الجد.",
         "notice2": "لا يوصي هذا الموقع بأي استثمار وجميع المخاطر المترتبة على استخدام المعلومات في هذا الموقع تقع على عاتق المستثمر."
     },
     "pt": {
         "text": "BTCGPT prevê o preço do bitcoin.",
-        "notice1": "É só para diversão, então não leve a sério demais.",
+        "notice1": "As previsões podem estar erradas, não leve isso muito a sério.",
         "notice2": "Este site não recomenda nenhum investimento e todos os riscos decorrentes do uso das informações neste site são de responsabilidade do investidor."
     },
     "bn": {
         "text": "BTCGPT বিটকয়েনের দাম পূর্বাভাস করে।",
-        "notice1": "এটি শুধুমাত্র মজার জন্য, তাই খুব গুরুত্ব দিয়ে না নিন।",
+        "notice1": "পূর্বাভাসগুলি ভুল হতে পারে, এটা খুব গুরুত্ব দিয়ে না নিন।",
         "notice2": "এই সাইটি কোনও বিনিয়োগ সুপারিশ করে না এবং এই সাইটে তথ্য ব্যবহার করতে থাকা সমস্ত ঝুঁকি বিনিময়কারীর দায়বদ্ধতা।"
     },
     "ru": {
         "text": "BTCGPT прогнозирует цену биткойна.",
-        "notice1": "Это просто для развлечения, так что не принимайте это слишком серьезно.",
+        "notice1": "Прогнозы могут быть неверными, не принимайте их слишком серьезно.",
         "notice2": "Этот сайт не рекомендует какие-либо инвестиции, и все риски, связанные с использованием информации на этом сайте, лежат на инвесторе."
     },
     "ja": {
@@ -41,57 +41,57 @@
     },
     "ko": {
         "text": "BTCGPT는 비트코인 가격을 예측합니다.",
-        "notice1": "즐길 목적으로만 사용하시고 진지하게 받아들이지 마세요.",
+        "notice1": "예측은 틀릴 수 있으니 너무 진지하게 받아들이지 마세요.",
         "notice2": "이 사이트는 어떠한 투자도 권장하지 않으며, 이 사이트의 정보를 사용함으로써 발생하는 모든 위험은 투자자의 책임입니다."
     },
     "fr": {
         "text": "BTCGPT prédit le prix du Bitcoin.",
-        "notice1": "C'est juste pour le plaisir, alors ne le prenez pas trop au sérieux.",
+        "notice1": "Les prévisions peuvent être fausses, ne les prenez pas trop au sérieux.",
         "notice2": "Ce site ne recommande aucun investissement et tous les risques découlant de l'utilisation des informations sur ce site sont de la responsabilité de l'investisseur."
     },
     "de": {
         "text": "BTCGPT prognostiziert den Bitcoin-Preis.",
-        "notice1": "Es ist nur zum Spaß, also nehmen Sie es nicht zu ernst.",
+        "notice1": "Prognosen können falsch sein, nehmen Sie es nicht zu ernst.",
         "notice2": "Diese Website empfiehlt keine Investitionen und alle Risiken, die sich aus der Nutzung von Informationen auf dieser Website ergeben, liegen in der Verantwortung des Investors."
     },
     "it": {
         "text": "BTCGPT predice il prezzo del Bitcoin.",
-        "notice1": "È solo per divertimento, quindi non prenderlo troppo sul serio.",
+        "notice1": "Le previsioni possono essere sbagliate, non prenderle troppo sul serio.",
         "notice2": "Questo sito non raccomanda alcun investimento etutti i rischi derivanti dall'uso delle informazioni su questo sito sono a carico dell'investitore."
     },
     "tr": {
         "text": "BTCGPT Bitcoin fiyatını tahmin ediyor.",
-        "notice1": "Sadece eğlence için, bu yüzden çok ciddiye almayın.",
+        "notice1": "Tahminler yanlış olabilir, çok ciddiye almayın.",
         "notice2": "Bu site herhangi bir yatırım önermiyor ve bu sitedeki bilgilerin kullanımından kaynaklanan tüm riskler yatırımcının sorumluluğundadır."
     },
     "hi": {
         "text": "BTCGPT बिटकॉइन कीमत का अनुमान लगाता है।",
-        "notice1": "यह सिर्फ मज़े के लिए है, इसलिए इसे ज्यादा गंभीरता से न लें।",
+        "notice1": "पूर्वानुमान गलत हो सकते हैं, इसे ज्यादा गंभीरता से न लें।",
         "notice2": "इस साइट पर किसी भी निवेश की सिफारिश नहीं की जाती है और इस साइट पर जानकारी का उपयोग करने से होने वाली सभी जोखिम निवेशक की जिम्मेदारी होती है।"
     },
     "fa": {
         "text": "BTCGPT پیش بینی قیمت بیت کوین را انجام می دهد.",
-        "notice1": "این فقط برای سرگرمی است، بنابراین آن را بیش از حد جدی نگیرید.",
+        "notice1": "پیش‌بینی‌ها ممکن است اشتباه باشند، آن را بیش از حد جدی نگیرید.",
         "notice2": "این سایت هیچ گونه سرمایه گذاری را توصیه نمی کند و تمامی خطرات ناشی از استفاده از اطلاعات در این سایت مسئولیت سرمایه گذار است."
     },
     "th": {
         "text": "BTCGPT ทำนายราคาบิตคอยน์",
-        "notice1": "มันเพื่อความสนุกเท่านั้นดังนั้นอย่าให้มันจริงเกินไป",
+        "notice1": "การพยากรณ์อาจผิดพลาด ไม่ควรให้ความสำคัญมากเกินไป",
         "notice2": "เว็บไซต์นี้ไม่แนะนำการลงทุนใดๆ และความเสี่ยงทั้งหมดที่เกี่ยวข้องกับการใช้ข้อมูลในเว็บไซต์นี้เป็นความรับผิดชอบของนักลงทุน"
     },
     "pl": {
         "text": "BTCGPT przewiduje cenę bitcoina.",
-        "notice1": "To tylko dla zabawy, więc nie bierz tego zbyt poważnie.",
+        "notice1": "Prognozy mogą być mylące, nie bierz ich zbyt poważnie.",
         "notice2": "Ta strona nie zaleca żadnych inwestycji, a wszystkie ryzyka wynikające z korzystania z informacji na tej stronie ponosi inwestor."
     },
     "ur": {
         "text": "BTCGPT بٹ کوائن کی قیمت کا پیشگوئی کرتا ہے۔",
-        "notice1": "یہ صرف مذاق کے لئے ہے، تو اسے بہت زیادہ سنجیدگی سے نہ لیں۔",
+        "notice1": "پیشگوئیاں غلط ہو سکتی ہیں، اسے زیادہ سنجیدگی سے نہ لیں۔",
         "notice2": "اس سائٹ پر کوئی بھی سرمایہ کاری کی تجویز نہیں کی جاتی اور اس سائٹ پر موجود معلومات کے استعمال سے پیدا ہونے والے تمام خطرات سرمایہ کار کی ذمہ داری ہوتی ہیں۔"
     },
     "nl": {
         "text": "BTCGPT voorspelt de bitcoinprijs.",
-        "notice1": "Het is gewoon voor de lol, dus neem het niet te serieus.",
+        "notice1": "Voorspellingen kunnen fout zijn, neem het niet te serieus.",
         "notice2": "Deze site beveelt geen enkele investering aan en alle risico's die voortvloeien uit het gebruik van informatie op deze site zijn de verantwoordelijkheid van de investeerder."
     }
 }
