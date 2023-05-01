@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
     <link rel="stylesheet" href="./css/style.css?v=2.4">
     <link rel="icon" type="image/png" href="./images/btc.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3319067300509450" crossorigin="anonymous"></script>
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3319067300509450" crossorigin="anonymous"></script> -->
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -217,6 +217,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.2.1/dist/chartjs-plugin-annotation.min.js"></script>    
 
     <script>
 
@@ -260,6 +261,7 @@
                         borderColor: 'rgba(255, 255, 255, 1)'
                     },
                     {
+                        id: "future",
                         label: 'Pred:Future',
                         //data: data.day.pred_future,
                         fill: true,
@@ -291,8 +293,9 @@
                                     size: 8
                                 },
                                 beginAtZero: false,                                
-                            }
-                        },
+                            },
+                            // position: "right"
+                        },                        
                     },
                     plugins: {
                         title: {
@@ -312,9 +315,10 @@
                                 },
                                 boxWidth: 10 // Set the box size for the legend labels
                             }
-                        },
+                        }                                            
                     },
-                
+           
+
                     // animation: {
                     //     duration: 2000,
                     //     easing: "linear"
@@ -387,7 +391,8 @@
                                 font: {
                                     size: 8
                                 },
-                            }
+                            },
+                            // position: "right"
                         },
                     },
                     plugins: {
@@ -479,7 +484,8 @@
                                 font: {
                                     size: 8
                                 }
-                            }
+                            },
+                            // position: "right"                            
                         },
                     },
                     plugins: {
@@ -558,7 +564,24 @@
             info.id_desc = data.id_desc
             info.id_time_left = data.id_time_left
 
+            // gap_avg_abs(data.actual, data.pred_past)
+
             return info
+        }
+
+        function gap_avg_abs(y_true, y_pred) {
+            let l_true = [];
+            let l_pred = [];
+
+            y_true.forEach((item, index) => {
+                l_true.push(item['y']);
+                l_pred.push(y_pred[index]['y']);
+            });
+
+            let abs_diff = l_true.reduce((sum, val, index) => sum + Math.abs(val - l_pred[index]) / val, 0);
+            let avg_abs_diff = abs_diff * 100 / l_true.length;
+
+            console.log("Average absolute difference:", formatPercent(avg_abs_diff));
         }
 
         last_data = null
@@ -602,7 +625,7 @@
                     mylist = [data.hour, data.day, data.week]
                     mylist.forEach(item => {
 
-                        info = get_info(item)
+                        info = get_info(item)                        
 
                         temp = `
                         <p class="info">
@@ -617,7 +640,7 @@
                         document.getElementById(info.id_next).innerHTML = temp;
 
                         temp = `
-                            <div>
+                            <div>                      
                                 <p class="desc"><span>actual to next: ${info.actual_to_next}</span></p>
                                 <p class="desc"><span>pred:past to next: ${info.past_to_next}</span></p>
                             </div>
