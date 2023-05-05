@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
     <link rel="stylesheet" href="./css/style.css?v=2.4">
-    <link rel="icon" type="image/png" href="./images/btc.svg">
+    <link rel="icon" type="image/png" href="./images/btc.svg">    
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3319067300509450" crossorigin="anonymous"></script> -->
 </head>
 
@@ -58,19 +58,19 @@
                     <h4 class="bottom"><span class="datetime"></span><span id="id_hour_time_left" class="datetime"></span></h4>
                 </p>
                 <p class="info">
-                    <div id="id_hour_now">
-                    </div>
-                    <h4 class="bottom"><span class="datetime" id="id_hour_datetime"></span></h4>
+                <div id="id_hour_now">
+                </div>
+                <h4 class="bottom"><span class="datetime" id="id_hour_datetime"></span></h4>
                 </p>
                 <p class="info">
-                    <p class="desc" id="id_hour_gap"><span>&nbsp;</span></p>
-                    <div id="id_hour_desc">
-                        <p class="desc"><span></span></p>
-                        <p class="desc"><span></span></p>
-                    </div>
+                <p class="desc" id="id_hour_gap"><span>&nbsp;</span></p>
+                <div id="id_hour_desc">
+                    <p class="desc"><span></span></p>
+                    <p class="desc"><span></span></p>
+                </div>
                 </p>
             </div>
-            <canvas class="chart" id="id_hourchart" height="150"></canvas>            
+            <canvas class="chart" id="id_hourchart" height="150"></canvas>
         </div>
 
 
@@ -80,22 +80,22 @@
                 <p class="info" id="id_day_next">
                     <span class="price"></span>
                     <span class="percent"></span>
-                    <h4 class="bottom"><span class="datetime"></span></h4>                    
+                <h4 class="bottom"><span class="datetime"></span></h4>
                 </p>
                 <p class="info">
-                    <div id="id_day_now">
-                    </div>
-                    <h4 class="bottom"><span class="datetime" id="id_day_datetime"></span></h4>                    
+                <div id="id_day_now">
+                </div>
+                <h4 class="bottom"><span class="datetime" id="id_day_datetime"></span></h4>
                 </p>
                 <p class="info">
-                    <p class="desc" id="id_day_gap"><span>&nbsp;</span></p>
-                    <div id="id_day_desc">
-                        <p class="desc"><span></span></p>
-                        <p class="desc"><span></span></p>
-                    </div>
+                <p class="desc" id="id_day_gap"><span>&nbsp;</span></p>
+                <div id="id_day_desc">
+                    <p class="desc"><span></span></p>
+                    <p class="desc"><span></span></p>
+                </div>
                 </p>
             </div>
-            <canvas class="chart" id="id_daychart" height="150"></canvas>            
+            <canvas class="chart" id="id_daychart" height="150"></canvas>
         </div>
 
         <div class="card">
@@ -104,22 +104,22 @@
                 <p class="info" id="id_week_next">
                     <span class="price"></span>
                     <span class="percent"></span>
-                    <h4 class="bottom"><span class="datetime"></span></h4>                    
+                <h4 class="bottom"><span class="datetime"></span></h4>
                 </p>
                 <p class="info" id="id_week_now">
-                    <div id="id_week_now">
-                    </div>
-                    <h4 class="bottom"><span class="datetime" id="id_week_datetime"></span></h4>                                        
+                <div id="id_week_now">
+                </div>
+                <h4 class="bottom"><span class="datetime" id="id_week_datetime"></span></h4>
                 </p>
                 <p class="info">
-                    <p class="desc" id="id_week_gap"><span>&nbsp;</span></p>               
-                    <div id="id_week_desc">
-                        <p class="desc"><span></span></p>
-                        <p class="desc"><span></span></p>
-                    </div>
+                <p class="desc" id="id_week_gap"><span>&nbsp;</span></p>
+                <div id="id_week_desc">
+                    <p class="desc"><span></span></p>
+                    <p class="desc"><span></span></p>
+                </div>
                 </p>
             </div>
-            <canvas class="chart" id="id_weekchart" height="150"></canvas>            
+            <canvas class="chart" id="id_weekchart" height="150"></canvas>
         </div>
 
         <div class="card">
@@ -144,7 +144,10 @@
             <p class="sm_text">Why are the hourly, daily and weekly price predictions different?</p>
             <p>
                 <span class="sm_text">
-                    Ideally, we would like all models to provide the same predictions, but in reality, due to differences in the training data and model architecture, they may produce different results. The hourly and daily models use more recent data and incorporates more short-term market trends, while the weekly model uses a longer time frame and focuses on broader market trends.
+                    Ideally, we would like all models to provide the same predictions, but in reality, due to
+                    differences in the training data and model architecture, they may produce different results. The
+                    hourly and daily models use more recent data and incorporates more short-term market trends, while
+                    the weekly model uses a longer time frame and focuses on broader market trends.
                 </span>
             </p>
         </div>
@@ -211,16 +214,14 @@
     </div>
 
     <footer class="sm_text" style="text-align: center;">
-        <div style="text-align: center;"><img src="./images/captainbtc.jpg" alt="CaptainBTC"
-                style="width: 60px; height: 60px; margin-right: 0px; border-radius: 50%;"></div>
+        <div style="text-align: center;"><img src="./images/captainbtc.jpg" alt="CaptainBTC" style="width: 60px; height: 60px; margin-right: 0px; border-radius: 50%;"></div>
         &copy; 2023 BTCGPT.INFO
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.2.1/dist/chartjs-plugin-annotation.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.2.1/dist/chartjs-plugin-annotation.min.js"></script>
 
     <script>
-
         charts = []
         function create_charts() {
             Chart.defaults.color = "white";
@@ -292,10 +293,10 @@
                                 font: {
                                     size: 8
                                 },
-                                beginAtZero: false,                                
+                                beginAtZero: false,
                             },
                             // position: "right"
-                        },                        
+                        },
                     },
                     plugins: {
                         title: {
@@ -315,14 +316,8 @@
                                 },
                                 boxWidth: 10 // Set the box size for the legend labels
                             }
-                        }                                            
+                        }
                     },
-           
-
-                    // animation: {
-                    //     duration: 2000,
-                    //     easing: "linear"
-                    // }
                 }
             });
             charts.push(chart)
@@ -418,7 +413,6 @@
                 }
             });
             charts.push(chart)
-
 
             ctx = document.getElementById('id_weekchart').getContext('2d');
             chart = new Chart(ctx, {
@@ -529,7 +523,7 @@
             next_price = data.pred_future.slice(0)[0]['y']
             last_price = data.actual.slice(-1)[0]['y']
             next_percent = (next_price - last_price) * 100 / last_price
-            
+
             info.next_price = formatPrice(next_price)
             info.next_percent = formatPercent(next_percent) + data.percent
 
@@ -594,86 +588,85 @@
         function reload() {
             //fetch the JSON data from the file
             fetch("https://raw.githubusercontent.com/btcgpt/data/main/output.json", { cache: 'no-cache' })
-                .then(response => response.json())
-                .then(data => {
+            .then(response => response.json())
+            .then(data => {
+                temp = JSON.stringify(data);
+                if (temp == last_data_str) {
+                    //console.log("no change")
+                    return
+                }
+                last_data = data
+                last_data_str = temp
 
-                    temp = JSON.stringify(data);
-                    if (temp == last_data_str) {
-                        //console.log("no change")
-                        return
-                    }
-                    last_data = data
-                    last_data_str = temp
+                // prepare to display
+                data.hour.id_next = "id_hour_next"
+                data.day.id_next = "id_day_next"
+                data.week.id_next = "id_week_next"
 
-                    // prepare to display
-                    data.hour.id_next = "id_hour_next"
-                    data.day.id_next = "id_day_next"
-                    data.week.id_next = "id_week_next"
+                data.hour.id_desc = "id_hour_desc"
+                data.day.id_desc = "id_day_desc"
+                data.week.id_desc = "id_week_desc"
 
-                    data.hour.id_desc = "id_hour_desc"
-                    data.day.id_desc = "id_day_desc"
-                    data.week.id_desc = "id_week_desc"
+                data.hour.id_time_left = "id_hour_time_left"
+                data.day.id_time_left = "id_day_time_left"
+                data.week.id_time_left = "id_week_time_left"
 
-                    data.hour.id_time_left = "id_hour_time_left"
-                    data.day.id_time_left = "id_day_time_left"
-                    data.week.id_time_left = "id_week_time_left"                    
+                data.hour.percent = "% +1h"
+                data.day.percent = "% +1d"
+                data.week.percent = "% +1w"
 
-                    data.hour.percent = "% +1h"
-                    data.day.percent = "% +1d"
-                    data.week.percent = "% +1w"
+                mylist = [data.hour, data.day, data.week]
+                mylist.forEach(item => {
 
-                    mylist = [data.hour, data.day, data.week]
-                    mylist.forEach(item => {
+                    info = get_info(item)
 
-                        info = get_info(item)                        
+                    temp = `
+                    <p class="info">
+                        <span class="price ${info.c_next}">${formatPrice(info.next_price)}</span>
+                        <span class="percent ${info.c_next}">${formatPercent(info.next_percent)}</span>
+                        <h4 class="bottom">
+                            <span class="datetime ${info.c_next}">${info.datetime}:00 UTC,</span>
+                            <span id="${info.id_time_left}" class="datetime ${info.c_next}"> 00:00:00</span>
+                        </h4>
+                    </p>`
 
-                        temp = `
-                        <p class="info">
-                            <span class="price ${info.c_next}">${formatPrice(info.next_price)}</span>
-                            <span class="percent ${info.c_next}">${formatPercent(info.next_percent)}</span>
-                            <h4 class="bottom">
-                                <span class="datetime ${info.c_next}">${info.datetime}:00 UTC,</span>
-                                <span id="${info.id_time_left}" class="datetime ${info.c_next}"> 00:00:00</span>
-                            </h4>
-                        </p>`
+                    document.getElementById(info.id_next).innerHTML = temp;
 
-                        document.getElementById(info.id_next).innerHTML = temp;
-
-                        temp = `
-                            <div>                      
-                                <p class="desc"><span>actual to next: ${info.actual_to_next}</span></p>
-                                <p class="desc"><span>pred:past to next: ${info.past_to_next}</span></p>
-                            </div>
-                            <p>&nbsp</p>
-                        `
-                        document.getElementById(info.id_desc).innerHTML = temp;
-                    })
-
-
-                    charts[0].data.datasets[0].data = data.hour.actual;
-                    charts[0].data.datasets[1].data = data.hour.pred_past;
-                    charts[0].data.datasets[2].data = data.hour.now_s;
-                    charts[0].data.datasets[3].data = data.hour.pred_future;
-                    
-                    charts[1].data.datasets[0].data = data.day.actual;
-                    charts[1].data.datasets[1].data = data.day.pred_past;
-                    charts[1].data.datasets[2].data = data.day.now_s;
-                    charts[1].data.datasets[3].data = data.day.pred_future;
-                    
-                    charts[2].data.datasets[0].data = data.week.actual;
-                    charts[2].data.datasets[1].data = data.week.pred_past;
-                    charts[2].data.datasets[2].data = data.week.now_s;
-                    charts[2].data.datasets[3].data = data.week.pred_future;
-
-                    charts.forEach(chart => {
-                        chart.update();
-                    });
-
-                    // charts.forEach(chart => {
-                    //     chart.destroy();
-                    // });
-                    // charts = []
+                    temp = `
+                        <div>                      
+                            <p class="desc"><span>actual to next: ${info.actual_to_next}</span></p>
+                            <p class="desc"><span>pred:past to next: ${info.past_to_next}</span></p>
+                        </div>
+                        <p>&nbsp</p>
+                    `
+                    document.getElementById(info.id_desc).innerHTML = temp;
                 })
+
+
+                charts[0].data.datasets[0].data = data.hour.actual;
+                charts[0].data.datasets[1].data = data.hour.pred_past;
+                charts[0].data.datasets[2].data = data.hour.now_s;
+                charts[0].data.datasets[3].data = data.hour.pred_future;
+
+                charts[1].data.datasets[0].data = data.day.actual;
+                charts[1].data.datasets[1].data = data.day.pred_past;
+                charts[1].data.datasets[2].data = data.day.now_s;
+                charts[1].data.datasets[3].data = data.day.pred_future;
+
+                charts[2].data.datasets[0].data = data.week.actual;
+                charts[2].data.datasets[1].data = data.week.pred_past;
+                charts[2].data.datasets[2].data = data.week.now_s;
+                charts[2].data.datasets[3].data = data.week.pred_future;
+
+                charts.forEach(chart => {
+                    chart.update();
+                });
+
+                // charts.forEach(chart => {
+                //     chart.destroy();
+                // });
+                // charts = []
+            })
         }
 
         create_charts();
@@ -730,11 +723,11 @@
                 } else {
                     chart.data.datasets[2].pointRadius[1] = 2
                 }
-                chart.update();                
+                chart.update();
             });
         }
         setInterval(updateTime, 1000);
-        
+
 
         LANGUAGES = ["zh", "es", "en", "ar", "pt", "bn", "ru", "ja", "ko", "fr", "de", "it", "tr", "hi", "fa", "th", "pl", "ur", "nl"]
         function detectLanguage() {
@@ -748,19 +741,19 @@
 
         function updateContent(language) {
             fetch('./text/language.json', { cache: 'no-cache' })
-                .then(response => response.json())
-                .then(data => {
-                    const content = data[language];
-                    const textElement = document.querySelector('#id_text');
-                    // 해당 언어에 대한 내용으로 문서 객체를 변경합니다.
-                    textElement.innerHTML = `
-                    <p style="text-align: center;" class="btcgpt">${content.text}</p>
-                    <p style="text-align: center;" class="notice">${content.notice1}</p>            
-                    <p style="text-align: center;" class="notice">${content.notice2}</p>`;
-                })
-                .catch(error => {
-                    console.error('Error fetching language data:', error);
-                });
+            .then(response => response.json())
+            .then(data => {
+                const content = data[language];
+                const textElement = document.querySelector('#id_text');
+                // 해당 언어에 대한 내용으로 문서 객체를 변경합니다.
+                textElement.innerHTML = `
+                <p style="text-align: center;" class="btcgpt">${content.text}</p>
+                <p style="text-align: center;" class="notice">${content.notice1}</p>            
+                <p style="text-align: center;" class="notice">${content.notice2}</p>`;
+            })
+            .catch(error => {
+                console.error('Error fetching language data:', error);
+            });
         }
 
         window.onload = function () {
@@ -781,7 +774,7 @@
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             });
-        }        
+        }
 
         price_now = null
         function getPrice() {
@@ -790,7 +783,7 @@
                 .then(response => response.json())
                 .then(data => {
 
-                    if(last_data != null) {
+                    if (last_data != null) {
 
                         price_now = Math.round(data.price);
 
@@ -807,9 +800,9 @@
                         price_next = last_data.hour.pred_future.slice(0)[0]['y']
                         percent_next = (price_next - price_last) * 100 / price_last;
                         price_percent_gap = percent_now - percent_next
-                        if(price_percent_gap > 0)
+                        if (price_percent_gap > 0)
                             direction = 'up'
-                        else if(price_percent_gap < 0)
+                        else if (price_percent_gap < 0)
                             direction = 'down'
                         else
                             direction = 'same'
@@ -829,9 +822,9 @@
                         price_next = last_data.day.pred_future.slice(0)[0]['y']
                         percent_next = (price_next - price_last) * 100 / price_last;
                         price_percent_gap = percent_now - percent_next
-                        if(price_percent_gap > 0)
+                        if (price_percent_gap > 0)
                             direction = 'up'
-                        else if(price_percent_gap < 0)
+                        else if (price_percent_gap < 0)
                             direction = 'down'
                         else
                             direction = 'same'
@@ -850,27 +843,27 @@
 
                         price_next = last_data.week.pred_future.slice(0)[0]['y']
                         percent_next = (price_next - price_last) * 100 / price_last;
-                        price_percent_gap = percent_now - percent_next                        
                         price_percent_gap = percent_now - percent_next
-                        if(price_percent_gap > 0)
+                        price_percent_gap = percent_now - percent_next
+                        if (price_percent_gap > 0)
                             direction = 'up'
-                        else if(price_percent_gap < 0)
+                        else if (price_percent_gap < 0)
                             direction = 'down'
                         else
                             direction = 'same'
                         temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}%</span>`
-                        document.getElementById('id_week_gap').innerHTML = temp                        
+                        document.getElementById('id_week_gap').innerHTML = temp
 
-                        for(chart of charts) {
+                        for (chart of charts) {
                             chart.data.datasets[2].data[1]['y'] = price_now
                             chart.update();
-                        }                        
+                        }
                     }
                 })
                 .catch(error => console.error(error));
         }
         getPrice();
-        setInterval(getPrice, 3000);
+        setInterval(getPrice, 1000);
 
     </script>
 
