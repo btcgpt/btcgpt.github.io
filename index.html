@@ -776,7 +776,7 @@
             });
         }
 
-        price_now = null
+        last_price = null
         function getPrice() {
             const url = 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT';
             fetch(url)
@@ -786,6 +786,9 @@
                     if (last_data != null) {
 
                         price_now = Math.round(data.price);
+                        if(last_price == price_now) {
+                            return
+                        }
 
                         // hour
                         price_last = last_data.hour.actual.slice(-1)[0]['y']
@@ -863,7 +866,7 @@
                 .catch(error => console.error(error));
         }
         getPrice();
-        setInterval(getPrice, 1500);
+        setInterval(getPrice, 1000);
 
     </script>
 
