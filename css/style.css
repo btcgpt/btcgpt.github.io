@@ -1,5 +1,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Press Start 2P', cursive; */
+
   font-size: 16px;
   line-height: 1.5;
   background-color: #ffffff;
@@ -60,6 +62,13 @@ nav a:hover {
   opacity: 1.0;
 }
 
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+}
+
 .container h2 {
   margin: 0;
   margin-bottom: 10px;
@@ -84,6 +93,11 @@ nav a:hover {
 .orange {
   color: #ffaa00;
 }
+
+.yellow {
+  color: yellow;
+}
+
 
 .price {
   font-size: 2.0rem;
@@ -158,8 +172,9 @@ p.btcgpt {
   opacity: 1.0;
 }
 
-.card p {
+.card p.title {
   margin: 0;
+  float: left;
 }
 
 .card p.info {
@@ -181,6 +196,132 @@ p.btcgpt {
   text-shadow: 0 0 1px rgb(0, 0, 0);
 }
 
+
+
+.card p.predict_1 {
+  margin: 0em;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-shadow: 0 0 1px rgb(0, 0, 0);
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.card p.predict_2 {
+  margin: 0em;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-shadow: 0 0 1px rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.card .predict {
+  margin: 0em;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  padding: 0em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+}
+
+.card .predict_box {
+  margin: 0em;
+  margin-top: 0em;
+  margin-bottom: 0em;  
+}
+
+.user_info {
+  margin-left: 2px;
+  background-color: rgb(255, 255, 255); /* Set background color */
+  margin-right: 10px;
+  font-size: 0.8em;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 10px;
+  width: 100%;
+  opacity: 1;
+}
+
+.btn_save {
+  margin-right: 2px;
+  background-color: lightgray;
+  color: black; /* Set text color */
+  font-size: 0.9em;
+  border: none;
+  padding: 5px 8px; /* Set padding */
+  cursor: pointer; /* Set cursor to pointer on hover */
+  border-radius: 10px;
+  text-align: center;
+  width: 100px;
+  opacity: 1;
+}
+
+.btn_predict {
+  margin-top: 20px;
+  color: black; /* Set text color */
+  background-color: rgb(255, 255, 255); /* Set background color */
+  font-size: 0.9em;
+  border: none;
+  padding: 5px 8px;
+  cursor: pointer; /* Set cursor to pointer on hover */
+  border-radius: 10px;
+  text-align: center;
+  width: 220px;
+  opacity: 1;
+}
+
+.btn {
+  margin: 3px;
+  background-color: lightgray;
+  color: black; /* Set text color */
+  font-size: 0.8em;
+  border: none;
+  padding: 5px 8px; /* Set padding */
+  cursor: pointer; /* Set cursor to pointer on hover */
+  border-radius: 10px;
+  text-align: center;
+  opacity: 1;
+  width: 100px;
+}
+
+#numbers-select {
+  font-size: 16px; /* set font size for select element */
+  margin: 3px;
+  background-color: lightgray;
+  color: black; /* Set text color */
+  font-size: 0.8em;
+  border: none;
+  padding: 5px 8px; /* Set padding */
+  border-radius: 10px;
+  text-align: center;
+  opacity: 1;
+  width: 100px;  
+}
+
+#numbers-select option {
+  font-size: 14px; /* set font size for option elements */
+  text-align: right;
+}
+
+.blue {
+  background-color: rgb(0, 192, 255); /* Set background color */
+}
+
+.white {
+  background-color: rgb(255, 255, 255); /* Set background color */
+}
+/* 
 .btn {
   background-color: #333;
   color: #fff;
@@ -188,13 +329,18 @@ p.btcgpt {
   border: none;
   border-radius: 5px;
   text-decoration: none;
-}
+} */
 
-.btn:hover {
+/* .btn:hover {
   background-color: #fff;
   color: #333;
   cursor: pointer;
+} */
+
+.hidden {
+  display: none;
 }
+
 
 #video-background {
   position: fixed;
@@ -253,4 +399,62 @@ th {
 }
 td {
   font-size: 12px;
+}
+
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 10px;
+  background-color: lightgreen;
+  outline: none;
+  opacity: 1;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  position: relative; /* added */
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 25%;
+  background-color: orange;
+  cursor: pointer;
+  position: relative; /* added */
+  z-index: 1; /* added */
+}
+
+.slider::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  border-radius: 25%;
+  background-color: #ffa500;
+  cursor: pointer;
+  position: relative; /* added */
+  z-index: 1; /* added */
+}
+
+.slider::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
 }

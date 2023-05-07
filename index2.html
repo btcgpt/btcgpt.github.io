@@ -13,19 +13,26 @@
     <meta name="naver-site-verification" content="089e77bc8defc2d01087f8b2da5f8b7d4ec68efe" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"> -->
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./css/style.css?v=2.4">
     <link rel="icon" type="image/png" href="./images/btc.svg">    
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3319067300509450" crossorigin="anonymous"></script> -->
 </head>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QC6EQ2XQ12"></script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-QC6EQ2XQ12"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-QC6EQ2XQ12');
-</script>
+</script> -->
 
 <body>
     <header>
@@ -55,13 +62,15 @@
                 <p class="info" id="id_hour_next">
                     <span class="price"></span>
                     <span class="percent"></span>
-                    <h4 class=""><span class="datetime"></span><span id="id_hour_time_left" class="datetime"></span></h4>
+                    <h4 class="bottom"><span class="datetime"></span><span id="id_hour_time_left" class="datetime"></span></h4>
                 </p>
-                <p class="info" id="id_hour_now">
-                    <span class="price"></span>
-                    <span class="percent"></span>
-                    <h4 class=""><span class="datetime" id="id_hour_datetime"></span></h4>
+                
+                <p class="info">
+                    <div id="id_hour_now">
+                    </div>
+                    <h4 class="bottom"><span class="datetime" id="id_hour_datetime"></span></h4>
                 </p>
+                
                 <p class="info">
                     <p class="desc" id="id_hour_gap"><span>&nbsp;</span></p>
                     <div id="id_hour_desc">
@@ -69,8 +78,35 @@
                         <p class="desc"><span></span></p>
                     </div>
                 </p>
+
+                <p class="info">
+                    <p class="predict_1 green" id="id_hour_all1">all +1h: $29,000, 1.00%</p>
+                    <p class="predict_1 yellow hidden" id="id_hour_all2">all +2h: $30,000</p>
+                    <p class="predict_1 orange hidden" id="id_hour_you">you +2h: $30,000</p>
+                </p>
             </div>
             <canvas class="chart" id="id_hourchart" height="150"></canvas>
+
+            <div id="id_predict_box" class="predict_box hidden">
+
+                <!-- <div class="center">                    
+                </div> -->
+
+                <div class="slider-container">
+                    <input id="id_price_slider" type="range" min="25000" max="35000" value="30000" class="slider">
+                </div>
+
+                <div class="center">
+                    <input id="id_user_info" class="user_info" type="text" maxlength="50" placeholder="Enter your name">
+                    <button id="id_btn_reset" class="btn">Reset</button>
+                    <button id="id_btn_save" class="btn">OK</button>
+                </div>
+            </div>
+
+            <div id="id_predict" class="center">
+                <button id="id_btn_predict" class="btn_predict">Predict together with ❤️</button>
+            </div>                
+
         </div>
 
 
@@ -80,20 +116,24 @@
                 <p class="info" id="id_day_next">
                     <span class="price"></span>
                     <span class="percent"></span>
-                <h4 class=""><span class="datetime"></span></h4>
-                </p>
-                <p class="info" id="id_day_now">
-                    <span class="price"></span>
-                    <span class="percent"></span>
-                    <h4 class=""><span class="datetime" id="id_day_datetime"></span></h4>
+                <h4 class="bottom"><span class="datetime"></span></h4>
                 </p>
                 <p class="info">
-                    <p class="desc" id="id_day_gap"><span>&nbsp;</span></p>
-                    <div id="id_day_desc">
-                        <p class="desc"><span></span></p>
-                        <p class="desc"><span></span></p>
-                    </div>
+                <div id="id_day_now">
+                </div>
+                <h4 class="bottom"><span class="datetime" id="id_day_datetime"></span></h4>
                 </p>
+                <p class="info">
+                <p class="desc" id="id_day_gap"><span>&nbsp;</span></p>
+                <div id="id_day_desc">
+                    <p class="desc"><span></span></p>
+                    <p class="desc"><span></span></p>
+                </div>
+                <p class="info">
+                    <p class="predict_1 green" id="id_day_all1">all +1d: $29,000</p>
+                    <p class="predict_1 yellow hidden" id="id_day_all2">all +2d: $30,000</p>
+                    <p class="predict_1 orange hidden" id="id_day_you">you +2d: $30,000</p>
+                </p>  
             </div>
             <canvas class="chart" id="id_daychart" height="150"></canvas>
         </div>
@@ -104,20 +144,24 @@
                 <p class="info" id="id_week_next">
                     <span class="price"></span>
                     <span class="percent"></span>
-                <h4 class=""><span class="datetime"></span></h4>
+                <h4 class="bottom"><span class="datetime"></span></h4>
                 </p>
                 <p class="info" id="id_week_now">
-                    <span class="price"></span>
-                    <span class="percent"></span>
-                    <h4 class=""><span class="datetime" id="id_week_datetime"></span></h4>
+                <div id="id_week_now">
+                </div>
+                <h4 class="bottom"><span class="datetime" id="id_week_datetime"></span></h4>
                 </p>
                 <p class="info">
-                    <p class="desc" id="id_week_gap"><span>&nbsp;</span></p>
-                    <div id="id_week_desc">
-                        <p class="desc"><span></span></p>
-                        <p class="desc"><span></span></p>
-                    </div>
-                </p>
+                <p class="desc" id="id_week_gap"><span>&nbsp;</span></p>
+                <div id="id_week_desc">
+                    <p class="desc"><span></span></p>
+                    <p class="desc"><span></span></p>
+                </div>
+                <p class="info">
+                    <p class="predict_1 green" id="id_week_all1">all +1w: $29,000</p>
+                    <p class="predict_1 yellow hidden" id="id_week_all2">all +2w: $30,000</p>
+                    <p class="predict_1 orange hidden" id="id_week_you">you +2w: $30,000</p>
+                </p>  
             </div>
             <canvas class="chart" id="id_weekchart" height="150"></canvas>
         </div>
@@ -218,14 +262,14 @@
         &copy; 2023 BTCGPT.INFO
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.2.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js"></script>
 
     <script>
         charts = []
         function create_charts() {
             Chart.defaults.color = "white";
-
             ctx = document.getElementById('id_hourchart').getContext('2d');
             chart = new Chart(ctx, {
                 type: 'line',
@@ -316,8 +360,130 @@
                                 },
                                 boxWidth: 10 // Set the box size for the legend labels
                             }
-                        }
+                        },
+
+                        annotation: {
+                            annotations: {                    
+                                line_all1: {
+                                    mode: "horizontal",
+                                    type: 'line',
+                                    yMin: 29000,
+                                    yMax: 29000,
+                                    borderColor: "white",
+                                    borderWidth: 1,
+                                    borderDash: [1, 1],
+                                    display: false,
+                                },
+                                line_all2: {
+                                    mode: "horizontal",
+                                    type: 'line',
+                                    yMin: 29050,
+                                    yMax: 29050,
+                                    borderColor: "white",
+                                    borderWidth: 1,
+                                    borderDash: [1, 1],
+                                    display: false,
+                                },
+                                line_you: {
+                                    mode: "horizontal",
+                                    type: 'line',
+                                    yMin: 28000,
+                                    yMax: 28000,
+                                    borderColor: "white",
+                                    borderWidth: 1,
+                                    borderDash: [1, 1],
+                                    display: false,
+                                },
+                                point_all1: {
+                                    type: 'point',
+                                    borderColor: 'green',
+                                    borderWidth: 0,
+                                    backgroundColor: 'green',
+                                    radius: 3,
+                                    xValue: 100,
+                                    yValue: 29500,
+                                    display: false,
+                                },
+                                point_all2: {
+                                    type: 'point',
+                                    borderColor: 'yellow',
+                                    borderWidth: 0,
+                                    backgroundColor: 'yellow',
+                                    radius: 3,
+                                    xValue: 101,
+                                    yValue: 29000,
+                                    display: false,
+                                },                                                                
+                                point_you: {
+                                    type: 'point',
+                                    borderColor: 'orange',
+                                    borderWidth: 0,
+                                    backgroundColor: 'orange',
+                                    radius: 3,
+                                    xValue: 101,
+                                    yValue: 30100,
+                                    display: false,
+                                },
+                                label_all1: {
+                                    type: 'label',
+                                    xValue: 20,
+                                    yValue: 29000,
+                                    backgroundColor: '#00000077',
+                                    content: ["all +1h"],
+                                    color: "white",
+                                    display: false,
+                                    font: {
+                                        size: 11,                                        
+                                    }
+                                },
+                                label_all2: {
+                                    type: 'label',
+                                    xValue: 40,
+                                    yValue: 29000,
+                                    backgroundColor: '#00000077',
+                                    content: ["all +2h"],
+                                    color: "white",
+                                    display: false,
+                                    font: {
+                                        size: 11,
+                                    }
+                                },                                
+                                label_you: {
+                                    type: 'label',
+                                    xValue: 60,
+                                    yValue: 25100,
+                                    backgroundColor: '#00000077',
+                                    content: ["you +2h"],
+                                    color: "white",
+                                    display: false,
+                                    font: {
+                                        size: 11,
+                                    }
+                                },
+                                // label_gazua: {
+                                //     type: 'label',
+                                //     xValue: 60,
+                                //     yValue: 30200,
+                                //     // backgroundColor: '#00000077',
+                                //     content: ["🚀"],
+                                //     color: "white",
+                                //     display: true,
+                                //     font: {
+                                //         size: 21,
+                                //         // family: 'Press Start 2P'
+                                //         // weight: 'bold'
+                                //         //Chart.defaults.global.defaultFontFamily = 'Bebas Neue';
+                                //     }                       
+                                // },
+                            },
+                        },                        
                     },
+
+
+                    // animation: {
+                    //     duration: 2000,
+                    //     easing: "linear"
+                    // }
                 }
             });
             charts.push(chart)
@@ -558,6 +724,17 @@
             info.id_desc = data.id_desc
             info.id_time_left = data.id_time_left
 
+
+            all1_price = data.all.future.slice(0)[0]['y']
+            all1_percent = (all1_price - last_price) * 100 / last_price
+            info.all1_price = formatPrice(all1_price)
+            info.all1_percent = formatPercent(all1_percent)
+
+            all2_price = data.all.future.slice(1)[0]['y']
+            all2_percent = (all2_price - last_price) * 100 / last_price
+            info.all2_price = formatPrice(all2_price)
+            info.all2_percent = formatPercent(all2_percent)
+
             // gap_avg_abs(data.actual, data.pred_past)
 
             return info
@@ -587,7 +764,8 @@
 
         function reload() {
             //fetch the JSON data from the file
-            fetch("https://raw.githubusercontent.com/btcgpt/data/main/output.json", { cache: 'no-cache' })
+            // fetch("https://raw.githubusercontent.com/btcgpt/data/main/output.json", { cache: 'no-cache', })
+            fetch("./output.json", { cache: 'no-cache', })            
             .then(response => response.json())
             .then(data => {
                 temp = JSON.stringify(data);
@@ -615,6 +793,18 @@
                 data.day.percent = "% +1d"
                 data.week.percent = "% +1w"
 
+                data.hour.all1 = "id_hour_all1"
+                data.day.all1 = "id_day_all1"
+                data.week.all1 = "id_week_all1"
+
+                data.hour.all2 = "id_hour_all2"
+                data.day.all2 = "id_day_all2"
+                data.week.all2 = "id_week_all2"
+
+                data.hour.chart = charts[0]
+                data.day.chart = charts[1]
+                data.week.chart = charts[2]
+
                 mylist = [data.hour, data.day, data.week]
                 mylist.forEach(item => {
 
@@ -624,9 +814,9 @@
                     <p class="info">
                         <span class="price ${info.c_next}">${formatPrice(info.next_price)}</span>
                         <span class="percent ${info.c_next}">${formatPercent(info.next_percent)}</span>
-                        <h4 class="${info.c_next}">
-                            <span class="datetime">${info.datetime}:00 UTC,</span>
-                            <span id="${info.id_time_left}" class="datetime"> 00:00:00</span>
+                        <h4 class="bottom">
+                            <span class="datetime ${info.c_next}">${info.datetime}:00 UTC,</span>
+                            <span id="${info.id_time_left}" class="datetime ${info.c_next}"> 00:00:00</span>
                         </h4>
                     </p>`
 
@@ -637,35 +827,25 @@
                             <p class="desc"><span>actual to next: ${info.actual_to_next}</span></p>
                             <p class="desc"><span>pred:past to next: ${info.past_to_next}</span></p>
                         </div>
-                        <p>&nbsp</p>
                     `
                     document.getElementById(info.id_desc).innerHTML = temp;
+
+
+                    document.getElementById(item.all1).innerHTML = `all +1d: ${info.all1_price}, ${info.all1_percent}%`;
+                    document.getElementById(item.all2).innerHTML = `all +2d: ${info.all2_price}, ${info.all2_percent}%`;
+
+
+                    // <p class="predict_1 green" id="id_hour_all1">all +1h: $29,000, 1.00%</p>
+                    // <p class="predict_1 yellow hidden" id="id_hour_all2">all +2h: $30,000</p>
+                    // <p class="predict_1 orange hidden" id="id_hour_you">you +2h: $30,000</p>
+
+                    item.chart.data.datasets[0].data = item.actual;
+                    item.chart.data.datasets[1].data = item.pred_past;
+                    item.chart.data.datasets[2].data = item.now_s;
+                    item.chart.data.datasets[3].data = item.pred_future;
+                    item.chart.update();
+
                 })
-
-
-                charts[0].data.datasets[0].data = data.hour.actual;
-                charts[0].data.datasets[1].data = data.hour.pred_past;
-                charts[0].data.datasets[2].data = data.hour.now_s;
-                charts[0].data.datasets[3].data = data.hour.pred_future;
-
-                charts[1].data.datasets[0].data = data.day.actual;
-                charts[1].data.datasets[1].data = data.day.pred_past;
-                charts[1].data.datasets[2].data = data.day.now_s;
-                charts[1].data.datasets[3].data = data.day.pred_future;
-
-                charts[2].data.datasets[0].data = data.week.actual;
-                charts[2].data.datasets[1].data = data.week.pred_past;
-                charts[2].data.datasets[2].data = data.week.now_s;
-                charts[2].data.datasets[3].data = data.week.pred_future;
-
-                charts.forEach(chart => {
-                    chart.update();
-                });
-
-                // charts.forEach(chart => {
-                //     chart.destroy();
-                // });
-                // charts = []
             })
         }
 
@@ -673,7 +853,8 @@
 
         reload();
 
-        setInterval(reload, 1 * 5 * 1000);
+        //setInterval(reload, 1 * 5 * 1000);
+        setInterval(reload, 1 * 5 * 1000 * 10);
 
         function getNowDateString(now) {
             const year = now.getUTCFullYear();
@@ -703,8 +884,9 @@
             return time
         }
 
-        function updateTime() {
+        function updateTime(now) {
             if (last_data != null) {
+
                 now = new Date();
                 document.getElementById('id_hour_time_left').innerHTML = getCountdownDateString(last_data.hour.pred_future[0]['x'], now);
                 document.getElementById('id_day_time_left').innerHTML = getCountdownDateString(last_data.day.pred_future[0]['x'], now);
@@ -725,7 +907,7 @@
                 chart.update();
             });
         }
-        // setInterval(updateTime, 1000);
+        setInterval(updateTime, 5000);
 
 
         LANGUAGES = ["zh", "es", "en", "ar", "pt", "bn", "ru", "ja", "ko", "fr", "de", "it", "tr", "hi", "fa", "th", "pl", "ur", "nl"]
@@ -775,7 +957,7 @@
             });
         }
 
-        last_price = null
+        last_btc_price = null
         function getPrice() {
             const url = 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT';
             fetch(url)
@@ -785,126 +967,178 @@
                     if (last_data != null) {
 
                         price_now = Math.round(data.price);
-                        if(last_price != price_now) {
-                            last_price = price_now
-
-                            // hour
-                            price_last = last_data.hour.actual.slice(-1)[0]['y']
-                            percent_now = (price_now - price_last) * 100 / price_last;
-                            // percent_now = parseFloat(percent_now.toFixed(2));
-                            // if (percent_now < 0) {
-                            //     c_now = "down"
-                            // } else if (percent_now > 0) {
-                            //     c_now = "up"
-                            // } else {
-                            //     c_now = "eq"
-                            // }
-                            c_now = "eq"
-
-                            temp = `
-                                    <span class="price ${c_now}">${formatPrice(price_now)}</span>
-                                    <span class="percent ${c_now}">${formatPercent(percent_now)}% now</span>
-                                    <h4 class="${c_now}"><span class="datetime" id="id_hour_datetime"></span></h4>`
-                            document.getElementById('id_hour_now').innerHTML = temp
-
-                            price_next = last_data.hour.pred_future.slice(0)[0]['y']
-                            percent_next = (price_next - price_last) * 100 / price_last;
-                            price_percent_gap = percent_now - percent_next
-                            price_percent_gap = parseFloat(price_percent_gap.toFixed(2));
-                            if (price_percent_gap > 0)
-                                direction = 'up'
-                            else if (price_percent_gap < 0)
-                                direction = 'down'
-                            else
-                                direction = 'eq'
-                            temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}%</span>`
-                            document.getElementById('id_hour_gap').innerHTML = temp
-
-                            // day
-                            price_last = last_data.day.actual.slice(-1)[0]['y']
-                            percent_now = (price_now - price_last) * 100 / price_last;
-                            // percent_now = parseFloat(percent_now.toFixed(2));
-                            // if (percent_now < 0) {
-                            //     c_now = "down"
-                            // } else if (percent_now > 0) {
-                            //     c_now = "up"
-                            // } else {
-                            //     c_now = "eq"
-                            // }
-                            c_now = "eq"
-
-                            temp = `
-                                    <span class="price ${c_now}">${formatPrice(price_now)}</span>
-                                    <span class="percent ${c_now}">${formatPercent(percent_now)}% now</span>
-                                    <h4 class="${c_now}"><span class="datetime" id="id_day_datetime"></span></h4>`
-                            document.getElementById('id_day_now').innerHTML = temp                            
-
-                            // temp = `
-                            //     <span class="price">${formatPrice(price_now)}</span>
-                            //     <span class="percent">${formatPercent(percent_now)}% now</span>
-                            // `
-                            // document.getElementById('id_day_now').innerHTML = temp
-
-                            price_next = last_data.day.pred_future.slice(0)[0]['y']
-                            percent_next = (price_next - price_last) * 100 / price_last;
-                            price_percent_gap = percent_now - percent_next
-                            price_percent_gap = parseFloat(price_percent_gap.toFixed(2));
-                            if (price_percent_gap > 0)
-                                direction = 'up'
-                            else if (price_percent_gap < 0)
-                                direction = 'down'
-                            else
-                                direction = 'eq'
-                            temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}%</span>`
-                            document.getElementById('id_day_gap').innerHTML = temp
-
-                            // week
-                            price_last = last_data.week.actual.slice(-1)[0]['y']
-                            percent_now = (price_now - price_last) * 100 / price_last;
-                            // percent_now = parseFloat(percent_now.toFixed(2));
-                            // if (percent_now < 0) {
-                            //     c_now = "down"
-                            // } else if (percent_now > 0) {
-                            //     c_now = "up"
-                            // } else {
-                            //     c_now = "eq"
-                            // }
-                            c_now = "eq"
-
-                            temp = `
-                                    <span class="price ${c_now}">${formatPrice(price_now)}</span>
-                                    <span class="percent ${c_now}">${formatPercent(percent_now)}% now</span>
-                                    <h4 class="${c_now}"><span class="datetime" id="id_week_datetime"></span></h4>`
-                            document.getElementById('id_week_now').innerHTML = temp
-
-                            price_next = last_data.week.pred_future.slice(0)[0]['y']
-                            percent_next = (price_next - price_last) * 100 / price_last;
-                            price_percent_gap = percent_now - percent_next
-                            price_percent_gap = parseFloat(price_percent_gap.toFixed(2));
-                            if (price_percent_gap > 0)
-                                direction = 'up'
-                            else if (price_percent_gap < 0)
-                                direction = 'down'
-                            else
-                                direction = 'eq'
-                            temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}%</span>`
-                            document.getElementById('id_week_gap').innerHTML = temp
-
-                            for (chart of charts) {
-                                chart.data.datasets[2].data[1]['y'] = price_now
-                                chart.update();
-                            }
+                        if(last_btc_price == price_now) {
+                            return;
                         }
+                        last_btc_price = price_now
 
-                        updateTime()
+                        // hour
+                        price_last = last_data.hour.actual.slice(-1)[0]['y']
+                        percent_now = (price_now - price_last) * 100 / price_last;
+
+                        temp = `
+                             <span class="price">${formatPrice(price_now)}</span>
+                             <span class="percent">${formatPercent(percent_now)}% now</span>
+                        `
+                        document.getElementById('id_hour_now').innerHTML = temp
+
+                        price_next = last_data.hour.pred_future.slice(0)[0]['y']
+                        percent_next = (price_next - price_last) * 100 / price_last;
+                        price_percent_gap = percent_now - percent_next
+                        if (price_percent_gap > 0)
+                            direction = 'up'
+                        else if (price_percent_gap < 0)
+                            direction = 'down'
+                        else
+                            direction = 'same'
+                        temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}%</span>`
+                        document.getElementById('id_hour_gap').innerHTML = temp
+
+                        // day
+                        price_last = last_data.day.actual.slice(-1)[0]['y']
+                        percent_now = (price_now - price_last) * 100 / price_last;
+
+                        temp = `
+                             <span class="price">${formatPrice(price_now)}</span>
+                             <span class="percent">${formatPercent(percent_now)}% now</span>
+                        `
+                        document.getElementById('id_day_now').innerHTML = temp
+
+                        price_next = last_data.day.pred_future.slice(0)[0]['y']
+                        percent_next = (price_next - price_last) * 100 / price_last;
+                        price_percent_gap = percent_now - percent_next
+                        if (price_percent_gap > 0)
+                            direction = 'up'
+                        else if (price_percent_gap < 0)
+                            direction = 'down'
+                        else
+                            direction = 'same'
+                        temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}%</span>`
+                        document.getElementById('id_day_gap').innerHTML = temp
+
+                        // week
+                        price_last = last_data.week.actual.slice(-1)[0]['y']
+                        percent_now = (price_now - price_last) * 100 / price_last;
+
+                        temp = `
+                             <span class="price">${formatPrice(price_now)}</span>
+                             <span class="percent">${formatPercent(percent_now)}% now</span>
+                        `
+                        document.getElementById('id_week_now').innerHTML = temp
+
+                        price_next = last_data.week.pred_future.slice(0)[0]['y']
+                        percent_next = (price_next - price_last) * 100 / price_last;
+                        price_percent_gap = percent_now - percent_next
+                        price_percent_gap = percent_now - percent_next
+                        if (price_percent_gap > 0)
+                            direction = 'up'
+                        else if (price_percent_gap < 0)
+                            direction = 'down'
+                        else
+                            direction = 'same'
+                        temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}%</span>`
+                        document.getElementById('id_week_gap').innerHTML = temp
+
+                        for (chart of charts) {
+                            chart.data.datasets[2].data[1]['y'] = price_now
+                            chart.update();
+                        }
                     }
                 })
                 .catch(error => console.error(error));
         }
         getPrice();
-        setInterval(getPrice, 1000);
+        setInterval(getPrice, 15000); // test
 
-    </script>
+
+        // init prediction controls
+        const slider = document.getElementById("id_price_slider");
+        const price_you = document.getElementById("id_price_you");
+
+        slider.oninput = function () {
+            update_slider(this.value)
+        };
+
+        function update_slider(value) {
+            // all+1h 기준으로 % 산정
+            price_you.innerHTML = "you +2h: " + formatPrice(parseInt(value)); // you: $30,000 2% +2h
+            
+            charts[0].options.plugins.annotation.annotations['line_you'].yMin= value;
+            charts[0].options.plugins.annotation.annotations['line_you'].yMax = value;
+            charts[0].options.plugins.annotation.annotations['label_you'].yValue= value;        
+            charts[0].options.plugins.annotation.annotations['point_you'].yValue= value;  
+            charts[0].update();
+
+            // charts[0].options.plugins.annotation.annotations['label1'].yValue = this.value            
+        }
+
+        slider.addEventListener("mousedown", function () {
+            console.log("Thumb clicked");
+            charts[0].options.animation = false;
+            charts[0].update();
+        });
+
+        slider.addEventListener("mouseup", function () {
+            console.log("Thumb released");
+            charts[0].options.animation = true;
+            charts[0].update();
+        });
+
+        slider.addEventListener("touchstart", function () {
+            console.log("Thumb touched");
+            charts[0].options.animation = false;
+            charts[0].update();
+        });
+
+        slider.addEventListener("touchend", function () {
+            console.log("Thumb released");
+            charts[0].options.animation = true;
+            charts[0].update();
+        });            
+        
+        const id_predict_box = document.getElementById('id_predict_box');
+        const id_predict = document.getElementById('id_predict');
+
+
+        const id_btn_predict = document.getElementById('id_btn_predict');
+        id_btn_predict.addEventListener('click', function () {
+            // get current price
+            if (last_btc_price == null)
+                return // return, if price_now is not set
+            
+            reset_slider();
+
+            id_predict.classList.add('hidden');
+            id_predict_box.classList.remove('hidden');
+        });
+
+        function reset_slider() {
+
+            last_price = last_data.hour.actual.slice(-1)[0].y
+
+            // set slider value to current price
+            // slider min = price_now * 0.97, max = price_now * 1.03
+            slider.value = last_price;
+            slider.min = Math.round(slider.value * 0.70);
+            slider.max = Math.round(slider.value * 1.30);
+            charts[0].options.plugins.annotation.annotations['line_you'].display = true;
+            update_slider(slider.value);
+        }
+
+        const id_btn_reset = document.getElementById('id_btn_reset');
+        id_btn_reset.addEventListener('click', function () {
+            reset_slider();
+        });        
+
+
+        const id_btn_save = document.getElementById('id_btn_save');
+        id_btn_save.addEventListener('click', function () {
+            charts[0].options.plugins.annotation.annotations['line_you'].display = false;
+            charts[0].update();
+            id_predict.classList.remove('hidden');
+            id_predict_box.classList.add('hidden');
+        });
+    </script>    
 
 </body>
 
