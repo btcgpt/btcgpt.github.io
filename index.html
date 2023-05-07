@@ -231,17 +231,17 @@
                 type: 'line',
                 data: {
                     datasets: [{
-                        label: 'Actual',
+                        label: 'actual',
                         // data: data.day.actual,
                         //fill: true,
                         borderWidth: 1,
                         pointRadius: 2,
                         //tension: 0.5,
-                        backgroundColor: 'rgba(0, 255, 0, 0.8)',
+                        backgroundColor: 'rgba(0, 255, 0, 1.0)',
                         borderColor: 'rgba(0, 255, 0, 1)'
                     },
                     {
-                        label: 'Pred:Past',
+                        label: 'pred:past',
                         //data: data.day.pred_past,
                         fill: true,
                         borderWidth: 1,
@@ -252,18 +252,19 @@
                         borderColor: 'rgba(33, 146, 255, 1)'
                     },
                     {
-                        label: 'Now',
+                        label: 'now',
                         //data: data.day.now_s,
                         //fill: true,
                         borderWidth: 1,
                         //pointRadius: 2,
                         pointRadius: [2, 2],
-                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                        borderColor: 'rgba(255, 255, 255, 1)'
+                        backgroundColor: 'rgba(255, 255, 255, 1.0)',
+                        borderColor: 'rgba(0, 255, 0, 1)'
+                        // hidden: true
                     },
                     {
                         id: "future",
-                        label: 'Pred:Future',
+                        label: 'pred:future',
                         //data: data.day.pred_future,
                         fill: true,
                         borderWidth: 1,
@@ -312,9 +313,10 @@
                             position: 'bottom',
                             labels: {
                                 font: {
-                                    size: 10 // Set the legend label font size here
+                                    size: 10
                                 },
-                                boxWidth: 10 // Set the box size for the legend labels
+                                boxWidth: 10,
+                                filter: item => item.text !== 'now'
                             }
                         }
                     },
@@ -327,16 +329,16 @@
                 type: 'line',
                 data: {
                     datasets: [{
-                        label: 'Actual',
+                        label: 'actual',
                         // data: data.day.actual,
                         //fill: true,
                         borderWidth: 1,
                         pointRadius: 2,
-                        backgroundColor: 'rgba(0, 255, 0, 0.8)',
+                        backgroundColor: 'rgba(0, 255, 0, 1.0)',
                         borderColor: 'rgba(0, 255, 0, 1)'
                     },
                     {
-                        label: 'Pred:Past',
+                        label: 'pred:past',
                         //data: data.day.pred_past,
                         fill: true,
                         borderWidth: 1,
@@ -347,16 +349,16 @@
                         borderColor: 'rgba(255, 159, 64, 1)'
                     },
                     {
-                        label: 'Now',
+                        label: 'now',
                         //data: data.day.now_s,
                         //fill: true,
                         borderWidth: 1,
                         pointRadius: [2, 2],
-                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                        borderColor: 'rgba(255, 255, 255, 1)'
+                        backgroundColor: 'rgba(255, 255, 255, 1.0)',
+                        borderColor: 'rgba(0, 255, 0, 1)'
                     },
                     {
-                        label: 'Pred:Future',
+                        label: 'pred:future',
                         //data: data.day.pred_future,
                         fill: true,
                         borderWidth: 1,
@@ -406,7 +408,8 @@
                                 font: {
                                     size: 10 // Set the legend label font size here
                                 },
-                                boxWidth: 10 // Set the box size for the legend labels
+                                boxWidth: 10,
+                                filter: item => item.text !== 'now'
                             }
                         },
                     }
@@ -419,16 +422,16 @@
                 type: 'line',
                 data: {
                     datasets: [{
-                        label: 'Actual',
+                        label: 'actual',
                         //data: data.week.actual,
                         //fill: true,
                         borderWidth: 1,
                         pointRadius: 2,
-                        backgroundColor: 'rgba(0, 255, 0, 0.9)',
+                        backgroundColor: 'rgba(0, 255, 0, 1)',
                         borderColor: 'rgba(0, 255, 0, 1)'
                     },
                     {
-                        label: 'Pred:Past',
+                        label: 'pred:past',
                         //data: data.week.pred_past,
                         fill: true,
                         borderWidth: 1,
@@ -439,16 +442,16 @@
                         borderColor: 'rgba(255, 99, 132, 1)'
                     },
                     {
-                        label: 'Now',
+                        label: 'now',
                         //data: data.week.now_s,
                         //fill: true,
                         borderWidth: 1,
                         pointRadius: [2, 2],
-                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                        borderColor: 'rgba(255, 255, 255, 1)'
+                        backgroundColor: 'rgba(255, 255, 255, 1.0)',
+                        borderColor: 'rgba(0, 255, 0, 1)'
                     },
                     {
-                        label: 'Pred:Future',
+                        label: 'pred:future',
                         //data: data.week.pred_future,
                         fill: true,
                         borderWidth: 1,
@@ -498,7 +501,8 @@
                                 font: {
                                     size: 10 // Set the legend label font size here
                                 },
-                                boxWidth: 10 // Set the box size for the legend labels
+                                boxWidth: 10,
+                                filter: item => item.text !== 'now'                                
                             }
                         },
                     }
@@ -611,9 +615,13 @@
                 data.day.id_time_left = "id_day_time_left"
                 data.week.id_time_left = "id_week_time_left"
 
-                data.hour.percent = "% +1h"
-                data.day.percent = "% +1d"
-                data.week.percent = "% +1w"
+                data.hour.percent = "% +1h 🔮"
+                data.day.percent = "% +1d 🔮"
+                data.week.percent = "% +1w 🔮"
+
+                data.hour.next = "+1h"
+                data.day.next = "+1d"
+                data.week.next = "+1w"
 
                 mylist = [data.hour, data.day, data.week]
                 mylist.forEach(item => {
@@ -634,8 +642,8 @@
 
                     temp = `
                         <div>                      
-                            <p class="desc"><span>actual to next: ${info.actual_to_next}</span></p>
-                            <p class="desc"><span>pred:past to next: ${info.past_to_next}</span></p>
+                            <p class="desc"><span>actual to ${item.next}: ${info.actual_to_next}</span></p>
+                            <p class="desc"><span>pred:past to ${item.next}: ${info.past_to_next}</span></p>
                         </div>
                         <p>&nbsp</p>
                     `
@@ -791,7 +799,7 @@
                             // hour
                             price_last = last_data.hour.actual.slice(-1)[0]['y']
                             percent_now = (price_now - price_last) * 100 / price_last;
-                            // percent_now = parseFloat(percent_now.toFixed(2));
+                            percent_now = parseFloat(percent_now.toFixed(2));
                             // if (percent_now < 0) {
                             //     c_now = "down"
                             // } else if (percent_now > 0) {
@@ -823,7 +831,7 @@
                             // day
                             price_last = last_data.day.actual.slice(-1)[0]['y']
                             percent_now = (price_now - price_last) * 100 / price_last;
-                            // percent_now = parseFloat(percent_now.toFixed(2));
+                            percent_now = parseFloat(percent_now.toFixed(2));
                             // if (percent_now < 0) {
                             //     c_now = "down"
                             // } else if (percent_now > 0) {
@@ -861,7 +869,7 @@
                             // week
                             price_last = last_data.week.actual.slice(-1)[0]['y']
                             percent_now = (price_now - price_last) * 100 / price_last;
-                            // percent_now = parseFloat(percent_now.toFixed(2));
+                            percent_now = parseFloat(percent_now.toFixed(2));
                             // if (percent_now < 0) {
                             //     c_now = "down"
                             // } else if (percent_now > 0) {
