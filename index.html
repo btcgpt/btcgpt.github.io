@@ -128,10 +128,10 @@
             <canvas class="chart" id="id_weekchart" height="150"></canvas>
         </div>
 
-        <div class="card">
-            <p class="sm_text">What is BTCGPT?</p>
+        <div class="card text">
+            <p class="">What is BTCGPT?</p>
             <p>
-                <span class="sm_text">
+                <span class="">
                     BTCGPT is a deep learning model that predicts the future price of Bitcoin based on past Bitcoin
                     prices, as well as other relevant data such as trading volumes, market capitalization, and news
                     sentiment analysis. These models are typically trained using historical data and fine-tuned with
@@ -146,15 +146,13 @@
             </p>
         </div>
 
-        <div class="card">
-            <p class="sm_text">Why are the hourly, daily and weekly price predictions different?</p>
+        <div class="card text">
+            <p class="">Why are the hourly, daily and weekly price predictions different?</p>
             <p>
-                <span class="sm_text">
-                    Ideally, we would like all models to provide the same predictions, but in reality, due to
-                    differences in the training data and model architecture, they may produce different results. The
-                    hourly and daily models use more recent data and incorporates more short-term market trends, while
-                    the weekly model uses a longer time frame and focuses on broader market trends.
-                </span>
+                Ideally, we would like all models to provide the same predictions, but in reality, due to
+                differences in the training data and model architecture, they may produce different results. The
+                hourly and daily models use more recent data and incorporates more short-term market trends, while
+                the weekly model uses a longer time frame and focuses on broader market trends.    
             </p>
         </div>
 
@@ -173,20 +171,20 @@
                 </span>
             </p>
         </div> -->
-        <div class="card">
-            <p class="sm_text">Updates.</p>
-            <p><span class="sm_text">✅ BTCGPT(alpha) launched. (2023-04-11)</span>
-            <p><span class="sm_text">✅ accuracy improved, bug fix. (2023-04-17)</span>
-            <p><span class="sm_text">✅ added: analysis metrics. (2023-04-19)</span>
-            <p><span class="sm_text">✅ updated: ux text. (2023-04-20)</span>
-            <p><span class="sm_text">✅ updated: prediciton model (2023-04-26)</span>
-            <p><span class="sm_text">✅ added: hourly forecast. (2023-04-26)</span>
-            <p><span class="sm_text">✅ BTCGPT(beta) launched. (2023-04-28)</span>
-            </p>
+        <div class="card text">
+            <p class="">Updates.</p>
+            <p>✅ BTCGPT(alpha) launched. (2023-04-11)</p>
+            <p>✅ accuracy improved, bug fix. (2023-04-17)</p>
+            <p>✅ added: analysis metrics. (2023-04-19)</p>
+            <p>✅ updated: ux text. (2023-04-20)</p>
+            <p>✅ updated: prediciton model (2023-04-26)</p>
+            <p>✅ added: hourly forecast. (2023-04-26)</p>
+            <p>✅ BTCGPT(beta) launched. (2023-04-28)</p>
+            <p>✅ updated: ux text & charts (2023-05-06)</p>
         </div>
 
-        <div class="card">
-            <p class="sm_text">Contact.</p>
+        <div class="card text">
+            <p class="">Contact.</p>
 
             <!-- <p>
                 <span class="notice_orange">
@@ -207,19 +205,13 @@
                     <a href="https://bitcointalk.org/index.php?topic=5448757.0" target="_blank" style="color: rgb(255, 255, 255);">Go to BitcoinTalk.</a>.
                 </span>
             </p> -->
-
-            <span class="sm_text">
-                If you have any questions, please send me an email.
-                <span class="notice_green">
-                    btcgpt @ gmail.com
-                </span>
-            </span>
-
+            <p>If you have any questions, please send me an email.</p> 
+            <p>btcgpt @ gmail.com</p>            
         </div>
 
     </div>
 
-    <footer class="sm_text" style="text-align: center;">
+    <footer class="text" style="text-align: center;">
         <div style="text-align: center;"><img src="./images/captainbtc.jpg" alt="CaptainBTC" style="width: 60px; height: 60px; margin-right: 0px; border-radius: 50%;"></div>
         &copy; 2023 BTCGPT.INFO
     </footer>
@@ -830,7 +822,7 @@
                                 direction = 'down'
                             else
                                 direction = 'eq'
-                            temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}%</span>`
+                            temp = `<span class="${direction}">gap: ${formatPercent(price_percent_gap)}% </span>`
                             document.getElementById('id_hour_gap').innerHTML = temp
 
                             // day

@@ -177,6 +177,11 @@ p.btcgpt {
   float: left;
 }
 
+.card p.notice {
+  margin: 0;
+  float: left;
+}
+
 .card p.info {
   margin: 0;
   margin-top: 1.3em;
@@ -203,7 +208,7 @@ p.btcgpt {
   text-shadow: 0 0 1px rgb(0, 0, 0);
 }
 
-.card p.predict_1 {
+.card p.predict_all {
   margin: 0em;
   font-weight: bold;
   font-size: 0.9rem;
@@ -222,8 +227,6 @@ p.btcgpt {
   justify-content: center;
   align-items: center;
 }
-
-
 
 .card .predict {
   margin: 0em;
@@ -282,7 +285,7 @@ p.btcgpt {
   cursor: pointer; /* Set cursor to pointer on hover */
   border-radius: 10px;
   text-align: center;
-  width: 220px;
+  width: 190px;
   opacity: 1;
 }
 
