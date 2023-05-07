@@ -179,7 +179,7 @@ p.btcgpt {
 
 .card p.info {
   margin: 0;
-  margin-top: 1.2em;
+  margin-top: 1.3em;
   margin-bottom: 0em;
 }
 
@@ -189,14 +189,19 @@ p.btcgpt {
   margin-bottom: 0em;    
 }
 
-.card p.desc {
+.card p.gap {
   margin: 0em;
-  font-weight: normal;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
+  font-weight: bold;
   text-shadow: 0 0 1px rgb(0, 0, 0);
 }
 
-
+.card p.desc {
+  margin: 0em;
+  font-size: 1rem;
+  font-weight: normal;
+  text-shadow: 0 0 1px rgb(0, 0, 0);
+}
 
 .card p.predict_1 {
   margin: 0em;
