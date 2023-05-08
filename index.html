@@ -272,6 +272,17 @@
                     }]
                 },
                 options: {
+                    animation: {
+                        duration: 250,
+                        easing: 'easeInQuad',
+                        loop: false,
+                        onComplete: function (animation) {
+                            if(animation.chart.data.datasets[2].pointRadius[1] == 2) {
+                                animation.chart.data.datasets[2].pointRadius[1] = 5
+                                animation.chart.update();
+                            }
+                        }
+                    },                              
                     scales: {
                         x: {
                             grid: {
@@ -367,6 +378,17 @@
                     }]
                 },
                 options: {
+                    animation: {
+                        duration: 250,
+                        easing: 'easeInQuad',
+                        loop: false,
+                        onComplete: function (animation) {
+                            if(animation.chart.data.datasets[2].pointRadius[1] == 2) {
+                                animation.chart.data.datasets[2].pointRadius[1] = 5
+                                animation.chart.update();
+                            }
+                        }
+                    },
                     scales: {
                         x: {
                             grid: {
@@ -460,6 +482,17 @@
                     }]
                 },
                 options: {
+                    animation: {
+                        duration: 250,
+                        easing: 'easeInQuad',
+                        loop: false,
+                        onComplete: function (animation) {
+                            if(animation.chart.data.datasets[2].pointRadius[1] == 2) {
+                                animation.chart.data.datasets[2].pointRadius[1] = 5
+                                animation.chart.update();
+                            }
+                        }
+                    },
                     scales: {
                         x: {
                             grid: {
@@ -724,15 +757,6 @@
                 document.getElementById('id_week_datetime').innerHTML = date_now
             }
 
-            charts.forEach(chart => {
-                if (chart.data.datasets[2].pointRadius[1] == 2) {
-                    chart.data.datasets[2].pointRadius[1] = 5
-                } else {
-                    chart.data.datasets[2].pointRadius[1] = 2
-                }
-                chart.update();
-            });
-
         }
 
         LANGUAGES = ["zh", "es", "en", "ar", "pt", "bn", "ru", "ja", "ko", "fr", "de", "it", "tr", "hi", "fa", "th", "pl", "ur", "nl"]
@@ -899,9 +923,17 @@
 
                             for (chart of charts) {
                                 chart.data.datasets[2].data[1]['y'] = price_now
-                                //chart.update('none');
-                                //chart.update(); // updated by point animation
                             }
+
+                            charts.forEach(chart => {
+                                if (chart.data.datasets[2].pointRadius[1] == 2) {
+                                    chart.data.datasets[2].pointRadius[1] = 5
+                                } else {
+                                    chart.data.datasets[2].pointRadius[1] = 2
+                                }
+                                chart.update();
+                            });
+
                         }
                         updateTime()
                     }
