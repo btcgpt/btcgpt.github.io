@@ -295,7 +295,7 @@
                                 beginAtZero: false,
                             },
                             // position: "right"
-                        },
+                        }                   
                     },
                     plugins: {
                         title: {
@@ -320,6 +320,7 @@
                     },
                 }
             });
+            
             charts.push(chart)
 
             ctx = document.getElementById('id_daychart').getContext('2d');
@@ -515,7 +516,6 @@
                 });
             });
             resizeObserver.observe(container);
-
         }
 
         function get_info(data) {
@@ -631,7 +631,7 @@
                         <span class="price ${info.c_next}">${formatPrice(info.next_price)}</span>
                         <span class="percent ${info.c_next}">${formatPercent(info.next_percent)}</span>
                         <h4 class="${info.c_next}">
-                            <span class="datetime">${info.datetime}:00 UTC,</span>
+                            <span class="datetime">${info.datetime} UTC,</span>
                             <span id="${info.id_time_left}" class="datetime"> 00:00:00</span>
                         </h4>
                     </p>`
@@ -664,7 +664,7 @@
                 charts[2].data.datasets[3].data = data.week.pred_future;
 
                 charts.forEach(chart => {
-                    chart.update();
+                    chart.update('none');
                 });
 
                 // charts.forEach(chart => {
@@ -687,7 +687,8 @@
             const hours = now.getUTCHours().toString().padStart(2, '0');
             const minutes = now.getUTCMinutes().toString().padStart(2, '0');
             const seconds = now.getUTCSeconds().toString().padStart(2, '0');
-            const time_now = `${year}-${month}-${day} ${hours}:${minutes}:${seconds} UTC`;
+            //const time_now = `${year}-${month}-${day} ${hours}:${minutes}:${seconds} UTC`;
+            const time_now = `${year}-${month}-${day} ${hours}:${minutes} UTC`;
 
             return time_now;
         }
@@ -702,6 +703,7 @@
             seconds = Math.floor((timeDiff / 1000) % 60).toString().padStart(2, '0');
 
             time = `-${hours}:${minutes}:${seconds}`;
+            //time = `-${hours}:${minutes}`;
             if (hours < 0) {
                 time = "Predicting...🧘🏻"
             }
@@ -709,6 +711,7 @@
         }
 
         function updateTime() {
+
             if (last_data != null) {
                 now = new Date();
                 document.getElementById('id_hour_time_left').innerHTML = getCountdownDateString(last_data.hour.pred_future[0]['x'], now);
@@ -727,10 +730,9 @@
                 } else {
                     chart.data.datasets[2].pointRadius[1] = 2
                 }
-                //chart.update('none');
-                //chart.options.animation.easing = 'easeInCubic'
                 chart.update();
             });
+
         }
 
         LANGUAGES = ["zh", "es", "en", "ar", "pt", "bn", "ru", "ja", "ko", "fr", "de", "it", "tr", "hi", "fa", "th", "pl", "ur", "nl"]
