@@ -728,11 +728,10 @@
                     chart.data.datasets[2].pointRadius[1] = 2
                 }
                 //chart.update('none');
+                //chart.options.animation.easing = 'easeInCubic'
                 chart.update();
             });
         }
-        // setInterval(updateTime, 1000);
-
 
         LANGUAGES = ["zh", "es", "en", "ar", "pt", "bn", "ru", "ja", "ko", "fr", "de", "it", "tr", "hi", "fa", "th", "pl", "ur", "nl"]
         function detectLanguage() {
@@ -898,10 +897,10 @@
 
                             for (chart of charts) {
                                 chart.data.datasets[2].data[1]['y'] = price_now
-                                chart.update('none');
+                                //chart.update('none');
+                                //chart.update(); // updated by point animation
                             }
                         }
-
                         updateTime()
                     }
                 })
